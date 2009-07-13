@@ -1,0 +1,24 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+   xmlns:five="http://namespaces.zope.org/five">
+
+  <five:registerPackage package="." initialize=".initialize" />
+
+  <include package="valentine.imagescales.browser" />
+  <include file="profiles.zcml" />
+
+  <adapter
+      for="Products.ATContentTypes.interface.IATNewsItem"
+      factory=".traverse.ScaleTraverser"
+      />
+
+  <adapter
+      for="Products.ATContentTypes.interface.IATImage"
+      factory=".traverse.ScaleTraverser"
+      />
+
+  <adapter
+      for="Products.ATContentTypes.interface.IATFolder"
+      factory=".traverse.ScaleTraverser"
+      />
+
+</configure>

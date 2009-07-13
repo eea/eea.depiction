@@ -1,0 +1,69 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser">
+
+    <browser:page
+        for="Products.ATContentTypes.interface.image.IATImage"
+        name="imgtag"
+        class=".base.ImageTag"
+        permission="zope.Public"
+        allowed_interface=".interfaces.IImageTag"
+        />
+
+    <browser:page
+        for="Products.ATContentTypes.interface.image.IATImage"
+        name="imgview"
+        class=".atfield.ImageView"
+        permission="zope.Public"
+        allowed_interface=".interfaces.IImageView"
+        />
+
+    <browser:page
+        for="Products.ATContentTypes.interface.image.IATImage"
+        name="album_imglink"
+        class=".base.AlbumImageLink"
+        permission="zope.Public"
+        allowed_interface=".interfaces.IImageLink"
+        />
+
+    <browser:page
+        for="Products.ATContentTypes.interface.IATImage"
+        name="imglink"
+        class=".base.SummaryImageLink"
+        permission="zope.Public"
+        allowed_interface=".interfaces.IImageLink"
+        />
+
+    <browser:page
+        for="Products.ATContentTypes.interface.news.IATNewsItem"
+        name="imgtag"
+        class=".base.ImageTag"
+        permission="zope.Public"
+        allowed_interface=".interfaces.IImageTag"
+        />
+
+    <browser:page
+        for="Products.ATContentTypes.interface.news.IATNewsItem"
+        name="imgview"
+        class=".atfield.ImageView"
+        permission="zope.Public"
+        allowed_interface=".interfaces.IImageView"
+        />
+
+    <browser:page
+        for="Products.ATContentTypes.interface.news.IATNewsItem"
+        name="album_imglink"
+        class=".base.AlbumImageLink"
+        permission="zope.Public"
+        allowed_interface=".interfaces.IImageLink"
+        />
+
+    <browser:page
+        for="Products.ATContentTypes.interface.news.IATNewsItem"
+        name="imglink"
+        class=".base.SummaryImageLink"
+        permission="zope.Public"
+        allowed_interface=".interfaces.IImageLink"
+        />
+
+</configure>

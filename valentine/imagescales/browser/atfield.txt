@@ -1,0 +1,77 @@
+# -*- coding: utf-8 -*-
+
+===================
+ATField integration
+===================
+
+First we set up a newsitem test content with archetypes.
+
+  >>> self.setRoles(['Manager'])
+  >>> id = portal.invokeFactory('News Item', id='newsitem')
+  >>> newsitem = portal[id]
+
+News items has an image field attribute. This is what the default ImageView looks for.
+We don't have to configure anything. If we make a request for the thumb image scale, the
+machinery will take care of everything.
+
+  >>> newsitem.setImage(img)
+  >>> newsitem.restrictedTraverse('image_thumb')
+  <Image at ...>
+
+When we want the HTML tag for the image, we use the imgtag adapter.
+
+  >>> from elementtree import ElementTree as ET
+  >>> img = ET.XML(newsitem.restrictedTraverse('@@imgtag')('thumb'))
+  >>> img.get('src')
+  'http://nohost/plone/newsitem/image_thumb'
+
+When we want the full image link with anchor and everything, we use the imglink adapter:
+
+  >>> a = ET.XML(newsitem.restrictedTraverse('@@imglink')())
+  >>> a.get('href')
+  'http://nohost/plone/newsitem'
+
+  >>> a.get('class')
+  'tileImage'
+
+  >>> img = a.find('img')
+  >>> img.get('src')
+  'http://nohost/plone/newsitem/image_thumb'
+
+The second one is for atct_album_view and contains the title as well:
+
+  >>> newsitem.setTitle('Test Title')
+  >>> a = ET.XML(newsitem.restrictedTraverse('@@album_imglink')())
+  >>> a.get('title')
+  'Test Title'
+
+  >>> a.get('href')
+  'http://nohost/plone/newsitem'
+
+  >>> a.find('img')
+  <Element img at ...>
+
+  >>> span = a.find('span')
+  >>> span.text
+  'Test Title'
+
+  >>> span.get('class')
+  'photoAlbumEntryTitle'
+
+
+Special Characters and Encodings
+--------------------------------
+
+Titles with characters special to XML should work as well. ET.XML would
+complain if these characters were not escaped:
+
+  >>> newsitem.setTitle('"Ok" & <html>')
+  >>> ET.XML(newsitem.restrictedTraverse('@@imgtag')('thumb'))
+  <Element img at ...>
+
+Unicode characters should work too:
+
+  >>> newsitem.setTitle(u'Räksmörgås')
+  >>> print newsitem.restrictedTraverse('@@album_imglink')().decode('utf-8')
+  <a ...>Räksmörgås...</a>
+

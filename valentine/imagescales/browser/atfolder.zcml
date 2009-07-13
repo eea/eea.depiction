@@ -1,0 +1,36 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser">
+
+    <browser:page
+        for="Products.ATContentTypes.interface.folder.IATFolder"
+        name="imgtag"
+        class=".base.ImageTag"
+        permission="zope.Public"
+        allowed_interface=".interfaces.IImageTag"
+        />
+
+    <browser:page
+        for="Products.ATContentTypes.interface.folder.IATFolder"
+        name="imgview"
+        class=".atfolder.ImageView"
+        permission="zope.Public"
+        allowed_interface=".interfaces.IImageView"
+        />
+
+    <browser:page
+        for="Products.ATContentTypes.interface.folder.IATFolder"
+        name="album_imglink"
+        class=".atfolder.AlbumImageLink"
+        permission="zope.Public"
+        allowed_interface=".interfaces.IImageLink"
+        />
+
+    <browser:page
+        for="Products.ATContentTypes.interface.folder.IATFolder"
+        name="imglink"
+        class=".base.SummaryImageLink"
+        permission="zope.Public"
+        allowed_interface=".interfaces.IImageLink"
+        />
+
+</configure>

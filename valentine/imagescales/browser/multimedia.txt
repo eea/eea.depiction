@@ -1,0 +1,81 @@
+======================
+Multimedia integration
+======================
+
+First we upload a video:
+
+  >>> self.setRoles(['Manager'])
+  >>> folder_id = portal.invokeFactory('Folder', id='testfolder')
+  >>> folder = portal[folder_id]
+  >>> vid_id = folder.invokeFactory('File', samplefilename)
+  >>> vid = folder[vid_id]
+  >>> vid.getRawFile().update_data(sampledata, mimetype, len(sampledata))
+  >>> vid.setTitle('Test Video Title')
+
+  >>> from zope import event
+  >>> from zope.app.event import objectevent
+  >>> event.notify(objectevent.ObjectModifiedEvent(vid))
+
+Lets upload a thumbnail image to the video:
+
+  >>> from p4a.video.interfaces import IVideo
+  >>> from OFS.Image import Image
+  >>> img = Image('foobar', 'Foobar', img)
+  >>> p4vid = IVideo(vid)
+  >>> p4vid.video_image = img
+  >>> img = vid.restrictedTraverse('@@imgview')(scalename='thumb')
+  >>> img
+  <Image at tmp-video-thumb>
+
+  >>> img.width == 128 and img.height == 128
+  True
+
+To generate an image tag that points to the videos thumbnail image, we use
+the imgtag adapter:
+
+  >>> from elementtree import ElementTree as ET
+  >>> img = ET.XML(vid.restrictedTraverse('@@imgtag')())
+  >>> img.get('src')
+  'http://nohost/plone/testfolder/barsandtone.flv/image_thumb'
+
+  >>> img.get('title')
+  'Test Video Title'
+
+  >>> img.get('alt')
+  'Test Video Title'
+
+When we want the full image link with anchor and everything, we use the imglink adapter:
+
+  >>> a = ET.XML(vid.restrictedTraverse('@@imglink')())
+  >>> a.get('href')
+  'http://nohost/plone/testfolder/barsandtone.flv/view'
+
+  >>> a.get('class')
+  'tileImage thickbox'
+
+  >>> img = a.find('img')
+  >>> img.get('src')
+  'http://nohost/plone/testfolder/barsandtone.flv/image_thumb'
+
+And an ImageLink for atct_album_view:
+
+  >>> a = ET.XML(vid.restrictedTraverse('@@album_imglink')())
+  >>> a.get('title')
+  'Test Video Title'
+
+  >>> a.get('class')
+  'thickbox'
+
+  >>> a.get('href')
+  'http://nohost/plone/testfolder/barsandtone.flv/view'
+
+  >>> a.find('img')
+  <Element img at ...>
+
+  >>> span = a.find('span')
+  >>> span.text
+  'Test Video Title'
+
+  >>> span.get('class')
+  'photoAlbumEntryTitle'
+
