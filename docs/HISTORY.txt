@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.2 - Unreleased
+----------------
+
+* Add black borders to 4:3 images scaled to 16:9, and don't stretch the play button. [pthulin]
+
 0.1 - Unreleased
 ----------------
 

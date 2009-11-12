@@ -45,45 +45,53 @@ class ImageView(BrowserView):
         return (self.img != None) and (scalename in ImageView.sizes)
 
     def __call__(self, scalename='thumb', fieldname='image'):
+        # XXX This scaling should be done once and then cached
         if not self.display(scalename):
             raise NotFound(self.request, scalename)
-        # XXX should be done once then cached
-        return thumbnail(self.img.data, self.button, ImageView.sizes[scalename])
+        orig = PIL.Image.open(StringIO(self.img.data))
+        button = PIL.Image.open(StringIO(self.button))
+        thumb = thumbnail(orig, button, ImageView.sizes[scalename])
+
+        destfile = StringIO()
+        thumb.save(destfile, 'PNG')
+        destfile.seek(0)
+
+        dest = OFS.Image.Image('tmp-video-thumb', 'tmp-video-thumb', destfile)
+        dest.width = thumb.size[0]
+        dest.height = thumb.size[1]
+        return dest
 
 
-def thumbnail(thumb, button, size):
-    """Scale and apply play-button and borders on an uploaded thumbnail.
-    
-    First two argument should be raw image data.
-    """
-    thumbfile = StringIO(thumb)
-    buttonfile = StringIO(button)
-    destfile = StringIO()
-
-    thumb = PIL.Image.open(thumbfile)
-    button = PIL.Image.open(buttonfile)
-
-    origsize = thumb.size
-    newsize = size
-    aspect = float((newsize[0]) / float(origsize[0]))
-    buttonsize = (newsize[0], origsize[1] * aspect)
-
-    thumb = thumb.resize(buttonsize, PIL.Image.ANTIALIAS)
-    button = button.resize(size, PIL.Image.ANTIALIAS)
-
-    x, y = 0, (size[1]/2) - (thumb.size[1]/2)
-    w, h = x + thumb.size[0], y + thumb.size[1]
-
+def thumbnail(orig, button, size):
+    # Create an image with the requested size
     bg = PIL.Image.new('RGB', size, color=(0, 0, 0))
-    bg.paste(thumb, (x, y, w, h))
-    bg.paste(button, (0, 0), button)
-    bg.save(destfile, 'PNG')
 
-    destfile.seek(0)
-    dest = OFS.Image.Image('tmp-video-thumb', 'tmp-video-thumb', destfile)
-    dest.width = size[0]
-    dest.height = size[1]
-    return dest
+    # Scale the original image. If we're scaling a 4:3 to 16:9, we max the
+    # height and scale the width as far as we can, and vice versa
+    if ((float(size[0])/size[1]) > (float(orig.size[0])/orig.size[1])):
+        aspect = float((size[1]) / float(orig.size[1]))
+        thumb_size = (int(size[0] * aspect), orig.size[1])
+    else:
+        aspect = float((size[0]) / float(orig.size[0]))
+        thumb_size = (size[0], int(orig.size[1] * aspect))
+    thumb = orig.resize(thumb_size, PIL.Image.ANTIALIAS)
+
+    # Paste it onto the background (centered)
+    x = (bg.size[0]/2) - (thumb.size[0]/2)
+    y = (bg.size[1]/2) - (thumb.size[1]/2)
+    w = x + thumb.size[0]
+    h = y + thumb.size[1]
+    bg.paste(thumb, (x, y, w, h))
+
+    # Apply the play button (centered)
+    scale = float(size[1]) / button.size[1]
+    new_button_size = (int(button.size[0]*scale), int(button.size[1]*scale))
+    button = button.resize(new_button_size, PIL.Image.ANTIALIAS)
+    x = (bg.size[0]/2) - (button.size[0]/2)
+    y = (bg.size[1]/2) - (button.size[1]/2)
+    bg.paste(button, (x, y), button)
+
+    return bg
 
 
 class AlbumImageLink(base.AlbumImageLink):
