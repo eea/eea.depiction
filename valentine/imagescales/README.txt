@@ -4,15 +4,8 @@ Valenine Imagescales
 
 Imagescales is a generic system for creating thumbnails/image representations
 for content types, both those provided by Plone, and custom ones. To make it
-work for a content type, three adapters need to be provided:
-
- 1. ImageView that retrieves an image in the desired scale.
- 2. ImageTag that returns the HTML tag for the image
- 3. ImageLink that returns the HTML link to the image.
-
-For the most part, only the ImageView (retrieval of image) is specific for the
-content type and needs to be provided. For the other two, there are generic
-ones in valentine.imagescales.browser.base.
+work for a content type, an ImageView adapter must be provided. It's
+responsiblity is to retrieve and return the image.
 
 Consider this example for an mp3-song content type:
 
@@ -58,25 +51,4 @@ create an mp3file and get the image for it:
   >>> imgview = getMultiAdapter((self.portal.mp3file, request), name=u'imgview')
   >>> imgview('icon')
   <Image at ...>
-
-
-HTML Generation
----------------
-
-We now have an adapter that retrieves the actual image, but for showing the
-image inside a page we need something that generates the HTML img tag. That's
-what the ImageTag adapters is for:
-
-  >>> from valentine.imagescales.browser.base import ImageTag
-  >>> provideAdapter(ImageTag, adapts=(IMp3File, IRequest), name=u'imgtag')
-  >>> imgtag = getMultiAdapter((self.portal.mp3file, request), name=u'imgtag')
-
-It spits out an imgtag with the 'src' attribute set to the image:
-
-  >>> from elementtree import ElementTree as ET
-  >>> html = ET.XML(imgtag('icon'))
-  >>> html.tag
-  'img'
-  >>> html.get('src')
-  'http://nohost/plone/test_mp3_file/image_icon'
 

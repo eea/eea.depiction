@@ -3,39 +3,15 @@
 
   <browser:page
       for="p4a.video.interfaces.IVideoEnhanced"
-      name="imgtag"
-      class=".base.ImageTag"
-      permission="zope.Public"
-      allowed_interface=".interfaces.IImageTag"
-      />
-
-  <browser:page
-      for="p4a.video.interfaces.IVideoEnhanced"
       name="imgview"
       class=".multimedia.ImageView"
       permission="zope.Public"
       allowed_interface=".interfaces.IImageView"
       />
 
-  <browser:page
-      name="album_imglink"
-      for="p4a.video.interfaces.IVideoEnhanced"
-      class=".multimedia.AlbumImageLink"
-      permission="zope.Public"
-      allowed_interface=".interfaces.IImageLink"
-      />
-
-  <browser:page
-      name="imglink"
-      for="p4a.video.interfaces.IVideoEnhanced"
-      class=".multimedia.SummaryImageLink"
-      permission="zope.Public"
-      allowed_interface=".interfaces.IImageLink"
-      />
-
   <adapter
       for="p4a.video.interfaces.IVideoEnhanced"
-      factory="..traverse.ScaleTraverser"
+      factory="valentine.imagescales.traverse.ScaleTraverser"
       />
 
 </configure>

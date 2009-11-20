@@ -9,7 +9,6 @@ import PIL.Image
 from StringIO import StringIO
 
 from interfaces import IImageView
-import base
 
 
 class ImageView(BrowserView):
@@ -23,14 +22,16 @@ class ImageView(BrowserView):
     implements(IImageView)
 
     # Copied from EEAContentTypes/content/ExternalHighlight.py 2009-02-18
-    sizes = { 'large'   : (768, 768),
-              'preview' : (400, 400),
-              'mini'    : (180, 135),
-              'thumb'   : (128, 128),
-              'wide'    : (325, 183),
-              'tile'    :  (64, 64),
-              'icon'    :  (32, 32),
-              'listing' :  (16, 16),
+    # Added 'wide' size
+    sizes = {
+        'large'   : (768, 768),
+        'preview' : (400, 400),
+        'mini'    : (180, 135),
+        'thumb'   : (128, 128),
+        'wide'    : (325, 183),
+        'tile'    :  (64, 64),
+        'icon'    :  (32, 32),
+        'listing' :  (16, 16),
     }
 
     def __init__(self, context, request):
@@ -93,22 +94,3 @@ def thumbnail(orig, button, size):
 
     return bg
 
-
-class AlbumImageLink(base.AlbumImageLink):
-
-    """ """
-
-    def __init__(self, context, request):
-        super(AlbumImageLink, self).__init__(context, request)
-        self.classnames.append('thickbox')
-        self.url = context.absolute_url() + '/view'
-
-
-class SummaryImageLink(base.SummaryImageLink):
-
-    """ """
-
-    def __init__(self, context, request):
-        super(SummaryImageLink, self).__init__(context, request)
-        self.classnames.append('thickbox')
-        self.url = context.absolute_url() + '/view'
