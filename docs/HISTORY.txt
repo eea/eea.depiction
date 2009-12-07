@@ -4,6 +4,8 @@ Changelog
 0.2 - Unreleased
 ----------------
 
+* Enabled folder.ImageView for ATTopics. [pthulin]
+* Fixed bug where 16:9 images scaled to 16:9 background resulted in black borders. [pthulin]
 * Simplified design, removed ImageLink and ImageTag. [pthulin]
 * Add black borders to 4:3 images scaled to 16:9, and don't stretch the play button. [pthulin]
 

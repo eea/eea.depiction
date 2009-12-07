@@ -21,4 +21,9 @@
       factory=".traverse.ScaleTraverser"
       />
 
+  <adapter
+      for="Products.ATContentTypes.interface.IATTopic"
+      factory=".traverse.ScaleTraverser"
+      />
+
 </configure>

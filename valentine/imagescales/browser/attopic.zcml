@@ -1,0 +1,12 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser">
+
+    <browser:page
+        for="Products.ATContentTypes.interface.topic.IATTopic"
+        name="imgview"
+        class=".atfolder.ImageView"
+        permission="zope.Public"
+        allowed_interface=".interfaces.IImageView"
+        />
+
+</configure>

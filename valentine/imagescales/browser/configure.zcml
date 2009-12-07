@@ -10,6 +10,7 @@
 
     <include file="atfield.zcml" />
     <include file="atfolder.zcml" />
+    <include file="attopic.zcml" />
     <include file="multimedia.zcml" />
 
 </configure>
