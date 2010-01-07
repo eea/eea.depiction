@@ -8,5 +8,8 @@ cmfutils.ProductsPath.append(dirname(package_home(globals())))
 registerDirectory('skins', globals())
 cmfutils.ProductsPath = ppath
 
+import patches
+
 def initialize(context):
     """Initializer called when used as a Zope 2 product."""
+

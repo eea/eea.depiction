@@ -16,3 +16,10 @@ machinery will take care of everything.
   >>> newsitem.restrictedTraverse('image_thumb')
   <Image at ...>
 
+
+Now lets do the same thing with an tiff image. We still expect a thumbnail in PNG format
+
+  >>> newsitem2 = portal[portal.invokeFactory('News Item', id='newsitemtiff')]
+  >>> newsitem2.setImage(tiff)
+  >>> newsitem2.restrictedTraverse('image_thumb').getContentType()
+  'image/png'

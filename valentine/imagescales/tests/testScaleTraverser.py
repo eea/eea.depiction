@@ -12,6 +12,12 @@ def setUpImg(self):
     globs = {}
     globs['img'] = img
     globs['imgfile'] = img_file
+
+    img_file = os.path.join(package_home(globals()), 'data', 'test.tif')
+    img = open(img_file, 'rb').read()
+    globs['tiff'] = img
+    globs['tiff_file'] = img_file
+
     self.globs.update(globs)
 
 
