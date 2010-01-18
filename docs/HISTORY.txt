@@ -1,8 +1,8 @@
 Changelog
 =========
 
-0.2 - Unreleased
-----------------
+0.2 - (2010-01-18)
+------------------
 
 * Thumbnails are always in formats PNG, JPG or GIF even if original is something else i.e TIFF
 * Enabled folder.ImageView for ATTopics. [pthulin]
