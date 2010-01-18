@@ -5,7 +5,6 @@ from Products.CMFCore.DirectoryView import registerDirectory
 
 ppath = cmfutils.ProductsPath
 cmfutils.ProductsPath.append(dirname(package_home(globals())))
-registerDirectory('skins', globals())
 cmfutils.ProductsPath = ppath
 
 import patches
