@@ -4,6 +4,8 @@ Changelog
 0.3 - (Unreleased)
 ------------------
 
+* Use fallback images to ensure that an image is always returned. [pthulin]
+
 0.2.1 - (2010-01-18)
 --------------------
 

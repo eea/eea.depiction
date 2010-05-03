@@ -6,23 +6,9 @@
   <include package="valentine.imagescales.browser" />
   <include file="profiles.zcml" />
 
+  <!-- We're not using for="*" here because that's a zcml directive that conflicts with FiveTraversable -->
   <adapter
-      for="Products.ATContentTypes.interface.IATNewsItem"
-      factory=".traverse.ScaleTraverser"
-      />
-
-  <adapter
-      for="Products.ATContentTypes.interface.IATImage"
-      factory=".traverse.ScaleTraverser"
-      />
-
-  <adapter
-      for="Products.ATContentTypes.interface.IATFolder"
-      factory=".traverse.ScaleTraverser"
-      />
-
-  <adapter
-      for="Products.ATContentTypes.interface.IATTopic"
+      for="Products.ATContentTypes.interface.interfaces.IATContentType"
       factory=".traverse.ScaleTraverser"
       />
 
