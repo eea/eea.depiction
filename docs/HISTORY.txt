@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.4 - (Unreleased)
+------------------
+
+* Fixed "typo" in fallback interfaces map. [pthulin]
+
 0.3 - (2010-05-07)
 ------------------
 

@@ -11,8 +11,8 @@ from Products.Five.traversable import FiveTraversable
 # be used if the context provides a certain interface. TODO: move to vocabulary
 # outside valentine.imagescales.
 overrides = {
-    'Products.EEAContentTypes.interfaces.IInteractiveMap': 'interactive-map',
-    'Products.EEAContentTypes.interfaces.IInteractiveData': 'interactive-data',
+    'Products.EEAContentTypes.content.interfaces.IInteractiveMap': 'interactive-map',
+    'Products.EEAContentTypes.content.interfaces.IInteractiveData': 'interactive-data',
 }
 
 
