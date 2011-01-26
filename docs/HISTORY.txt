@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.5-dev - (Unreleased)
+0.5 - (2011-01-26)
 ------------------
 * Added JPEG to known formats for thumbnails [voineali #3847]
 
