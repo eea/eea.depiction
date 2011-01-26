@@ -35,7 +35,7 @@ def scale(self, data, w, h, default_format = 'PNG'):
     image.thumbnail(size, self.pil_resize_algo)
     # XXX: tweak to make the unit test
     #      test_fields.ProcessingTest.test_processing_fieldset run
-    format = image.format in ('PNG', 'GIF', 'JPG') and image.format or default_format
+    format = image.format in ('PNG', 'GIF', 'JPG', 'JPEG') and image.format or default_format
     # decided to only preserve palletted mode
     # for GIF, could also use image.format in ('GIF','PNG')
     if original_mode == 'P' and format == 'GIF':
