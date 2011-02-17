@@ -15,7 +15,10 @@ class ImageView(BrowserView):
         self.field = context.getField('image')
 
     def display(self, scalename='thumb'):
-        return bool(self.field.getScale(self.context, scale=scalename))
+        try:
+            return bool(self.field.getScale(self.context, scale=scalename))
+        except:
+            return False
 
     def __call__(self, scalename='thumb'):
         if not self.display(scalename):
