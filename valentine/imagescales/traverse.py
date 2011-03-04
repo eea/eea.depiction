@@ -23,10 +23,16 @@ class ScaleTraverser(FiveTraversable):
     implements(ITraversable)
 
     def traverse(self, name, furtherPath):
+        context = self._subject
+        
+        if name == "image":
+            field = context.getField('image')
+            res = field.get(context)
+            return res
+
         if not 'image_' in name:
             return super(ScaleTraverser, self).traverse(name, furtherPath)
 
-        context = self._subject
         request = context.REQUEST
         fieldname, scalename = name.split('_', 1)
         if scalename.endswith('.jpg') or scalename.endswith('.png'):

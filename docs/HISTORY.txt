@@ -3,6 +3,7 @@ Changelog
 
 0.7-dev - (unreleased)
 ----------------------
+ * Bug fix: return the field when traversing to /image in traverser [tiberich #4135]
 
 0.6 - (2011-02-17)
 ----------------------
