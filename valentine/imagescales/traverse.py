@@ -15,6 +15,8 @@ overrides = {
     'Products.EEAContentTypes.content.interfaces.IInteractiveData': 'interactive-data',
 }
 
+import logging
+logger = logging.getLogger("valentine.imagescales")
 
 class ScaleTraverser(FiveTraversable):
 
@@ -24,6 +26,8 @@ class ScaleTraverser(FiveTraversable):
 
     def traverse(self, name, furtherPath):
         context = self._subject
+
+        #logger.info("Doing traverse from v.i on %s  with name %s" % (context, name))
         
         if name == "image":
             field = context.getField('image')

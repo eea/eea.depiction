@@ -9,7 +9,6 @@
   <!-- We're not using for="*" here because that's a zcml directive that conflicts with FiveTraversable -->
   <adapter
       for="Products.ATContentTypes.interface.interfaces.IATContentType"
-      factory=".traverse.ScaleTraverser"
-      />
+      factory=".traverse.ScaleTraverser" />
 
 </configure>
