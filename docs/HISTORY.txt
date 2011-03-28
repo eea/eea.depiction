@@ -1,8 +1,8 @@
 Changelog
 =========
 
-0.7-dev - (unreleased)
-----------------------
+0.7 - (2011-03-28)
+------------------
  * Bug fix: Added translation domain to ZCML files [voineali #4139]
  * Bug fix: return the field when traversing to /image in traverser [tiberich #4135]
 
