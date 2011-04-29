@@ -28,6 +28,8 @@ setup(name='valentine.imagescales',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
+          'PIL',
+          'p4a.video',
       ],
       entry_points="""
       # -*- Entry points: -*-

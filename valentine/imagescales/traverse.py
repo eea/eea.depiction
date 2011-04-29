@@ -1,10 +1,11 @@
 from zope.component import adapts, queryMultiAdapter, getMultiAdapter
 from zope.interface import implements
 from zope.interface import providedBy
-from zope.app.traversing.interfaces import ITraversable
+from zope.traversing.interfaces import ITraversable
 from Products.CMFCore.utils import getToolByName
-from Products.Five.traversable import FiveTraversable
+from zope.traversing.adapters import DefaultTraversable
 
+#from Products.Five.traversable import FiveTraversable
 
 # In some cases we want to fallback on a different image than the one used
 # for the portal type. In this dictionary we can specify images that should
@@ -18,7 +19,7 @@ overrides = {
 import logging
 logger = logging.getLogger("valentine.imagescales")
 
-class ScaleTraverser(FiveTraversable):
+class ScaleTraverser(DefaultTraversable):
 
     """ https://svn.eionet.europa.eu/projects/Zope/wiki/HowtoSpecifyFallbackImages """
 

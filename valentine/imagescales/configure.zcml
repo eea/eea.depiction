@@ -1,9 +1,9 @@
 <configure xmlns="http://namespaces.zope.org/zope"
    xmlns:five="http://namespaces.zope.org/five">
 
-  <five:registerPackage package="." initialize=".initialize" />
+  <!--<five:registerPackage package="." initialize=".initialize" />-->
 
-  <include package="valentine.imagescales.browser" />
+  <include package=".browser" />
   <include file="profiles.zcml" />
 
   <!-- We're not using for="*" here because that's a zcml directive that conflicts with FiveTraversable -->
