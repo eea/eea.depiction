@@ -1,19 +1,18 @@
-import os
-import os.path
-from Globals import package_home
-import unittest
-import doctest
+from App.Common import package_home
 from base import ImageScalesTestCase
+import doctest
+from os.path import join
+import unittest
 
 
 def setUpImg(self):
-    img_file = os.path.join(package_home(globals()), 'data', 'test.png')
+    img_file = join(package_home(globals()), 'data', 'test.png')
     img = open(img_file, 'rb').read()
     globs = {}
     globs['img'] = img
     globs['imgfile'] = img_file
 
-    img_file = os.path.join(package_home(globals()), 'data', 'test.tif')
+    img_file = join(package_home(globals()), 'data', 'test.tif')
     img = open(img_file, 'rb').read()
     globs['tiff'] = img
     globs['tiff_file'] = img_file
@@ -25,14 +24,14 @@ def setUpMultimedia(self):
     setUpImg(self)
     globs = {}
     globs['samplefilename'] = 'barsandtone.flv'
-    globs['samplefile'] = os.path.join(package_home(globals()), 'data', 'barsandtone.flv')
+    globs['samplefile'] = join(package_home(globals()), 'data', 'barsandtone.flv')
     globs['sampledata'] = open(globs['samplefile'], 'rb').read()
     globs['mimetype'] = 'video/x-flv'
     self.globs.update(globs)
 
 
 def setUpReadme(self):
-    img_file = os.path.join(package_home(globals()), 'data', 'test.png')
+    img_file = join(package_home(globals()), 'data', 'test.png')
     globs = {}
     globs['mp3_icon_file_name'] = img_file
     self.globs.update(globs)

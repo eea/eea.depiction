@@ -30,6 +30,7 @@ setup(name='valentine.imagescales',
           # -*- Extra requirements: -*-
           'PIL',
           'p4a.video',
+          'plone.app.imaging',
       ],
       entry_points="""
       # -*- Entry points: -*-

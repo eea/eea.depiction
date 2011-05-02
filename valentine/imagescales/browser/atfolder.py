@@ -11,20 +11,24 @@ class ImageView(BrowserView):
 
     implements(IImageView)
 
-    def __init__(self, context, request):
-        super(ImageView, self).__init__(context, request)
-        results = context.getFolderContents(contentFilter={
-            'portal_type': 'Image',
-            'review_state': ['published','visible'],
-        })
+    def display(self, scalename='thumb'):
+
+        here = '/'.join(self.context.getPhysicalPath())
+        results = self.context.portal_catalog.queryCatalog(
+                {
+                    'portal_type':'Image',
+                    'path': {
+                        'query':here,
+                        'depth':1,
+                        },
+                    }, show_all=1, show_inactive=1,
+                )
         self.field = None
         self.has_images = False
         if len(results) > 0:
             self.has_images = True
             self.img = results[0].getObject()
             self.field = self.img.getField('image')
-
-    def display(self, scalename='thumb'):
         if not self.has_images:
             return False
         return (self.field != None) and bool(self.field.getScale(self.img, scalename))

@@ -9,9 +9,9 @@
       allowed_interface=".interfaces.IImageView"
       />
 
-  <adapter
-      for="p4a.video.interfaces.IVideoEnhanced"
-      factory="valentine.imagescales.traverse.ScaleTraverser"
-      />
+  <!--<adapter-->
+      <!--for="p4a.video.interfaces.IVideoEnhanced"-->
+      <!--factory="valentine.imagescales.traverse.ScaleTraverser"-->
+      <!--/>-->
 
 </configure>

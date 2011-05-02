@@ -5,7 +5,6 @@ from interfaces import IImageView
 
 
 class ImageView(BrowserView):
-
     """ """
 
     implements(IImageView)

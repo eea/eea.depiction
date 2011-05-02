@@ -2,13 +2,17 @@
 ATFolder integration
 ====================
 
-  >>> self.setRoles(['Manager'])
-  >>> id = portal.invokeFactory('Folder', id='testfolder', title='Title')
-  >>> folder = portal[id]
+    >>> from Products.Five.testbrowser import Browser
+    >>> browser = Browser()
+
+    >>> self.setRoles(['Manager'])
+    >>> id = portal.invokeFactory('Folder', id='testfolder', title='Title')
+    >>> folder = portal[id]
 
 ATFolders should have a working ImageView adapter that takes the first image inside it:
 
-  >>> foo = folder.invokeFactory('Image', id='image1', image=img)
-  >>> folder.restrictedTraverse('image_thumb')
-  <Image at ...>
+    >>> foo = folder.invokeFactory('Image', id='image1', image=img)
+
+    >>> browser.open('http://localhost/testfolder/image_thumb')
+    >>> print browser.contents
 
