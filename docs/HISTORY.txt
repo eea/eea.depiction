@@ -1,6 +1,9 @@
 Changelog
 =========
 
+0.9-dev - (unreleased)
+----------------------
+
 0.8 - (2011-05-03)
 ------------------
  * Bug fix: replaced call to getFolderContents with direct search in catalog [tiberich]
