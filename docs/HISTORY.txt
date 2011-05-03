@@ -3,6 +3,8 @@ Changelog
 
 0.8-dev - (unreleased)
 ----------------------
+ * Restructured package to work with plone.app.imaging instead of overriding it [tiberich]
+ * Compatible with Plone 4, no backwards compatibility
 
 0.7 - (2011-03-28)
 ------------------

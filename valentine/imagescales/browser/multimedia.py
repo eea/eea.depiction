@@ -1,14 +1,14 @@
-import os.path
+from Products.CMFCore.interfaces import IPropertiesTool
+from Products.Five.browser import BrowserView
+from StringIO import StringIO
+from p4a.video.interfaces import IVideo
+from valentine.imagescales.browser.interfaces import IImageView
+from zope.component import getUtility
 from zope.interface import implements
 from zope.publisher.interfaces import NotFound
-from Products.Five.browser import BrowserView
-from p4a.video.interfaces import IVideo
-
 import OFS.Image
 import PIL.Image
-from StringIO import StringIO
-
-from interfaces import IImageView
+import os.path
 
 
 class ImageView(BrowserView):
@@ -20,19 +20,7 @@ class ImageView(BrowserView):
     """
 
     implements(IImageView)
-
-    # Copied from EEAContentTypes/content/ExternalHighlight.py 2009-02-18
-    # Added 'wide' size
-    sizes = {
-        'large'   : (768, 768),
-        'preview' : (400, 400),
-        'mini'    : (180, 135),
-        'thumb'   : (128, 128),
-        'wide'    : (325, 183),
-        'tile'    :  (64, 64),
-        'icon'    :  (32, 32),
-        'listing' :  (16, 16),
-    }
+    size = None
 
     def __init__(self, context, request):
         self.context = context
@@ -42,8 +30,16 @@ class ImageView(BrowserView):
         self.button = open(path).read()
         self.img = IVideo(self.context).video_image
 
+        props = getUtility(IPropertiesTool).imaging_properties
+        sizes = props.getProperty('allowed_sizes')
+        self.sizes = {}
+        for size in sizes:
+            name, info = size.split(' ')
+            w, h = info.split(':')
+            self.sizes[name] = (int(w), int(h))
+
     def display(self, scalename='thumb'):
-        return (self.img != None) and (scalename in ImageView.sizes)
+        return (self.img != None) and (scalename in self.sizes)
 
     def __call__(self, scalename='thumb', fieldname='image'):
         # XXX This scaling should be done once and then cached
@@ -51,7 +47,7 @@ class ImageView(BrowserView):
             raise NotFound(self.request, scalename)
         orig = PIL.Image.open(StringIO(self.img.data))
         button = PIL.Image.open(StringIO(self.button))
-        thumb = thumbnail(orig, button, ImageView.sizes[scalename])
+        thumb = thumbnail(orig, button, self.sizes[scalename])
 
         destfile = StringIO()
         thumb.save(destfile, 'PNG')

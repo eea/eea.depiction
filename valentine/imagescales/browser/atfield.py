@@ -15,6 +15,8 @@ class ImageView(BrowserView):
 
     def display(self, scalename='thumb'):
         return bool(self.field.getScale(self.context, scale=scalename))
+
+        #this improves performance if you're missing the blobs
         try:
             return bool(self.field.getScale(self.context, scale=scalename))
         except:

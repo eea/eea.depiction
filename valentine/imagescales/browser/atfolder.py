@@ -6,13 +6,16 @@ from interfaces import IImageView
 
 class ImageView(BrowserView):
 
-    """This view takes the first published/visible image found in a folder and returns it in
-    the requested size."""
+    """This view takes the first published/visible image found in a folder
+    and returns it in the requested size."""
 
     implements(IImageView)
 
-    def display(self, scalename='thumb'):
+    img = None
 
+    def display(self, scalename='thumb'):
+        """return a bool if the scale should be displayed
+        """
         here = '/'.join(self.context.getPhysicalPath())
         results = self.context.portal_catalog.queryCatalog(
                 {
@@ -21,7 +24,7 @@ class ImageView(BrowserView):
                         'query':here,
                         'depth':1,
                         },
-                    }, show_all=1, show_inactive=1,
+                    }, #show_all=1, show_inactive=1,
                 )
         self.field = None
         self.has_images = False
@@ -31,7 +34,8 @@ class ImageView(BrowserView):
             self.field = self.img.getField('image')
         if not self.has_images:
             return False
-        return (self.field != None) and bool(self.field.getScale(self.img, scalename))
+        return (self.field != None) and \
+                    bool(self.field.getScale(self.img, scalename))
 
     def __call__(self, scalename='thumb'):
         if not self.display(scalename):

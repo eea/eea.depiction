@@ -1,5 +1,5 @@
 <configure xmlns="http://namespaces.zope.org/zope"
-           xmlns:browser="http://namespaces.zope.org/browser">
+    xmlns:browser="http://namespaces.zope.org/browser">
 
     <browser:page
         for="Products.ATContentTypes.interface.topic.IATTopic"

@@ -2,31 +2,33 @@
 Multimedia integration
 ======================
 
+    >>> from zope.interface import alsoProvides
+    >>> from p4a.video.interfaces import IVideoEnhanced
+    >>> from p4a.video.interfaces import IVideo
+    >>> from zope import event
+    >>> from zope import lifecycleevent
+
 First we upload a video:
 
-  >>> self.setRoles(['Manager'])
-  >>> folder_id = portal.invokeFactory('Folder', id='testfolder')
-  >>> folder = portal[folder_id]
-  >>> vid_id = folder.invokeFactory('File', samplefilename)
-  >>> vid = folder[vid_id]
-  >>> vid.getRawFile().update_data(sampledata, mimetype, len(sampledata))
-  >>> vid.setTitle('Test Video Title')
-
-  >>> from zope import event
-  >>> from zope.app.event import objectevent
-  >>> event.notify(objectevent.ObjectModifiedEvent(vid))
+    >>> self.setRoles(['Manager'])
+    >>> folder_id = portal.invokeFactory('Folder', id='testfolder')
+    >>> folder = portal[folder_id]
+    >>> vid_id = folder.invokeFactory('File', samplefilename)
+    >>> vid = folder[vid_id]
+    >>> vid.getFile().update_data(sampledata, mimetype, len(sampledata))
+    >>> vid.setTitle('Test Video Title')
+    >>> alsoProvides(vid, IVideoEnhanced)
 
 Lets upload a thumbnail image to the video:
 
-  >>> from p4a.video.interfaces import IVideo
-  >>> from OFS.Image import Image
-  >>> img = Image('foobar', 'Foobar', img)
-  >>> p4vid = IVideo(vid)
-  >>> p4vid.video_image = img
-  >>> img = vid.restrictedTraverse('@@imgview')(scalename='thumb')
-  >>> img
-  <Image at tmp-video-thumb>
+    >>> from OFS.Image import Image
+    >>> img = Image('foobar', 'Foobar', img)
+    >>> p4vid = IVideo(vid)
+    >>> p4vid.video_image = img
+    >>> img = vid.restrictedTraverse('@@imgview')(scalename='thumb')
+    >>> img
+    <Image at tmp-video-thumb>
 
-  >>> img.width == 128 and img.height == 128
-  True
+    >>> img.width == 128 and img.height == 128
+    True
 

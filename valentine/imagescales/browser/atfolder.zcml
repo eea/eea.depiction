@@ -9,6 +9,4 @@
         allowed_interface=".interfaces.IImageView"
         />
 
-        for="Products.ATContentTypes.interface.folder.IATFolder"
-
 </configure>
