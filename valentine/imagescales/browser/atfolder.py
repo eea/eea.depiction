@@ -24,6 +24,7 @@ class ImageView(BrowserView):
                         'query':here,
                         'depth':1,
                         },
+                    'sort_on': 'getObjPositionInParent'
                     }, #show_all=1, show_inactive=1,
                 )
         self.field = None
