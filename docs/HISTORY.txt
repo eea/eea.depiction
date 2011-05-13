@@ -3,6 +3,7 @@ Changelog
 
 0.9-dev - (unreleased)
 ----------------------
+ * Bug fix: fixed scale for folder, in order to get first Image [ghicaale EEA #4347]
 
 0.8 - (2011-05-03)
 ------------------
