@@ -62,6 +62,9 @@ class ImageView(BrowserView):
         dest.height = thumb.size[1]
         return dest
 
+    def getPhysicalPath(self):
+        return ()
+
 
 def thumbnail(orig, button, size):
     # Create an image with the requested size

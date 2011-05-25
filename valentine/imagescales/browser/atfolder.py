@@ -42,3 +42,6 @@ class ImageView(BrowserView):
         if not self.display(scalename):
             raise NotFound(self.request, self.name)
         return self.field.getScale(self.img, scale=scalename)
+
+    def getPhysicalPath(self):
+        return ()
