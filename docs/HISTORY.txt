@@ -1,6 +1,9 @@
 Changelog
 =========
 
+0.11-dev - (unreleased)
+-----------------------
+
 0.10 - (2011-05-25)
 -------------------
  * Bug fix: added workaround for a traversing bug [tiberich EEA #4363]
