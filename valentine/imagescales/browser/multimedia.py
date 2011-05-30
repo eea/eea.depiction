@@ -1,3 +1,5 @@
+""" Multimedia
+"""
 from Products.CMFCore.interfaces import IPropertiesTool
 from Products.Five.browser import BrowserView
 from StringIO import StringIO
@@ -10,15 +12,12 @@ import OFS.Image
 import PIL.Image
 import os.path
 
-
 class ImageView(BrowserView):
-    
-    """Adapts a p4a video object and returns its album art image.
-
-    This makes it possible to enter a URL like my_vid_file/image_thumb and have it return
-    the p4a album art - no need for p4a's long and weird looking video art URLs.
+    """ Adapts a p4a video object and returns its album art image.
+        This makes it possible to enter a URL like my_vid_file/image_thumb
+         and have it return the p4a album art - no need for p4a's long and
+         weird looking video art URLs.
     """
-
     implements(IImageView)
     size = None
 
@@ -39,10 +38,12 @@ class ImageView(BrowserView):
             self.sizes[name] = (int(w), int(h))
 
     def display(self, scalename='thumb'):
+        """ Display
+        """
         return (self.img != None) and (scalename in self.sizes)
 
     def __call__(self, scalename='thumb', fieldname='image'):
-        # XXX This scaling should be done once and then cached
+        #TODO: This scaling should be done once and then cached
         if not self.display(scalename):
             raise NotFound(self.request, scalename)
         orig = PIL.Image.open(StringIO(self.img.data))
@@ -58,8 +59,9 @@ class ImageView(BrowserView):
         dest.height = thumb.size[1]
         return dest
 
-
 def thumbnail(orig, button, size):
+    """ Thumbnails
+    """
     # Create an image with the requested size
     bg = PIL.Image.new('RGB', size, color=(0, 0, 0))
 
@@ -102,4 +104,3 @@ def thumbnail(orig, button, size):
     bg.paste(button, (x, y), button)
 
     return bg
-

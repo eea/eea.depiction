@@ -1,11 +1,19 @@
+""" Test Scale Traverser
+"""
 from App.Common import package_home
-from base import ImageScalesTestCase
+from valentine.imagescales.tests.base import ImageScalesTestCase
 import doctest
 from os.path import join
 import unittest
+from Testing.ZopeTestCase import FunctionalDocFileSuite
 
+optionflags =  (doctest.ELLIPSIS |
+                doctest.NORMALIZE_WHITESPACE |
+                doctest.REPORT_ONLY_FIRST_FAILURE)
 
 def setUpImg(self):
+    """ Setup an image
+    """
     img_file = join(package_home(globals()), 'data', 'test.png')
     img = open(img_file, 'rb').read()
     globs = {}
@@ -19,54 +27,54 @@ def setUpImg(self):
 
     self.globs.update(globs)
 
-
 def setUpMultimedia(self):
+    """ Setup multimedia
+    """
     setUpImg(self)
     globs = {}
     globs['samplefilename'] = 'barsandtone.flv'
-    globs['samplefile'] = join(package_home(globals()), 'data', 'barsandtone.flv')
+    globs['samplefile'] = join(package_home(globals()),
+                               'data',
+                               'barsandtone.flv')
     globs['sampledata'] = open(globs['samplefile'], 'rb').read()
     globs['mimetype'] = 'video/x-flv'
     self.globs.update(globs)
 
-
 def setUpReadme(self):
+    """ Setup readme
+    """
     img_file = join(package_home(globals()), 'data', 'test.png')
     globs = {}
     globs['mp3_icon_file_name'] = img_file
     self.globs.update(globs)
 
-
 def test_suite():
-    from Testing.ZopeTestCase import FunctionalDocFileSuite
+    """ Test suite
+    """
 
     return unittest.TestSuite((
         FunctionalDocFileSuite('README.txt',
-                     setUp=setUpReadme,
-                     test_class = ImageScalesTestCase,
-                     optionflags=doctest.ELLIPSIS | doctest.NORMALIZE_WHITESPACE,
-                     package = 'valentine.imagescales'),
+                               setUp=setUpReadme,
+                               test_class = ImageScalesTestCase,
+                               optionflags=optionflags,
+                               package = 'valentine.imagescales'),
         FunctionalDocFileSuite('atfield.txt',
-                     setUp=setUpImg,
-                     test_class = ImageScalesTestCase,
-                     optionflags=doctest.ELLIPSIS | doctest.NORMALIZE_WHITESPACE,
-                     package = 'valentine.imagescales.browser'),
+                               setUp=setUpImg,
+                               test_class = ImageScalesTestCase,
+                               optionflags=optionflags,
+                               package = 'valentine.imagescales.browser'),
         FunctionalDocFileSuite('atfolder.txt',
-                     setUp=setUpImg,
-                     test_class = ImageScalesTestCase,
-                     optionflags=doctest.ELLIPSIS | doctest.NORMALIZE_WHITESPACE,
-                     package = 'valentine.imagescales.browser'),
+                               setUp=setUpImg,
+                               test_class = ImageScalesTestCase,
+                               optionflags=optionflags,
+                               package = 'valentine.imagescales.browser'),
         FunctionalDocFileSuite('attopic.txt',
-                     setUp=setUpImg,
-                     test_class = ImageScalesTestCase,
-                     optionflags=doctest.ELLIPSIS | doctest.NORMALIZE_WHITESPACE,
-                     package = 'valentine.imagescales.browser'),
+                               setUp=setUpImg,
+                               test_class = ImageScalesTestCase,
+                               optionflags=optionflags,
+                               package = 'valentine.imagescales.browser'),
         FunctionalDocFileSuite('multimedia.txt',
-                     setUp=setUpMultimedia,
-                     test_class = ImageScalesTestCase,
-                     optionflags=doctest.ELLIPSIS | doctest.NORMALIZE_WHITESPACE,
-                     package = 'valentine.imagescales.browser'),
-        ))
-
-if __name__ == '__main__':
-    unittest.main(defaultTest='test_suite')
+                               setUp=setUpMultimedia,
+                               test_class = ImageScalesTestCase,
+                               optionflags=optionflags,
+                               package = 'valentine.imagescales.browser'), ))

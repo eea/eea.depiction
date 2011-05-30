@@ -1,18 +1,19 @@
+""" Valentine Image Scales installer
+"""
 from setuptools import setup, find_packages
 import os
-from os.path import join
 
-name = 'valentine.imagescales'
-path = name.split('.') + ['version.txt']
-version = open(join(*path)).read().strip()
+NAME = 'valentine.imagescales'
+PATH = NAME.split('.') + ['version.txt']
+VERSION = open(os.path.join(*PATH)).read().strip()
 
-setup(name='valentine.imagescales',
-      version=version,
+setup(name=NAME,
+      version=VERSION,
       description="",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
-      # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
+        "Framework :: Plone",
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
         ],
@@ -27,7 +28,6 @@ setup(name='valentine.imagescales',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          # -*- Extra requirements: -*-
           'PIL',
           'p4a.video',
           'plone.app.imaging',

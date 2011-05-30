@@ -1,3 +1,5 @@
+""" Extensions
+"""
 # Per Thulin, 2009-02-19:
 # Just load the default profile. Don't know why this doesn't
 # work from configure zcml.
@@ -8,6 +10,8 @@ from Products.CMFCore.utils import getToolByName
 PROFILE = 'valentine.imagescales:default'
 
 def install(self, reinstall=False):
+    """ Install
+    """
     portal_setup = getToolByName(self, 'portal_setup')
     portal_setup.setImportContext('profile-%s' % PROFILE)
     portal_setup.runAllImportSteps()

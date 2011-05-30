@@ -1,20 +1,20 @@
+""" ATFolder
+"""
 from zope.interface import implements
 from zope.publisher.interfaces import NotFound
 from Products.Five.browser import BrowserView
-from interfaces import IImageView
-
+from valentine.imagescales.browser.interfaces import IImageView
 
 class ImageView(BrowserView):
-
-    """This view takes the first published/visible image found in a folder
-    and returns it in the requested size."""
-
+    """ This view takes the first published/visible image found in a folder
+          and returns it in the requested size
+    """
     implements(IImageView)
 
     img = None
 
     def display(self, scalename='thumb'):
-        """return a bool if the scale should be displayed
+        """ Return a bool if the scale should be displayed
         """
         here = '/'.join(self.context.getPhysicalPath())
         results = self.context.portal_catalog.queryCatalog(
