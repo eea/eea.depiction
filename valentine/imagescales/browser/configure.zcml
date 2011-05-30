@@ -1,16 +1,14 @@
-<configure
-    xmlns="http://namespaces.zope.org/zope"
-    xmlns:browser="http://namespaces.zope.org/browser">
-
-    <browser:resourceDirectory
-        name="valentine-imagescales-images"
-        directory="images"
-        permission="zope.Public"
-        />
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser"
+           i18n_domain="valentine.imagescales">
 
     <include file="atfield.zcml" />
     <include file="atfolder.zcml" />
     <include file="attopic.zcml" />
     <include file="multimedia.zcml" />
+
+    <browser:resourceDirectory name="valentine-imagescales-images"
+                               directory="images"
+                               permission="zope.Public" />
 
 </configure>

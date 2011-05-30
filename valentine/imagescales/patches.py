@@ -38,9 +38,10 @@
     #elif original_mode == 'P':
         #image = image.convert('RGBA')
     #image.thumbnail(size, self.pil_resize_algo)
-    ## XXX: tweak to make the unit test
+    ## Tweak to make the unit test
     ##      test_fields.ProcessingTest.test_processing_fieldset run
-    #format = image.format in ('PNG', 'GIF', 'JPG', 'JPEG') and image.format or default_format
+    #format = image.format in ('PNG', 'GIF', 'JPG', 'JPEG')
+                  #and image.format or default_format
     ## decided to only preserve palletted mode
     ## for GIF, could also use image.format in ('GIF','PNG')
     #if original_mode == 'P' and format == 'GIF':
