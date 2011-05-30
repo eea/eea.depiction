@@ -1,7 +1,10 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            i18n_domain="valentine.imagescales">
 
+  <include package="p4a.video" />
+
   <include package=".browser" />
+
   <include file="profiles.zcml" />
 
 </configure>

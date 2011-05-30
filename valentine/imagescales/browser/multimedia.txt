@@ -31,4 +31,3 @@ Lets upload a thumbnail image to the video:
 
     >>> img.width == 128 and img.height == 128
     True
-

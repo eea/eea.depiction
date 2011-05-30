@@ -30,7 +30,6 @@ setup(name=NAME,
           'setuptools',
           'PIL',
           'p4a.video',
-          'plone.app.imaging',
       ],
       entry_points="""
       # -*- Entry points: -*-

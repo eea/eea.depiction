@@ -12,20 +12,18 @@ def setup_imagescales():
     """ Setup
     """
     fiveconfigure.debug_mode = True
-    zcml.load_site()
-    zcml.load_config('configure.zcml', p4a.video)
     zcml.load_config('test.zcml', p4a.video)
     zcml.load_config('configure.zcml', valentine.imagescales)
     zcml.load_config('overrides.zcml', valentine.imagescales)
     fiveconfigure.debug_mode = False
 
-setup_imagescales()
-PloneTestCase.setupPloneSite(
-        products='valentine.imagescales',
-        extension_profiles=['plone.app.imaging:default'],
-        )
+    PloneTestCase.installPackage('p4a.video')
 
-class ImageScalesTestCase(PloneTestCase.FunctionalTestCase): #PloneTestCase
+setup_imagescales()
+PloneTestCase.setupPloneSite(extension_profiles=(
+                                  'valentine.imagescales:default',))
+
+class ImageScalesTestCase(PloneTestCase.FunctionalTestCase):
     """ Image Scales Test Case
     """
     pass
