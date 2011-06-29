@@ -5,7 +5,7 @@ from zope.publisher.interfaces import NotFound
 from Products.Five.browser import BrowserView
 from valentine.imagescales.browser.interfaces import IImageView
 
-class ImageView(BrowserView):
+class FolderImageView(BrowserView):
     """ This view takes the first published/visible image found in a folder
           and returns it in the requested size
     """
@@ -15,7 +15,7 @@ class ImageView(BrowserView):
     field = None
 
     def __init__(self, context, request):
-        super(ImageView, self).__init__(context, request)
+        super(FolderImageView, self).__init__(context, request)
 
         here = '/'.join(self.context.getPhysicalPath())
         results = self.context.portal_catalog.queryCatalog(

@@ -4,7 +4,7 @@
 
     <browser:page for="Products.Archetypes.interfaces.base.IBaseFolder"
                   name="imgview"
-                  class=".atfolder.ImageView"
+                  class=".atfolder.FolderImageView"
                   permission="zope2.View"
                   allowed_interface=".interfaces.IImageView" />
 

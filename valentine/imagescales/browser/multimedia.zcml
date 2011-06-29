@@ -4,7 +4,7 @@
 
   <browser:page for="p4a.video.interfaces.IVideoEnhanced"
                 name="imgview"
-                class=".multimedia.ImageView"
+                class=".multimedia.MultimediaImageView"
                 permission="zope.Public"
                 allowed_interface=".interfaces.IImageView" />
 

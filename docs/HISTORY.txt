@@ -6,7 +6,7 @@ Changelog
  * Bug fix: Fixed pylint/pyflakes warrnings [ghicaale]
  * Change: Restructured package to work with plone.app.imaging instead of overriding it [tiberich #4284]
  * Feature: Plone 4.0.4 compatible release [tiberich #4284]
- * Change: return the whole image when it's not possible to return a scale in imgview for folders [tiberich #4374]
+ * Change: return the whole image when it's not possible to return a scale in imgview for folders and fields [tiberich #4374]
 
 0.7 - (2011-03-28)
 ------------------

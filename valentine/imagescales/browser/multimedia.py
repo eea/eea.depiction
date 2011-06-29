@@ -12,7 +12,7 @@ import OFS.Image
 import PIL.Image
 import os.path
 
-class ImageView(BrowserView):
+class MultimediaImageView(BrowserView):
     """ Adapts a p4a video object and returns its album art image.
         This makes it possible to enter a URL like my_vid_file/image_thumb
          and have it return the p4a album art - no need for p4a's long and

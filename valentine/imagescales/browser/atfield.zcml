@@ -4,13 +4,13 @@
 
     <browser:page for="Products.ATContentTypes.interface.image.IATImage"
                   name="imgview"
-                  class=".atfield.ImageView"
+                  class=".atfield.ATFieldImageView"
                   permission="zope.Public"
                   allowed_interface=".interfaces.IImageView" />
 
     <browser:page for="Products.ATContentTypes.interface.news.IATNewsItem"
                   name="imgview"
-                  class=".atfield.ImageView"
+                  class=".atfield.ATFieldImageView"
                   permission="zope.Public"
                   allowed_interface=".interfaces.IImageView" />
 
