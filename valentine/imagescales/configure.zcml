@@ -4,6 +4,7 @@
   <include package="p4a.video" />
 
   <include package=".browser" />
+  <include package=".upgrades" />
 
   <include file="profiles.zcml" />
 

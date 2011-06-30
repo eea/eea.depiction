@@ -1,46 +1,95 @@
 Changelog
 =========
 
+
 4.0-dev - (unreleased)
 ----------------------
- * Bug fix: Fixed pylint/pyflakes warrnings [ghicaale]
- * Change: Restructured package to work with plone.app.imaging instead of overriding it [tiberich #4284]
- * Feature: Plone 4.0.4 compatible release [tiberich #4284]
- * Change: return the whole image when it's not possible to return a scale in imgview for folders and fields [tiberich #4374]
+
+* Bug fix: Fixed pylint/pyflakes warrnings
+  [ghicaale]
+
+* Change: Restructured package to work with
+  plone.app.imaging instead of overriding it
+  [tiberich #4284]
+
+* Change: return the whole image when it's not possible to return
+  a scale in imgview for folders and fields
+  [tiberich #4374]
+
+* Feature: Added upgrade steps
+  [voineali #4392]
+
+* Feature: Plone 4.x compatible release
+  [tiberich #4284]
+
 
 0.7 - (2011-03-28)
 ------------------
- * Bug fix: Added translation domain to ZCML files [voineali #4139]
- * Bug fix: Return the field when traversing to /image in traverser [tiberich #4135]
+
+* Bug fix: Added translation domain to ZCML files
+  [voineali #4139]
+
+* Bug fix: Return the field when traversing to /image in traverser
+  [tiberich #4135]
+
 
 0.6 - (2011-02-17)
 ----------------------
- * Bug fix: Use try/except in display method to avoid errors when blobs are missing [tiberich]
+
+* Bug fix: Use try/except in display method to avoid errors
+  when blobs are missing
+  [tiberich]
+
 
 0.5 - (2011-01-26)
 ------------------
- * Feature: Added JPEG to known formats for thumbnails [voineali #3847]
+
+* Feature: Added JPEG to known formats for thumbnails
+  [voineali #3847]
+
 
 0.4 - (2010-05-17)
 ------------------
- * Bug fix: Fixed "typo" in fallback interfaces map. [pthulin]
+
+* Bug fix: Fixed "typo" in fallback interfaces map.
+  [pthulin]
+
 
 0.3 - (2010-05-07)
 ------------------
- * Feature: Use fallback images to ensure that an image is always returned. [pthulin]
+
+* Feature: Use fallback images to ensure that an image is always returned.
+  [pthulin]
+
 
 0.2.1 - (2010-01-18)
 --------------------
- * Cleanup: Removed empty skin folder
+
+* Cleanup: Removed empty skin folder
+
 
 0.2 - (2010-01-18)
 ------------------
- * Feature: Thumbnails are always in formats PNG, JPG or GIF even if original is something else i.e TIFF
- * Feature: Enabled folder.ImageView for ATTopics. [pthulin]
- * Bug fix: Fixed bug where 16:9 images scaled to 16:9 background resulted in black borders. [pthulin]
- * Cleanup: Simplified design, removed ImageLink and ImageTag. [pthulin]
- * Feature: Add black borders to 4:3 images scaled to 16:9, and don't stretch the play button. [pthulin]
+
+* Feature: Thumbnails are always in formats PNG, JPG or GIF even
+  if original is something else i.e TIFF
+
+* Feature: Enabled folder.ImageView for ATTopics.
+  [pthulin]
+
+* Bug fix: Fixed bug where 16:9 images scaled
+  to 16:9 background resulted in black borders.
+  [pthulin]
+
+* Cleanup: Simplified design, removed ImageLink and ImageTag.
+  [pthulin]
+
+* Feature: Add black borders to 4:3 images
+  scaled to 16:9, and don't stretch the play button.
+  [pthulin]
+
 
 0.1 - Unreleased
 ----------------
- * Initial release
+
+* Initial release
