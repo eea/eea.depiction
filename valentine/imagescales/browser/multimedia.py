@@ -57,8 +57,9 @@ class MultimediaImageView(BrowserView):
         dest = OFS.Image.Image('tmp-video-thumb', 'tmp-video-thumb', destfile)
         dest.width = thumb.size[0]
         dest.height = thumb.size[1]
-        return dest
 
+        return dest.__of__(self.context)
+               
 def thumbnail(orig, button, size):
     """ Thumbnails
     """

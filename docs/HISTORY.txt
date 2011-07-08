@@ -4,7 +4,9 @@ Changelog
 
 4.0-dev - (unreleased)
 ----------------------
-
+* Bug fix: Plone4 compatibility
+  [tiberich]
+  
 * Bug fix: Fixed pylint/pyflakes warrnings
   [ghicaale]
 
