@@ -27,7 +27,7 @@ Lets upload a thumbnail image to the video:
     >>> p4vid.video_image = img
     >>> img = vid.restrictedTraverse('@@imgview')(scalename='thumb')
     >>> img
-    <Image at tmp-video-thumb>
+    <Image at /plone/testfolder/barsandtone.flv/tmp-video-thumb>
 
     >>> img.width == 128 and img.height == 128
     True
