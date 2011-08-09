@@ -60,7 +60,7 @@ class ScaleTraverser(ImageTraverser):
         #based on real image fields, we'll look for a fake thumbnail
         #only when the name looks like a thumbnail request
 
-        if (not 'image_' in name) or (name.startswith('image_view')):
+        if (not name.startswith('image_')) or (name.startswith('image_view')):
             return DefaultPublishTraverse.publishTraverse(self, request, name)
 
         context = self.context
