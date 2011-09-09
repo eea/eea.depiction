@@ -3,6 +3,8 @@ Changelog
 
 0.11-dev - (unreleased)
 -----------------------
+ * Feature: added a interface mapping fallback for our simile exhibit daviz product.
+   [demarant]
 
 0.10 - (2011-05-25)
 -------------------

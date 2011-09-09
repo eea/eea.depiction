@@ -13,6 +13,7 @@ from Products.Five.traversable import FiveTraversable
 overrides = {
     'Products.EEAContentTypes.content.interfaces.IInteractiveMap': 'interactive-map',
     'Products.EEAContentTypes.content.interfaces.IInteractiveData': 'interactive-data',
+    'eea.daviz.subtypes.interfaces.IExhibitJson': 'daviz',
 }
 
 import logging
