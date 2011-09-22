@@ -19,7 +19,14 @@ class ATFieldImageView(BrowserView):
     def display(self, scalename='thumb'):
         """ Display
         """
-        return bool(self.field)
+        if not bool(self.field):
+            return False
+
+        scale = self.field.getScale(self.context, scale=scalename)
+        if not scale:
+            return False
+
+        return True
 
     def __call__(self, scalename='thumb'):
         if not self.display(scalename):

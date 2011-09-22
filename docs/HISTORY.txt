@@ -4,6 +4,9 @@ Changelog
 
 4.0-dev - (unreleased)
 ----------------------
+* Bug fix: fixed a bug with atfield adapter not properly dealing with broken
+  blobs [tiberich]
+
 * Bug fix: fixed a bug with the traverser being triggered for atct_image_transform
  [tiberich]
 
