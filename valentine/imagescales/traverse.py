@@ -20,7 +20,9 @@ overrides = {
     'Products.EEAContentTypes.content.interfaces.IInteractiveMap':
                                                         'interactive-map',
     'Products.EEAContentTypes.content.interfaces.IInteractiveData':
-                                                        'interactive-data', }
+                                                        'interactive-data', 
+    'eea.daviz.subtypes.interfaces.IExhibitJson': 'daviz',
+}
 
 class ScaleTraverser(ImageTraverser):
     """ Scale traverser for content types
