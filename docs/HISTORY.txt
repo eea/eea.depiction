@@ -4,6 +4,9 @@ Changelog
 
 4.0-dev - (unreleased)
 ----------------------
+* Bug fix: added views registered for default image thumbnail sizes; 
+  allows plone filters to properly retrieve the image from html text links [tiberich #4651]
+
 * Feature: added a interface mapping fallback for our simile exhibit daviz product. 
   [demarant]
 
