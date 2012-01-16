@@ -28,7 +28,7 @@ setup(name=NAME,
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'PIL',
+          'Pillow',
           'p4a.video',
       ],
       entry_points="""
