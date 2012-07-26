@@ -3,6 +3,8 @@ Changelog
 
 4.3-dev - (unreleased)
 ----------------------
+* Bug fix: added type profile for Topic, fixes tests in Plone 4.2
+  [tiberich #5346]
 
 4.2 - (2012-07-13)
 ------------------
