@@ -1,12 +1,12 @@
 <configure xmlns="http://namespaces.zope.org/zope"
-           xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
-           i18n_domain="valentine.imagescales">
+  xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+  i18n_domain="eea">
 
   <genericsetup:registerProfile
-      name="default"
-      title="Valentine Imagescales"
-      directory="profiles/default"
-      description="Extension profile for Valentine Imagescales"
-      provides="Products.GenericSetup.interfaces.EXTENSION" />
+    name="default"
+    title="EEA Image Scales"
+    directory="profiles/default"
+    description="Extension profile for EEA Image Scales"
+    provides="Products.GenericSetup.interfaces.EXTENSION" />
 
 </configure>

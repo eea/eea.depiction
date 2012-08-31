@@ -1,16 +1,16 @@
 <configure xmlns="http://namespaces.zope.org/zope"
-           xmlns:browser="http://namespaces.zope.org/browser"
-           i18n_domain="valentine.imagescales">
+  xmlns:browser="http://namespaces.zope.org/browser"
+  i18n_domain="eea">
 
   <browser:page for="p4a.video.interfaces.IVideoEnhanced"
-                name="imgview"
-                class=".multimedia.MultimediaImageView"
-                permission="zope.Public"
-                allowed_interface=".interfaces.IImageView" />
+    name="imgview"
+    class=".multimedia.MultimediaImageView"
+    permission="zope.Public"
+    allowed_interface=".interfaces.IImageView" />
 
   <!--<adapter-->
-      <!--for="p4a.video.interfaces.IVideoEnhanced"-->
-      <!--factory="valentine.imagescales.traverse.ScaleTraverser"-->
-      <!--/>-->
+    <!--for="p4a.video.interfaces.IVideoEnhanced"-->
+    <!--factory="eea.imagescales.traverse.ScaleTraverser"-->
+    <!--/>-->
 
 </configure>

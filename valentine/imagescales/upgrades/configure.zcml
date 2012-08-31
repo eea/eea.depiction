@@ -6,11 +6,11 @@
   <genericsetup:upgradeSteps
     source="*"
     destination="4.0"
-    profile="valentine.imagescales:default">
+    profile="eea.imagescales:default">
 
     <genericsetup:upgradeDepends
-      title="Import all steps from valentine.imagescales profile"
-      import_profile="valentine.imagescales:default"
+      title="Import all steps from eea.imagescales profile"
+      import_profile="eea.imagescales:default"
       />
 
   </genericsetup:upgradeSteps>

@@ -10,12 +10,12 @@ from zope.publisher.interfaces import IRequest
 from plone.app.imaging.traverse import ImageTraverser
 import logging
 
-logger = logging.getLogger("valentine.imagescales")
+logger = logging.getLogger("eea.imagescales")
 
 # In some cases we want to fallback on a different image than the one used
 # for the portal type. In this dictionary we can specify images that should
 # be used if the context provides a certain interface. TODO: move to vocabulary
-# outside valentine.imagescales.
+# outside eea.imagescales.
 overrides = {
     'Products.EEAContentTypes.content.interfaces.IInteractiveMap':
                                                         'interactive-map',
@@ -30,7 +30,7 @@ class ScaleTraverser(ImageTraverser):
     Taken from
     https://svn.eionet.europa.eu/projects/Zope/wiki/HowToSpecifyFallbackImages
 
-    valentine.imagescales v0.3 introduces the concept of fallback images when
+    eea.imagescales v0.3 introduces the concept of fallback images when
     the regular image traversal fails. The logic works like this:
 
     * Look for an image returned by the context's 'imgview' adapter
@@ -39,17 +39,17 @@ class ScaleTraverser(ImageTraverser):
       contexts interfaces.
     * If there's no fallback image, we look for an image for the context portal
       type, e.g. article, news-item, document. This should be placed in the
-      'valentine-imagescales' folder.
-    * Uses the generic content type image, i.e. valentine-imagescales/generic
+      'eea-imagescales' folder.
+    * Uses the generic content type image, i.e. eea-imagescales/generic
 
     So:
 
-    * There should be a folder under the site root called 'valentine-imagescales'
+    * There should be a folder under the site root called 'eea-imagescales'
     * In that folder there should be an image called 'generic'.
     * To map a fallback image to a portal type, place it in this folder and
       name it after the portal type.
     * To map a fallback image to an interface, edit the dictionary found in
-      valentine.imagescales.traversal.py
+      eea.imagescales.traversal.py
     """
 
     adapts(IBaseObject, IRequest)
@@ -88,11 +88,11 @@ class ScaleTraverser(ImageTraverser):
             if image_obj_id == None:
                 image_obj_id = context.portal_type.replace(' ', '-').lower()
 
-            #This will raise NotFound if no portal['valentine-imagescales']
-            image_obj = getattr(portal['valentine-imagescales'],
+            #This will raise NotFound if no portal['eea-imagescales']
+            image_obj = getattr(portal['eea-imagescales'],
                                 image_obj_id, None)
             if image_obj == None:
-                image_obj = portal['valentine-imagescales']['generic']
+                image_obj = portal['eea-imagescales']['generic']
             imgview = getMultiAdapter((image_obj, request), name='imgview')
 
         return imgview(scale)

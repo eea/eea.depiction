@@ -1,2 +1,2 @@
-""" Valentine image scales package
+""" EEA Image Scales package
 """

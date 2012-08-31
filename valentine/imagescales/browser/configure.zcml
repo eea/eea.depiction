@@ -1,59 +1,59 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:browser="http://namespaces.zope.org/browser"
-           i18n_domain="valentine.imagescales">
+           i18n_domain="eea">
 
     <include file="atfield.zcml" />
     <include file="atfolder.zcml" />
     <include file="attopic.zcml" />
     <include file="multimedia.zcml" />
 
-    <browser:resourceDirectory name="valentine-imagescales-images"
+    <browser:resourceDirectory name="eea-imagescales-images"
                                directory="images"
                                permission="zope.Public" />
 
-   <browser:page 
+   <browser:page
        for="Products.Archetypes.interfaces.IBaseObject"
        name="image_large"
        class=".default.ImageLarge"
        permission="zope.Public"
        />
 
-   <browser:page 
+   <browser:page
        for="Products.Archetypes.interfaces.IBaseObject"
        name="image_preview"
        class=".default.ImagePreview"
        permission="zope.Public"
        />
 
-   <browser:page 
+   <browser:page
        for="Products.Archetypes.interfaces.IBaseObject"
        name="image_mini"
        class=".default.ImageMini"
        permission="zope.Public"
        />
 
-   <browser:page 
+   <browser:page
        for="Products.Archetypes.interfaces.IBaseObject"
        name="image_tile"
        class=".default.ImageTile"
        permission="zope.Public"
        />
 
-   <browser:page 
+   <browser:page
        for="Products.Archetypes.interfaces.IBaseObject"
        name="image_thumb"
        class=".default.ImageThumb"
        permission="zope.Public"
        />
 
-   <browser:page 
+   <browser:page
        for="Products.Archetypes.interfaces.IBaseObject"
        name="image_icon"
        class=".default.ImageIcon"
        permission="zope.Public"
        />
 
-   <browser:page 
+   <browser:page
        for="Products.Archetypes.interfaces.IBaseObject"
        name="image_listing"
        class=".default.ImageListing"

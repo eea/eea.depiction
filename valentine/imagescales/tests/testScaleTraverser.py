@@ -1,7 +1,7 @@
 """ Test Scale Traverser
 """
 from App.Common import package_home
-from valentine.imagescales.tests.base import ImageScalesTestCase
+from eea.imagescales.tests.base import ImageScalesTestCase
 import doctest
 from os.path import join
 import unittest
@@ -57,24 +57,24 @@ def test_suite():
                                setUp=setUpReadme,
                                test_class = ImageScalesTestCase,
                                optionflags=optionflags,
-                               package = 'valentine.imagescales'),
+                               package = 'eea.imagescales'),
         FunctionalDocFileSuite('atfield.txt',
                                setUp=setUpImg,
                                test_class = ImageScalesTestCase,
                                optionflags=optionflags,
-                               package = 'valentine.imagescales.browser'),
+                               package = 'eea.imagescales.browser'),
         FunctionalDocFileSuite('atfolder.txt',
                                setUp=setUpImg,
                                test_class = ImageScalesTestCase,
                                optionflags=optionflags,
-                               package = 'valentine.imagescales.browser'),
+                               package = 'eea.imagescales.browser'),
         FunctionalDocFileSuite('attopic.txt',
                                setUp=setUpImg,
                                test_class = ImageScalesTestCase,
                                optionflags=optionflags,
-                               package = 'valentine.imagescales.browser'),
+                               package = 'eea.imagescales.browser'),
         FunctionalDocFileSuite('multimedia.txt',
                                setUp=setUpMultimedia,
                                test_class = ImageScalesTestCase,
                                optionflags=optionflags,
-                               package = 'valentine.imagescales.browser'), ))
+                               package = 'eea.imagescales.browser'), ))

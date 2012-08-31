@@ -1,11 +1,11 @@
 <configure xmlns="http://namespaces.zope.org/zope"
-           xmlns:browser="http://namespaces.zope.org/browser"
-           i18n_domain="valentine.imagescales">
+  xmlns:browser="http://namespaces.zope.org/browser"
+  i18n_domain="eea">
 
-    <browser:page for="Products.Archetypes.interfaces.base.IBaseFolder"
-                  name="imgview"
-                  class=".atfolder.FolderImageView"
-                  permission="zope2.View"
-                  allowed_interface=".interfaces.IImageView" />
+  <browser:page for="Products.Archetypes.interfaces.base.IBaseFolder"
+    name="imgview"
+    class=".atfolder.FolderImageView"
+    permission="zope2.View"
+    allowed_interface=".interfaces.IImageView" />
 
 </configure>

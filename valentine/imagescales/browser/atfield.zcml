@@ -1,17 +1,17 @@
 <configure xmlns="http://namespaces.zope.org/zope"
-           xmlns:browser="http://namespaces.zope.org/browser"
-           i18n_domain="valentine.imagescales">
+  xmlns:browser="http://namespaces.zope.org/browser"
+  i18n_domain="eea">
 
-    <browser:page for="Products.ATContentTypes.interface.image.IATImage"
-                  name="imgview"
-                  class=".atfield.ATFieldImageView"
-                  permission="zope.Public"
-                  allowed_interface=".interfaces.IImageView" />
+  <browser:page for="Products.ATContentTypes.interface.image.IATImage"
+    name="imgview"
+    class=".atfield.ATFieldImageView"
+    permission="zope.Public"
+    allowed_interface=".interfaces.IImageView" />
 
-    <browser:page for="Products.ATContentTypes.interface.news.IATNewsItem"
-                  name="imgview"
-                  class=".atfield.ATFieldImageView"
-                  permission="zope.Public"
-                  allowed_interface=".interfaces.IImageView" />
+  <browser:page for="Products.ATContentTypes.interface.news.IATNewsItem"
+    name="imgview"
+    class=".atfield.ATFieldImageView"
+    permission="zope.Public"
+    allowed_interface=".interfaces.IImageView" />
 
 </configure>

@@ -21,7 +21,7 @@ simply choose to display a generic icon for mp3-files. For now we're
 happy with a generic mp3-icon, but the representation could be anything you
 can think of, for example a graph of the songs bpm.
 
-  >>> from valentine.imagescales.browser.interfaces import IImageView
+  >>> from eea.imagescales.browser.interfaces import IImageView
   >>> from OFS.Image import Image
   >>> class ImageView(object):
   ...     implements(IImageView)
