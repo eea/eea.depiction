@@ -39,12 +39,12 @@ class ScaleTraverser(ImageTraverser):
       contexts interfaces.
     * If there's no fallback image, we look for an image for the context portal
       type, e.g. article, news-item, document. This should be placed in the
-      'eea-imagescales' folder.
-    * Uses the generic content type image, i.e. eea-imagescales/generic
+      'valentine-imagescales' folder.
+    * Uses the generic content type image, i.e. valentine-imagescales/generic
 
     So:
 
-    * There should be a folder under the site root called 'eea-imagescales'
+    * There should be a folder under the site root called 'valentine-imagescales'
     * In that folder there should be an image called 'generic'.
     * To map a fallback image to a portal type, place it in this folder and
       name it after the portal type.
@@ -88,11 +88,11 @@ class ScaleTraverser(ImageTraverser):
             if image_obj_id == None:
                 image_obj_id = context.portal_type.replace(' ', '-').lower()
 
-            #This will raise NotFound if no portal['eea-imagescales']
-            image_obj = getattr(portal['eea-imagescales'],
+            #This will raise NotFound if no portal['valentine-imagescales']
+            image_obj = getattr(portal['valentine-imagescales'],
                                 image_obj_id, None)
             if image_obj == None:
-                image_obj = portal['eea-imagescales']['generic']
+                image_obj = portal['valentine-imagescales']['generic']
             imgview = getMultiAdapter((image_obj, request), name='imgview')
 
         return imgview(scale)

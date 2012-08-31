@@ -7,7 +7,7 @@
     <include file="attopic.zcml" />
     <include file="multimedia.zcml" />
 
-    <browser:resourceDirectory name="eea-imagescales-images"
+    <browser:resourceDirectory name="valentine-imagescales-images"
                                directory="images"
                                permission="zope.Public" />
 
