@@ -1,38 +1,25 @@
-import os.path
+""" Multimedia
+"""
+from Products.CMFCore.interfaces import IPropertiesTool
+from Products.Five.browser import BrowserView
+from StringIO import StringIO
+from p4a.video.interfaces import IVideo
+from valentine.imagescales.browser.interfaces import IImageView
+from zope.component import getUtility
 from zope.interface import implements
 from zope.publisher.interfaces import NotFound
-from Products.Five.browser import BrowserView
-from p4a.video.interfaces import IVideo
-
 import OFS.Image
 import PIL.Image
-from StringIO import StringIO
+import os.path
 
-from interfaces import IImageView
-
-
-class ImageView(BrowserView):
-    
-    """Adapts a p4a video object and returns its album art image.
-
-    This makes it possible to enter a URL like my_vid_file/image_thumb and have it return
-    the p4a album art - no need for p4a's long and weird looking video art URLs.
+class MultimediaImageView(BrowserView):
+    """ Adapts a p4a video object and returns its album art image.
+        This makes it possible to enter a URL like my_vid_file/image_thumb
+         and have it return the p4a album art - no need for p4a's long and
+         weird looking video art URLs.
     """
-
     implements(IImageView)
-
-    # Copied from EEAContentTypes/content/ExternalHighlight.py 2009-02-18
-    # Added 'wide' size
-    sizes = {
-        'large'   : (768, 768),
-        'preview' : (400, 400),
-        'mini'    : (180, 135),
-        'thumb'   : (128, 128),
-        'wide'    : (325, 183),
-        'tile'    :  (64, 64),
-        'icon'    :  (32, 32),
-        'listing' :  (16, 16),
-    }
+    size = None
 
     def __init__(self, context, request):
         self.context = context
@@ -42,16 +29,26 @@ class ImageView(BrowserView):
         self.button = open(path).read()
         self.img = IVideo(self.context).video_image
 
+        props = getUtility(IPropertiesTool).imaging_properties
+        sizes = props.getProperty('allowed_sizes')
+        self.sizes = {}
+        for size in sizes:
+            name, info = size.split(' ')
+            w, h = info.split(':')
+            self.sizes[name] = (int(w), int(h))
+
     def display(self, scalename='thumb'):
-        return (self.img != None) and (scalename in ImageView.sizes)
+        """ Display
+        """
+        return (self.img != None) and (scalename in self.sizes)
 
     def __call__(self, scalename='thumb', fieldname='image'):
-        # XXX This scaling should be done once and then cached
+        #TODO: This scaling should be done once and then cached
         if not self.display(scalename):
             raise NotFound(self.request, scalename)
         orig = PIL.Image.open(StringIO(self.img.data))
         button = PIL.Image.open(StringIO(self.button))
-        thumb = thumbnail(orig, button, ImageView.sizes[scalename])
+        thumb = thumbnail(orig, button, self.sizes[scalename])
 
         destfile = StringIO()
         thumb.save(destfile, 'PNG')
@@ -60,13 +57,12 @@ class ImageView(BrowserView):
         dest = OFS.Image.Image('tmp-video-thumb', 'tmp-video-thumb', destfile)
         dest.width = thumb.size[0]
         dest.height = thumb.size[1]
-        return dest
 
-    def getPhysicalPath(self):
-        return ()
-
+        return dest.__of__(self.context)
 
 def thumbnail(orig, button, size):
+    """ Thumbnails
+    """
     # Create an image with the requested size
     bg = PIL.Image.new('RGB', size, color=(0, 0, 0))
 
@@ -109,4 +105,3 @@ def thumbnail(orig, button, size):
     bg.paste(button, (x, y), button)
 
     return bg
-

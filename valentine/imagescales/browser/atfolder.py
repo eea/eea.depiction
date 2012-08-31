@@ -1,21 +1,22 @@
+""" ATFolder
+"""
 from zope.interface import implements
 from zope.publisher.interfaces import NotFound
 from Products.Five.browser import BrowserView
-from interfaces import IImageView
+from valentine.imagescales.browser.interfaces import IImageView
 
-
-class ImageView(BrowserView):
-
-    """This view takes the first published/visible image found in a folder
-    and returns it in the requested size."""
-
+class FolderImageView(BrowserView):
+    """ This view takes the first published/visible image found in a folder
+          and returns it in the requested size
+    """
     implements(IImageView)
 
     img = None
+    field = None
 
-    def display(self, scalename='thumb'):
-        """return a bool if the scale should be displayed
-        """
+    def __init__(self, context, request):
+        super(FolderImageView, self).__init__(context, request)
+
         here = '/'.join(self.context.getPhysicalPath())
         results = self.context.portal_catalog.queryCatalog(
                 {
@@ -33,15 +34,28 @@ class ImageView(BrowserView):
             self.has_images = True
             self.img = results[0].getObject()
             self.field = self.img.getField('image')
+
+    def display(self, scalename='thumb'):
+        """ Return a bool if the scale should be displayed
+        """
         if not self.has_images:
             return False
-        return (self.field != None) and \
-                    bool(self.field.getScale(self.img, scalename))
+
+        #in some cases the scale cannot be correctly retrieved.
+        #We return the whole image then
+
+        if self.field is None:
+            return False
+
+        return True
 
     def __call__(self, scalename='thumb'):
         if not self.display(scalename):
             raise NotFound(self.request, self.name)
-        return self.field.getScale(self.img, scale=scalename)
 
-    def getPhysicalPath(self):
-        return ()
+        scale = self.field.getScale(self.img, scalename)
+        if scale:
+            return scale
+
+        #returning the entire image
+        return self.field.get(self.img).__of__(self.img)

@@ -2,25 +2,30 @@
 ATTopic integration
 ===================
 
-  >>> self.setRoles(['Manager'])
-  >>> topic=portal[portal.invokeFactory('Topic', id='testtopic', title='Title')]
+    >>> from Products.Five.testbrowser import Browser
+    >>> browser = Browser()
+
+    >>> self.setRoles(['Manager'])
+    >>> topic=portal[portal.invokeFactory('Topic', id='testtopic', title='Title')]
+    >>> portal.portal_workflow.doActionFor(topic, 'publish')
 
 ATTopics should have a working ImageView adapter that takes the first image
 inside it. By default, you're not allowed to add images inside ATTopics, so
 we enable that temporarily.
 
-  >>> from Products.CMFCore.utils import getToolByName
-  >>> portal_types = getToolByName(topic, 'portal_types')
-  >>> topic_type = getattr(portal_types, topic.portal_type)
-  >>> topic_type.filter_content_types = False
+    >>> from Products.CMFCore.utils import getToolByName
+    >>> portal_types = getToolByName(topic, 'portal_types')
+    >>> topic_type = getattr(portal_types, topic.portal_type)
+    >>> topic_type.filter_content_types = False
 
-  >>> from Products.ATContentTypes.interface import IATTopic
-  >>> IATTopic.providedBy(topic)
-  True
+    >>> from Products.ATContentTypes.interface import IATTopic
+    >>> IATTopic.providedBy(topic)
+    True
 
 Now we can upload our image:
 
-  >>> _ = topic.invokeFactory('Image', id='image1', image=img)
-  >>> topic.restrictedTraverse('image_thumb')
-  <Image at ...>
+    >>> _ = topic.invokeFactory('Image', id='image1', image=img)
+    >>> browser.open('http://localhost/plone/testtopic/image_thumb')
+    >>> "PNG" in browser.contents
+    True
 
