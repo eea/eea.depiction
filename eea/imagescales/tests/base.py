@@ -4,31 +4,31 @@ from Products.PloneTestCase import PloneTestCase
 from Products.PloneTestCase.layer import onsetup
 from Products.Five import zcml
 from Products.Five import fiveconfigure
-import eea.imagescales
+import eea.depiction
 import p4a.video
 
 @onsetup
-def setup_imagescales():
+def setup_depiction():
     """ Setup
     """
     fiveconfigure.debug_mode = True
     zcml.load_config('test.zcml', p4a.video)
-    zcml.load_config('configure.zcml', eea.imagescales)
-    zcml.load_config('overrides.zcml', eea.imagescales)
+    zcml.load_config('configure.zcml', eea.depiction)
+    zcml.load_config('overrides.zcml', eea.depiction)
     fiveconfigure.debug_mode = False
 
     PloneTestCase.installPackage('p4a.video')
 
-setup_imagescales()
+setup_depiction()
 PloneTestCase.setupPloneSite(extension_profiles=(
-                                  'eea.imagescales:default',))
+                                  'eea.depiction:default',))
 
-class ImageScalesTestCase(PloneTestCase.FunctionalTestCase):
-    """ Image Scales Test Case
+class DepictionTestCase(PloneTestCase.FunctionalTestCase):
+    """ Depiction Test Case
     """
     pass
 
-class ImageScalesFunctionalTestCase(PloneTestCase.FunctionalTestCase):
-    """ Image Scales Functional Test Case
+class DepictionFunctionalTestCase(PloneTestCase.FunctionalTestCase):
+    """ Depiction Functional Test Case
     """
     pass

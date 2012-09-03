@@ -4,7 +4,7 @@ from Products.CMFCore.interfaces import IPropertiesTool
 from Products.Five.browser import BrowserView
 from StringIO import StringIO
 from p4a.video.interfaces import IVideo
-from eea.imagescales.browser.interfaces import IImageView
+from eea.depiction.browser.interfaces import IImageView
 from zope.component import getUtility
 from zope.interface import implements
 from zope.publisher.interfaces import NotFound

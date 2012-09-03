@@ -1,2 +1,2 @@
-""" EEA Image Scales package
+""" EEA Depiction package
 """

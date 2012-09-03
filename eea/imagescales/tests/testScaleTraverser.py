@@ -1,7 +1,7 @@
 """ Test Scale Traverser
 """
 from App.Common import package_home
-from eea.imagescales.tests.base import ImageScalesTestCase
+from eea.depiction.tests.base import DepictionTestCase
 import doctest
 from os.path import join
 import unittest
@@ -55,26 +55,26 @@ def test_suite():
     return unittest.TestSuite((
         FunctionalDocFileSuite('README.txt',
                                setUp=setUpReadme,
-                               test_class = ImageScalesTestCase,
+                               test_class = DepictionTestCase,
                                optionflags=optionflags,
-                               package = 'eea.imagescales'),
+                               package = 'eea.depiction'),
         FunctionalDocFileSuite('atfield.txt',
                                setUp=setUpImg,
-                               test_class = ImageScalesTestCase,
+                               test_class = DepictionTestCase,
                                optionflags=optionflags,
-                               package = 'eea.imagescales.browser'),
+                               package = 'eea.depiction.browser'),
         FunctionalDocFileSuite('atfolder.txt',
                                setUp=setUpImg,
-                               test_class = ImageScalesTestCase,
+                               test_class = DepictionTestCase,
                                optionflags=optionflags,
-                               package = 'eea.imagescales.browser'),
+                               package = 'eea.depiction.browser'),
         FunctionalDocFileSuite('attopic.txt',
                                setUp=setUpImg,
-                               test_class = ImageScalesTestCase,
+                               test_class = DepictionTestCase,
                                optionflags=optionflags,
-                               package = 'eea.imagescales.browser'),
+                               package = 'eea.depiction.browser'),
         FunctionalDocFileSuite('multimedia.txt',
                                setUp=setUpMultimedia,
-                               test_class = ImageScalesTestCase,
+                               test_class = DepictionTestCase,
                                optionflags=optionflags,
-                               package = 'eea.imagescales.browser'), ))
+                               package = 'eea.depiction.browser'), ))

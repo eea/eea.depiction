@@ -10,7 +10,7 @@
 
   <!--<adapter-->
     <!--for="p4a.video.interfaces.IVideoEnhanced"-->
-    <!--factory="eea.imagescales.traverse.ScaleTraverser"-->
+    <!--factory="eea.depiction.traverse.ScaleTraverser"-->
     <!--/>-->
 
 </configure>

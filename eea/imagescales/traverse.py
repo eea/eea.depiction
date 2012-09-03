@@ -10,12 +10,12 @@ from zope.publisher.interfaces import IRequest
 from plone.app.imaging.traverse import ImageTraverser
 import logging
 
-logger = logging.getLogger("eea.imagescales")
+logger = logging.getLogger("eea.depiction")
 
 # In some cases we want to fallback on a different image than the one used
 # for the portal type. In this dictionary we can specify images that should
 # be used if the context provides a certain interface. TODO: move to vocabulary
-# outside eea.imagescales.
+# outside eea.depiction.
 overrides = {
     'Products.EEAContentTypes.content.interfaces.IInteractiveMap':
                                                         'interactive-map',
@@ -30,7 +30,7 @@ class ScaleTraverser(ImageTraverser):
     Taken from
     https://svn.eionet.europa.eu/projects/Zope/wiki/HowToSpecifyFallbackImages
 
-    eea.imagescales v0.3 introduces the concept of fallback images when
+    eea.depiction v0.3 introduces the concept of fallback images when
     the regular image traversal fails. The logic works like this:
 
     * Look for an image returned by the context's 'imgview' adapter
@@ -49,7 +49,7 @@ class ScaleTraverser(ImageTraverser):
     * To map a fallback image to a portal type, place it in this folder and
       name it after the portal type.
     * To map a fallback image to an interface, edit the dictionary found in
-      eea.imagescales.traversal.py
+      eea.depiction.traversal.py
     """
 
     adapts(IBaseObject, IRequest)

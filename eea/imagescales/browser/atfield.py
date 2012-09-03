@@ -3,7 +3,7 @@
 from zope.interface import implements
 from zope.publisher.interfaces import NotFound
 from Products.Five.browser import BrowserView
-from eea.imagescales.browser.interfaces import IImageView
+from eea.depiction.browser.interfaces import IImageView
 
 
 class ATFieldImageView(BrowserView):

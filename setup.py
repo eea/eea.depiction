@@ -3,13 +3,13 @@
 from setuptools import setup, find_packages
 import os
 
-NAME = 'eea.imagescales'
+NAME = 'eea.depiction'
 PATH = NAME.split('.') + ['version.txt']
 VERSION = open(os.path.join(*PATH)).read().strip()
 
 setup(name=NAME,
       version=VERSION,
-      description="EEA Image Scales (formerly valentine.imagescales)",
+      description="EEA Depiction (formerly valentine.imagescales)",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       classifiers=[
@@ -24,10 +24,10 @@ setup(name=NAME,
         "Topic :: Software Development :: Libraries :: Python Modules",
         "License :: OSI Approved :: GNU General Public License (GPL)",
         ],
-      keywords='eea image scales thumbnails',
+      keywords='eea depiction image scales thumbnails',
       author='European Environment Agency',
       author_email="webadmin@eea.europa.eu",
-      url='https://eea.github.com/docs/eea.imagescales',
+      url='https://eea.github.com/docs/eea.depiction',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['eea'],

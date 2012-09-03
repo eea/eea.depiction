@@ -4,9 +4,9 @@
 
   <genericsetup:registerProfile
     name="default"
-    title="EEA Image Scales"
+    title="EEA Depiction"
     directory="profiles/default"
-    description="Extension profile for EEA Image Scales"
+    description="Extension profile for EEA Depiction"
     provides="Products.GenericSetup.interfaces.EXTENSION" />
 
 </configure>
