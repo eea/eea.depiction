@@ -35,10 +35,10 @@ setup(name=NAME,
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'Pillow',
         ],
       extras_require={
           'full': [
-              'Pillow',
               'p4a.video',
             ],
           'test': [

@@ -6,12 +6,7 @@ import doctest
 from os.path import join
 import unittest
 from Testing.ZopeTestCase import FunctionalDocFileSuite
-try:
-    import p4a.video
-except:
-    P_VIDEO = False
-else:
-    P_VIDEO = True
+from eea.depiction.tests.base import P_VIDEO
 
 optionflags =  (doctest.ELLIPSIS |
                 doctest.NORMALIZE_WHITESPACE |

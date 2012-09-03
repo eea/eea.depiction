@@ -5,19 +5,26 @@ from Products.PloneTestCase.layer import onsetup
 from Products.Five import zcml
 from Products.Five import fiveconfigure
 import eea.depiction
-import p4a.video
+
+P_VIDEO = True
+try:
+    import p4a.video
+except ImportError:
+    P_VIDEO = False
 
 @onsetup
 def setup_depiction():
     """ Setup
     """
     fiveconfigure.debug_mode = True
-    zcml.load_config('test.zcml', p4a.video)
+    if P_VIDEO:
+        zcml.load_config('test.zcml', p4a.video)
     zcml.load_config('configure.zcml', eea.depiction)
     zcml.load_config('overrides.zcml', eea.depiction)
     fiveconfigure.debug_mode = False
 
-    PloneTestCase.installPackage('p4a.video')
+    if P_VIDEO:
+        PloneTestCase.installPackage('p4a.video')
 
 setup_depiction()
 PloneTestCase.setupPloneSite(extension_profiles=(
