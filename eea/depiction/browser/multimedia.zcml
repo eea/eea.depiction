@@ -1,16 +1,14 @@
 <configure xmlns="http://namespaces.zope.org/zope"
   xmlns:browser="http://namespaces.zope.org/browser"
+  xmlns:zcml="http://namespaces.zope.org/zcml"
   i18n_domain="eea">
 
-  <browser:page for="p4a.video.interfaces.IVideoEnhanced"
+  <browser:page
+    zcml:condition="installed p4a.video"
+    for="p4a.video.interfaces.IVideoEnhanced"
     name="imgview"
     class=".multimedia.MultimediaImageView"
     permission="zope.Public"
     allowed_interface=".interfaces.IImageView" />
-
-  <!--<adapter-->
-    <!--for="p4a.video.interfaces.IVideoEnhanced"-->
-    <!--factory="eea.depiction.traverse.ScaleTraverser"-->
-    <!--/>-->
 
 </configure>

@@ -52,6 +52,8 @@ Dependencies
 
 `EEA Depiction`_ has the following dependencies:
   - Plone 4+
+
+This package also supports p4a.video. Thus the following dependencies are optional:
   - Pillow
   - p4a.video
 

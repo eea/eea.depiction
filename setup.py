@@ -35,9 +35,16 @@ setup(name=NAME,
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'Pillow',
-          'p4a.video',
-      ],
+        ],
+      extras_require={
+          'full': [
+              'Pillow',
+              'p4a.video',
+            ],
+          'test': [
+              'plone.app.testing'
+          ]
+      },
       entry_points="""
       # -*- Entry points: -*-
       """,

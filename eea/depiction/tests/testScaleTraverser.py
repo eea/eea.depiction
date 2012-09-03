@@ -6,6 +6,12 @@ import doctest
 from os.path import join
 import unittest
 from Testing.ZopeTestCase import FunctionalDocFileSuite
+try:
+    import p4a.video
+except:
+    P_VIDEO = False
+else:
+    P_VIDEO = True
 
 optionflags =  (doctest.ELLIPSIS |
                 doctest.NORMALIZE_WHITESPACE |
@@ -52,7 +58,7 @@ def test_suite():
     """ Test suite
     """
 
-    return unittest.TestSuite((
+    suite = unittest.TestSuite((
         FunctionalDocFileSuite('README.txt',
                                setUp=setUpReadme,
                                test_class = DepictionTestCase,
@@ -72,9 +78,13 @@ def test_suite():
                                setUp=setUpImg,
                                test_class = DepictionTestCase,
                                optionflags=optionflags,
-                               package = 'eea.depiction.browser'),
-        FunctionalDocFileSuite('multimedia.txt',
-                               setUp=setUpMultimedia,
-                               test_class = DepictionTestCase,
-                               optionflags=optionflags,
                                package = 'eea.depiction.browser'), ))
+    if P_VIDEO:
+        suite.addTest(
+            FunctionalDocFileSuite('multimedia.txt',
+                                   setUp=setUpMultimedia,
+                                   test_class = DepictionTestCase,
+                                   optionflags=optionflags,
+                                   package = 'eea.depiction.browser')
+        )
+    return suite

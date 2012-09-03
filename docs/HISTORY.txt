@@ -3,6 +3,10 @@ Changelog
 
 5.0-dev - (unreleased)
 ----------------------
+* Feature: Made p4a.video dependency optional
+  [voineali refs #5497]
+* Change: Refactoring valentine.imagescales to eea.depiction
+  [voineali refs #5497]
 
 4.3 - (2012-08-27)
 ------------------
