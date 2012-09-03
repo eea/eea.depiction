@@ -2,7 +2,7 @@
 """
 from Products.PloneTestCase import PloneTestCase
 from Products.PloneTestCase.layer import onsetup
-from Products.Five import zcml
+from Zope2.App import zcml
 from Products.Five import fiveconfigure
 import eea.depiction
 
@@ -19,8 +19,8 @@ def setup_depiction():
     fiveconfigure.debug_mode = True
     if P_VIDEO:
         zcml.load_config('test.zcml', p4a.video)
-    zcml.load_config('configure.zcml', eea.depiction)
     zcml.load_config('overrides.zcml', eea.depiction)
+    zcml.load_config('configure.zcml', eea.depiction)
     fiveconfigure.debug_mode = False
 
     if P_VIDEO:

@@ -17,9 +17,9 @@ machinery will take care of everything.
   <ImageScale at ...>
 
 
-Now lets do the same thing with an tiff image. 
+Now lets do the same thing with a tiff image.
 
   >>> newsitem2 = portal[portal.invokeFactory('News Item', id='newsitemtiff')]
   >>> newsitem2.setImage(tiff)
   >>> newsitem2.restrictedTraverse('image_thumb').getContentType()
-  'image/tiff'
+  'image/...'

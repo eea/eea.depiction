@@ -2,7 +2,7 @@
 ATFolder integration
 ====================
 
-    >>> from Products.Five.testbrowser import Browser
+    >>> from Testing.testbrowser import Browser
     >>> browser = Browser()
 
     >>> self.setRoles(['Manager'])

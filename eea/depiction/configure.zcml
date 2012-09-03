@@ -3,6 +3,7 @@
   xmlns:zcml="http://namespaces.zope.org/zcml"
   i18n_domain="eea">
 
+  <include package="plone.app.imaging" />
   <include file="profiles.zcml" />
   <include package=".browser" />
   <include package=".upgrades" />
