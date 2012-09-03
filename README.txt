@@ -37,6 +37,7 @@ recipe to manage your project, you can do this:
 
     zcml =
       ...
+      eea.depiction-overrides
       eea.depiction
 
 * Re-run buildout, e.g. with::
@@ -52,10 +53,18 @@ Dependencies
 
 `EEA Depiction`_ has the following dependencies:
   - Plone 4+
+  - Pillow
 
 This package also supports p4a.video. Thus the following dependencies are optional:
-  - Pillow
   - p4a.video
+
+  ::
+
+    [instance]
+    ...
+    eggs =
+      ...
+      eea.depiction [full]
 
 
 Source code
