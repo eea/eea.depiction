@@ -1,7 +1,15 @@
 <configure
   xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
   i18n_domain="eea">
 
   <adapter factory=".traverse.ScaleTraverser" />
+
+  <browser:page
+    for="Products.Archetypes.interfaces.IBaseObject"
+    name="tag"
+    class=".traverse.Tag"
+    permission="zope.Public"
+    />
 
 </configure>

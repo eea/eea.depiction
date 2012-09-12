@@ -8,6 +8,7 @@ from zope.component import queryMultiAdapter, getMultiAdapter
 from zope.interface import providedBy
 from zope.publisher.interfaces import IRequest
 from plone.app.imaging.traverse import ImageTraverser
+from Products.Five.browser import BrowserView
 import logging
 
 logger = logging.getLogger("eea.depiction")
@@ -96,3 +97,46 @@ class ScaleTraverser(ImageTraverser):
             imgview = getMultiAdapter((image_obj, request), name='imgview')
 
         return imgview(scale)
+
+class Tag(BrowserView):
+    """ /@@tag
+    """
+    def tag(self, fieldname=None, scale='thumb', height=None, width=None,
+            css_class=None, direction='keep', **args):
+        """
+        Generate an HTML IMG tag for this image, with customization.
+        Arguments to self.tag() can be any valid attributes of an IMG
+        tag.  'src' will always be an absolute pathname, to prevent
+        redundant downloading of images. Defaults are applied
+        intelligently for 'height' and 'width'. If specified, the
+        'scale' argument will be used to automatically adjust the
+        output height and width values of the image tag.
+
+        Since 'class' is a Python reserved word, it cannot be passed in
+        directly in keyword arguments which is a problem if you are
+        trying to use 'tag()' to include a CSS class. The tag() method
+        will accept a 'css_class' argument that will be converted to
+        'class' in the output tag to work around this.
+        """
+        url = self.context.absolute_url()
+        src = '%s/image_%s' % (url, scale)
+        result = '<img src="%s"' % src
+
+        if height:
+            result = '%s height="%s"' % (result, height)
+
+        if width:
+            result = '%s width="%s"' % (result, width)
+
+        if css_class is not None:
+            result = '%s class="%s"' % (result, css_class)
+
+        if args:
+            for key, value in sorted(args.items()):
+                if value:
+                    result = '%s %s="%s"' % (result, key, value)
+
+        return '%s />' % result
+
+    def __call__(self, **kwargs):
+        return self.tag(**kwargs)
