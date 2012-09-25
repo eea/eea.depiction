@@ -4,28 +4,17 @@ from zope.publisher.interfaces import NotFound
 from Products.CMFCore.utils import getToolByName
 from ZPublisher.BaseRequest import DefaultPublishTraverse
 from plone.app.imaging.interfaces import IBaseObject
-from zope.component import adapts
+from zope.component import adapts, getAllUtilitiesRegisteredFor
 from zope.component import queryMultiAdapter, getMultiAdapter, queryUtility
 from zope.interface import providedBy
 from zope.publisher.interfaces import IRequest
 from plone.app.imaging.traverse import ImageTraverser
 from Products.Five.browser import BrowserView
 from eea.depiction.interfaces import IDepictionTool
+from eea.depiction.interfaces import IDepictionVocabulary
 import logging
 
 logger = logging.getLogger("eea.depiction")
-
-# In some cases we want to fallback on a different image than the one used
-# for the portal type. In this dictionary we can specify images that should
-# be used if the context provides a certain interface. TODO: move to vocabulary
-# outside eea.depiction.
-overrides = {
-    'Products.EEAContentTypes.content.interfaces.IInteractiveMap':
-                                                        'interactive-map',
-    'Products.EEAContentTypes.content.interfaces.IInteractiveData':
-                                                        'interactive-data',
-    'eea.daviz.subtypes.interfaces.IExhibitJson': 'daviz',
-}
 
 class ScaleTraverser(ImageTraverser):
     """ Scale traverser for content types
@@ -60,13 +49,22 @@ class ScaleTraverser(ImageTraverser):
     def fallback(self, request, name):
         """ Fallback
         """
-
-        #because the following methods of getting a thumbnail are not
-        #based on real image fields, we'll look for a fake thumbnail
-        #only when the name looks like a thumbnail request
-
+        # Because the following methods of getting a thumbnail are not
+        # based on real image fields, we'll look for a fake thumbnail
+        # only when the name looks like a thumbnail request
         if (not name.startswith('image_')) or (name.startswith('image_view')):
             return DefaultPublishTraverse.publishTraverse(self, request, name)
+
+        # In some cases we want to fallback on a different image
+        # than the one used for the portal type. In this dictionary we can
+        # specify images that should be used if the context provides a certain
+        # interface. All you have to do is to register a named-utility for
+        # IDepictionVocabulary
+        overrides = {}
+        for voc in getAllUtilitiesRegisteredFor(IDepictionVocabulary):
+            overrides.update(
+                dict((term.value, term.title) for term in voc(self.context))
+            )
 
         context = self.context
         _fieldname, scale = name.split('_', 1)
@@ -82,7 +80,7 @@ class ScaleTraverser(ImageTraverser):
             portal = getToolByName(context, 'portal_url').getPortalObject()
             image_obj_id = None
             provided_interfaces = [i.__identifier__
-                            for i in providedBy(context).flattened()]
+                                   for i in providedBy(context).flattened()]
             for k, v in overrides.items():
                 if k in provided_interfaces:
                     image_obj_id = v

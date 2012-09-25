@@ -48,6 +48,28 @@ You can skip the ZCML slug if you are going to explicitly include the package
 from another package's configure.zcml file.
 
 
+How to specify fallback preview images
+======================================
+eea.depiction 0.3 introduces the concept of fallback images when the regular
+image traversal fails. The logic works like this:
+
+1. Look for an image returned by the contexts 'imgview' adapter
+2. If the imgview crashes, isn't found or can not locate/generate an image,
+   we continue by checking if there's an image specified for any of the
+   contexts interfaces.
+3. If there's no fallback image, we look for an image for the context
+   portal type, e.g. article, news-item, document. This should be placed
+   in the 'portal_depiction' utility (Site Setup > Depiction Library)
+4. Uses the generic content type image, i.e. portal_depiction/generic
+
+Thus:
+
+1. To map a fallback image to a portal type, place it in this folder and name
+   it after the portal type.
+2. To map a fallback image to an interface just add a named-utility for
+   IDepictionVocabulary (see eea.depiction.vocabularies)
+
+
 Dependencies
 ============
 
