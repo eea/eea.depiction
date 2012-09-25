@@ -1,14 +1,16 @@
 """ Traverse
 """
+from zope.publisher.interfaces import NotFound
 from Products.CMFCore.utils import getToolByName
 from ZPublisher.BaseRequest import DefaultPublishTraverse
 from plone.app.imaging.interfaces import IBaseObject
 from zope.component import adapts
-from zope.component import queryMultiAdapter, getMultiAdapter
+from zope.component import queryMultiAdapter, getMultiAdapter, queryUtility
 from zope.interface import providedBy
 from zope.publisher.interfaces import IRequest
 from plone.app.imaging.traverse import ImageTraverser
 from Products.Five.browser import BrowserView
+from eea.depiction.interfaces import IDepictionTool
 import logging
 
 logger = logging.getLogger("eea.depiction")
@@ -40,12 +42,12 @@ class ScaleTraverser(ImageTraverser):
       contexts interfaces.
     * If there's no fallback image, we look for an image for the context portal
       type, e.g. article, news-item, document. This should be placed in the
-      'valentine-imagescales' folder.
-    * Uses the generic content type image, i.e. valentine-imagescales/generic
+      'portal_depiction' folder.
+    * Uses the generic content type image, i.e. portal_depiction/generic
 
     So:
 
-    * There should be a folder under the site root called 'valentine-imagescales'
+    * There should be a folder under the site root called 'portal_depiction'
     * In that folder there should be an image called 'generic'.
     * To map a fallback image to a portal type, place it in this folder and
       name it after the portal type.
@@ -89,13 +91,15 @@ class ScaleTraverser(ImageTraverser):
             if image_obj_id == None:
                 image_obj_id = context.portal_type.replace(' ', '-').lower()
 
-            #This will raise NotFound if no portal['valentine-imagescales']
-            image_obj = getattr(portal['valentine-imagescales'],
-                                image_obj_id, None)
-            if image_obj == None:
-                image_obj = portal['valentine-imagescales']['generic']
-            imgview = getMultiAdapter((image_obj, request), name='imgview')
+            tool = queryUtility(IDepictionTool)
+            if not tool:
+                raise NotFound(portal, 'portal_depiction', request)
 
+            if image_obj_id in tool.objectIds():
+                image_obj = tool[image_obj_id]
+            else:
+                image_obj = tool['generic']
+            imgview = getMultiAdapter((image_obj, request), name='imgview')
         return imgview(scale)
 
 class Tag(BrowserView):

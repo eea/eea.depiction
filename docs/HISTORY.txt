@@ -3,6 +3,9 @@ Changelog
 
 5.0-dev - (unreleased)
 ----------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for eea.depiction or install 'EEA Depiction' if it's
+  not already installed.
 * Feature: Made p4a.video dependency optional
   [voineali refs #5497]
 * Change: Refactoring valentine.imagescales to eea.depiction

@@ -1,8 +1,17 @@
 <configure xmlns="http://namespaces.zope.org/zope"
+  xmlns:zcml="http://namespaces.zope.org/zcml"
   xmlns:browser="http://namespaces.zope.org/browser"
   i18n_domain="eea">
 
   <browser:page for="Products.ATContentTypes.interface.topic.IATTopic"
+    name="imgview"
+    class=".atfolder.FolderImageView"
+    permission="zope.Public"
+    allowed_interface=".interfaces.IImageView" />
+
+  <browser:page
+    zcml:condition="installed plone.app.collection"
+    for="plone.app.collection.interfaces.ICollection"
     name="imgview"
     class=".atfolder.FolderImageView"
     permission="zope.Public"

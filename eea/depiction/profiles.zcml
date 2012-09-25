@@ -1,6 +1,9 @@
 <configure xmlns="http://namespaces.zope.org/zope"
+  xmlns:five="http://namespaces.zope.org/five"
   xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
   i18n_domain="eea">
+
+  <five:registerPackage package="." initialize=".initialize" />
 
   <genericsetup:registerProfile
     name="default"
@@ -8,5 +11,12 @@
     directory="profiles/default"
     description="Extension profile for EEA Depiction"
     provides="Products.GenericSetup.interfaces.EXTENSION" />
+
+  <genericsetup:importStep
+    name="eea-depiction-various"
+    title="EEA Depiction Various" description="Various setup for eea.depiction"
+    handler="eea.depiction.setuphandlers.importVarious">
+    <depends name="toolset types" />
+  </genericsetup:importStep>
 
 </configure>
