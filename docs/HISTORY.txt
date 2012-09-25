@@ -1,8 +1,8 @@
 Changelog
 =========
 
-5.0-dev - (unreleased)
-----------------------
+5.0 - (2012-09-25)
+------------------
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
   upgrade button available for eea.depiction or install 'EEA Depiction' if it's
   not already installed.
