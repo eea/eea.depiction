@@ -3,6 +3,19 @@
   xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
   i18n_domain="eea">
 
+  <!-- 5.0 => 5.1 -->
+  <genericsetup:upgradeSteps
+    source="5.0"
+    destination="5.1"
+    profile="eea.depiction:default">
+
+    <genericsetup:upgradeDepends
+      title="Import changed steps from eea.depiction profile"
+      import_steps="typeinfo"
+      />
+
+  </genericsetup:upgradeSteps>
+
   <!-- 4.0 => 5.0 -->
   <genericsetup:upgradeSteps
     source="4.0"

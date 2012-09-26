@@ -8,14 +8,14 @@
  <property name="content_meta_type">DepictionTool</property>
  <property name="product">eea.depiction</property>
  <property name="factory">addDepictionTool</property>
- <property name="immediate_view">folder_summary_view</property>
+ <property name="immediate_view">atct_album_view</property>
  <property name="global_allow">False</property>
  <property name="filter_content_types">True</property>
  <property name="allowed_content_types">
   <element value="Image"/>
  </property>
  <property name="allow_discussion">False</property>
- <alias from="(Default)" to="folder_summary_view"/>
+ <alias from="(Default)" to="atct_album_view"/>
  <alias from="edit" to="base_edit"/>
  <alias from="index.html" to="(Default)"/>
  <alias from="properties" to="base_metadata"/>
