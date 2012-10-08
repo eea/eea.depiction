@@ -1,8 +1,8 @@
 Changelog
 =========
 
-5.1-dev - (unreleased)
-----------------------
+5.1 - (2012-10-08)
+------------------
 * Change: Using atct_album_view as the default view for portal_depiction
   [voineali refs #5497]
 
