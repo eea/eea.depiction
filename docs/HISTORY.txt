@@ -44,7 +44,7 @@ Changelog
 * Bug fix: fixed a bug with atfield adapter not properly dealing with broken
   blobs [tiberich]
 * Bug fix: fixed a bug with the traverser being triggered for atct_image_transform
- [tiberich]
+  [tiberich]
 * Bug fix: Plone4 compatibility
   [tiberich]
 * Bug fix: Fixed pylint/pyflakes warrnings
