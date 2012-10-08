@@ -1,6 +1,9 @@
 Changelog
 =========
 
+5.2-dev - (unreleased)
+----------------------
+
 5.1 - (2012-10-08)
 ------------------
 * Change: Using atct_album_view as the default view for portal_depiction
