@@ -36,16 +36,6 @@ if subimages:
         result['subimages'] = context.getFolderContents({'path': path})
 
 if others:
-    searchContentTypes = context.plone_utils.getUserFriendlyTypes()
-    filtered = [p_type for p_type in searchContentTypes
-                if p_type not in ('Image', 'Folder',)]
-    if filtered:
-        # We don't need the full objects for the folder_listing
-        if is_topic:
-            result['others'] = context.queryCatalog(portal_type=filtered)
-        else:
-            result['others'] = context.getFolderContents({'portal_type': filtered})
-    else:
         result['others'] = ()
 
 return result
