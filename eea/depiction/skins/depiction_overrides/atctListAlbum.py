@@ -17,11 +17,8 @@ if images:
         result['images'] = context.getFolderContents(full_objects=True)
 
 if folders:
-    # We don't need the full objects for the folders
-    if is_topic:
-        result['folders'] = context.queryCatalog(portal_type='Folder')
-    else:
-        result['folders'] = context.getFolderContents({'portal_type': ('Folder',)})
+    # We don't need the folders since they will be listed with the images
+    result['folders'] = ()
 
 if subimages:
     # Handle brains or objects
