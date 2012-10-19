@@ -48,4 +48,15 @@
 
   </genericsetup:upgradeSteps>
 
+  <genericsetup:upgradeSteps
+    source="*"
+    destination="5.2"
+    profile="eea.depiction:default">
+
+    <genericsetup:upgradeDepends
+      title="Import profile steps with changes: skins"
+      import_steps="skins"
+      />
+
+  </genericsetup:upgradeSteps>
 </configure>

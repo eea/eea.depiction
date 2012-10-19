@@ -5,6 +5,7 @@
 
   <include package="plone.app.imaging" />
   <include file="profiles.zcml" />
+  <include file="skins.zcml" />
   <include package=".browser" />
   <include package=".content" />
   <include package=".vocabularies" />
