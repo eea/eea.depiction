@@ -3,6 +3,9 @@ Changelog
 
 5.2-dev - (unreleased)
 ----------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for eea.depiction 
+  [ichimdav #5601]
 * Feature: customized thumbnail_view for plone.app.collection in order to 
   display all items since they have fallback images
   [ichimdav #5601]
