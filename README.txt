@@ -11,8 +11,18 @@ type, three adapters need to be provided:
 3. ImageLink that returns the HTML link to the image.
 
 
-.. contents::
+Upgrade notes
+=============
 
+As of **eea.depiction 5.2** we customize the following resources in order to 
+display any items in thumbnail listings:
+
+1. **atctListAlbum.py** - which is responsible for displaying items in 
+   *atct_album_view.pt*
+2. **thumbnail_view.pt** - which is the browser template responsible for 
+   thumbnail listing for the *plone.app.collection* package
+
+.. contents::
 
 Installation
 ============
