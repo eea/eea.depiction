@@ -42,7 +42,6 @@
                     </span>
                     <span class="photoAlbumEntryTitle">
                        <tal:title content="item_title">Title</tal:title>
-                       <tal:count condition="is_album">(<tal:number content="number_of_images" />)</tal:count>
                     </span>
                 </a>
     </div>
