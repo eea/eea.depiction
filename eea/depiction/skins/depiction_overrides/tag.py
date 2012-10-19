@@ -4,8 +4,8 @@
 ##bind namespace=
 ##bind script=script
 ##bind subpath=traverse_subpat
-##parameters=fieldname=None, scale='thumb', height=None, width=None, css_class=None, direction='keep', **args
-##title=Tag attribute for items that do not have such a tag
+##parameters=scale='thumb', height=None, width=None, css_class=None, **kwargs
+##title=Tag attribute for items that do not have such an attribute
 ##
 
 url = context.absolute_url()
@@ -21,8 +21,8 @@ if width:
 if css_class is not None:
     result = '%s class="%s"' % (result, css_class)
 
-if args:
-    items = args.items()
+if kwargs:
+    items = kwargs.items()
     items.sort()
     for key, value in items:
         if value:

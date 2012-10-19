@@ -10,6 +10,7 @@
 result = {}
 is_topic = context.portal_type == 'Topic'
 
+# customized python script to return all results as part of the images result
 if images:
     if is_topic:
         result['images'] = context.queryCatalog(full_objects=True)
@@ -33,6 +34,7 @@ if subimages:
         result['subimages'] = context.getFolderContents({'path': path})
 
 if others:
+    # We don't to fill in this since every item be listed with the images
         result['others'] = ()
 
 return result
