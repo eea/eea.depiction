@@ -3,8 +3,13 @@ EEA Depiction
 =============
 `EEA Depiction`_ (formerly valentine.imagescales) is a generic system for
 creating thumbnails/image representations for content types,
-both those provided by Plone, and custom ones. To make it work for a content
-type, three adapters need to be provided:
+both those provided by Plone, and custom ones. 
+
+At the moment this system is implemented and tested only on Archetypes 
+content types, however this system could be adapted in a later version
+to work also for dexterity content types.
+
+To make it work for a content type, three adapters need to be provided:
 
 1. ImageView that retrieves an image in the desired scale.
 2. ImageTag that returns the HTML tag for the image
