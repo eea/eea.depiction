@@ -21,7 +21,10 @@ class Base(object):
         adapter = getMultiAdapter((
             self.context, self.request), IBrowserPublisher)
         scale = adapter.publishTraverse(self.request, self.name)
-        return scale.index_html(self.request, self.request.response)
+        index_html = getattr(scale, 'index_html', None)
+        if index_html:
+            return scale.index_html(self.request, self.request.response)
+        return ''
 
     def absolute_url(self):
         """ URL

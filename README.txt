@@ -1,11 +1,18 @@
 =============
 EEA Depiction
 =============
+.. image:: http://ci.eionet.europa.eu/job/eea.depiction-www/badge/icon
+  :target: http://ci.eionet.europa.eu/job/eea.depiction-www/lastBuild
+.. image:: http://ci.eionet.europa.eu/job/eea.depiction-plone4/badge/icon
+  :target: http://ci.eionet.europa.eu/job/eea.depiction-plone4/lastBuild
+
+Introduction
+============
 `EEA Depiction`_ (formerly valentine.imagescales) is a generic system for
 creating thumbnails/image representations for content types,
-both those provided by Plone, and custom ones. 
+both those provided by Plone, and custom ones.
 
-At the moment this system is implemented and tested only on Archetypes 
+At the moment this system is implemented and tested only on Archetypes
 content types, however this system could be adapted in a later version
 to work also for dexterity content types.
 
@@ -19,12 +26,12 @@ To make it work for a content type, three adapters need to be provided:
 Upgrade notes
 =============
 
-As of **eea.depiction 5.2** we customize the following resources in order to 
+As of **eea.depiction 5.2** we customize the following resources in order to
 display any items in thumbnail listings:
 
-1. **atctListAlbum.py** - which is responsible for displaying items in 
+1. **atctListAlbum.py** - which is responsible for displaying items in
    *atct_album_view.pt*
-2. **thumbnail_view.pt** - which is the browser template responsible for 
+2. **thumbnail_view.pt** - which is the browser template responsible for
    thumbnail listing for the *plone.app.collection* package
 
 .. contents::
