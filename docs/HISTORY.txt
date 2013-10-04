@@ -9,13 +9,13 @@ Changelog
 * Feature: added information for contributors
   [ciobabog refs #13892]
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
-  upgrade button available for eea.depiction 
+  upgrade button available for eea.depiction
   [ichimdav #5601]
-* Feature: customized thumbnail_view for plone.app.collection in order to 
+* Feature: customized thumbnail_view for plone.app.collection in order to
   display all items since they have fallback images
   [ichimdav #5601]
-* Feature: customized atctListAlbum to display all items when 
-  using atct_album_view 
+* Feature: customized atctListAlbum to display all items when
+  using atct_album_view
   [ichimdav #5601]
 
 5.1 - (2012-10-08)
