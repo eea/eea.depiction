@@ -3,6 +3,8 @@ Changelog
 
 5.3-dev - (unreleased)
 ----------------------
+* Bug fix: Updated old URLs pointing Trac
+  [ghicaale refs #18003]
 
 5.2 - (2012-11-09)
 ------------------
