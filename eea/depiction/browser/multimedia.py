@@ -4,6 +4,7 @@ from Products.CMFCore.interfaces import IPropertiesTool
 from Products.Five.browser import BrowserView
 from StringIO import StringIO
 from p4a.video.interfaces import IVideo
+#from eea.mediacentre.interfaces import IVideoAdapter as IVideo
 from eea.depiction.browser.interfaces import IImageView
 from zope.component import getUtility
 from zope.interface import implements
@@ -44,8 +45,10 @@ class MultimediaImageView(BrowserView):
 
     def __call__(self, scalename='thumb', fieldname='image'):
         #TODO: This scaling should be done once and then cached
+        # import pdb; pdb.set_trace()
         if not self.display(scalename):
             raise NotFound(self.request, scalename)
+        #import pdb; pdb.set_trace()
         orig = PIL.Image.open(StringIO(self.img.data))
         button = PIL.Image.open(StringIO(self.button))
         thumb = thumbnail(orig, button, self.sizes[scalename])
