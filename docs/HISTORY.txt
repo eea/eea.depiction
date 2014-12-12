@@ -3,6 +3,8 @@ Changelog
 
 5.4-dev - (unreleased)
 ----------------------
+* Bug fix: eea-depiction-various importStep shows up as unresolved dependency
+  [jean]
 
 5.3 - (2014-01-22)
 ------------------
