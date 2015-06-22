@@ -8,7 +8,7 @@ import unittest
 from Testing.ZopeTestCase import FunctionalDocFileSuite
 from eea.depiction.tests.base import P_VIDEO
 
-optionflags =  (doctest.ELLIPSIS |
+optionflags = (doctest.ELLIPSIS |
                 doctest.NORMALIZE_WHITESPACE |
                 doctest.REPORT_ONLY_FIRST_FAILURE)
 
@@ -56,30 +56,30 @@ def test_suite():
     suite = unittest.TestSuite((
         FunctionalDocFileSuite('README.txt',
                                setUp=setUpReadme,
-                               test_class = DepictionTestCase,
+                               test_class=DepictionTestCase,
                                optionflags=optionflags,
-                               package = 'eea.depiction'),
+                               package='eea.depiction'),
         FunctionalDocFileSuite('atfield.txt',
                                setUp=setUpImg,
-                               test_class = DepictionTestCase,
+                               test_class=DepictionTestCase,
                                optionflags=optionflags,
-                               package = 'eea.depiction.browser'),
+                               package='eea.depiction.browser'),
         FunctionalDocFileSuite('atfolder.txt',
                                setUp=setUpImg,
-                               test_class = DepictionTestCase,
+                               test_class=DepictionTestCase,
                                optionflags=optionflags,
-                               package = 'eea.depiction.browser'),
+                               package='eea.depiction.browser'),
         FunctionalDocFileSuite('attopic.txt',
                                setUp=setUpImg,
-                               test_class = DepictionTestCase,
+                               test_class=DepictionTestCase,
                                optionflags=optionflags,
-                               package = 'eea.depiction.browser'), ))
+                               package='eea.depiction.browser'), ))
     if P_VIDEO:
         suite.addTest(
             FunctionalDocFileSuite('multimedia.txt',
                                    setUp=setUpMultimedia,
-                                   test_class = DepictionTestCase,
+                                   test_class=DepictionTestCase,
                                    optionflags=optionflags,
-                                   package = 'eea.depiction.browser')
+                                   package='eea.depiction.browser')
         )
     return suite
