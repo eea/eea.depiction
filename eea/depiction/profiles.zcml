@@ -17,6 +17,7 @@
     title="EEA Depiction Various" description="Various setup for eea.depiction"
     handler="eea.depiction.setuphandlers.importVarious">
     <depends name="toolset" />
+    <depends name="componentregistry" />
   </genericsetup:importStep>
 
 </configure>
