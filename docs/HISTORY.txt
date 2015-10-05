@@ -1,8 +1,8 @@
 Changelog
 =========
 
-5.7.dev0 - (unreleased)
------------------------
+5.7 - (2015-10-05)
+------------------
 * Bug fix: Add missing GenericSetup importStep dependency
   [voineali refs #27405]
 
