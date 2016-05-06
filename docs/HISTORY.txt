@@ -3,6 +3,8 @@ Changelog
 
 5.8.dev0 - (unreleased)
 -----------------------
+* Bug fix: Fix pylint warnings
+  [chiridra refs #71940]
 
 5.7 - (2015-10-05)
 ------------------

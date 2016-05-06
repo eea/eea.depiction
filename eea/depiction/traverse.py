@@ -1,5 +1,6 @@
 """ Traverse
 """
+import logging
 from zope.publisher.interfaces import NotFound
 from Products.CMFCore.utils import getToolByName
 from ZPublisher.BaseRequest import DefaultPublishTraverse
@@ -12,7 +13,6 @@ from plone.app.imaging.traverse import ImageTraverser
 from Products.Five.browser import BrowserView
 from eea.depiction.interfaces import IDepictionTool
 from eea.depiction.interfaces import IDepictionVocabulary
-import logging
 
 logger = logging.getLogger("eea.depiction")
 
@@ -76,7 +76,7 @@ class ScaleTraverser(ImageTraverser):
         imgview = queryMultiAdapter((context, request), name='imgview')
 
         # Fallback imgview
-        if (imgview == None) or (imgview.display(scale) == False):
+        if (imgview is None) or (not imgview.display(scale)):
             portal = getToolByName(context, 'portal_url').getPortalObject()
             image_obj_id = None
             provided_interfaces = [i.__identifier__
@@ -86,7 +86,7 @@ class ScaleTraverser(ImageTraverser):
                     image_obj_id = v
                     break
 
-            if image_obj_id == None:
+            if image_obj_id is None:
                 image_obj_id = context.portal_type.replace(' ', '-').lower()
 
             tool = queryUtility(IDepictionTool)

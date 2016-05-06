@@ -1,5 +1,6 @@
 """ Multimedia
 """
+import os.path
 from Products.CMFCore.interfaces import IPropertiesTool
 from Products.Five.browser import BrowserView
 from StringIO import StringIO
@@ -11,7 +12,6 @@ from zope.interface import implements
 from zope.publisher.interfaces import NotFound
 import OFS.Image
 import PIL.Image
-import os.path
 
 class MultimediaImageView(BrowserView):
     """ Adapts a p4a video object and returns its album art image.
@@ -44,7 +44,7 @@ class MultimediaImageView(BrowserView):
         return (self.img != None) and (scalename in self.sizes)
 
     def __call__(self, scalename='thumb', fieldname='image'):
-        #TODO: This scaling should be done once and then cached
+        #This scaling should be done once and then cached
         # import pdb; pdb.set_trace()
         if not self.display(scalename):
             raise NotFound(self.request, scalename)

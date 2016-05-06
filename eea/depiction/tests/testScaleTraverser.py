@@ -1,10 +1,10 @@
 """ Test Scale Traverser
 """
-from App.Common import package_home
-from eea.depiction.tests.base import DepictionTestCase
 import doctest
 from os.path import join
 import unittest
+from App.Common import package_home
+from eea.depiction.tests.base import DepictionTestCase
 from Testing.ZopeTestCase import FunctionalDocFileSuite
 from eea.depiction.tests.base import P_VIDEO
 
