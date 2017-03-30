@@ -17,7 +17,6 @@ class Depiction2SurfModifier(object):
 
     def __init__(self, context):
         self.context = context
-        self.sizes = {}
 
     def run(self, resource, *args, **kwds):
         """change the rdf resource
@@ -31,7 +30,6 @@ class Depiction2SurfModifier(object):
           </foaf:depiction>
           <foaf:depiction>
             <schema:Image rdf:about="http://example.com/portal/example">
-              <schema:logo>http://example.com/indicator.jpg</schema:logo>
               <rdfs:label>depiction</rdfs:label>
               <schema:thumbnail
                 rdf:resource="http://example.com/something/image_large"/>
@@ -76,7 +74,6 @@ class Depiction2SurfModifier(object):
         for size in sizes:
             name, info = size.split(' ')
             w, h = info.split(':')
-            self.sizes[name] = (int(w), int(h))
 
             t = Image(self.context.absolute_url() + '/image_' + name)
             t.schema_width = str(w) + 'px'
@@ -91,5 +88,3 @@ class Depiction2SurfModifier(object):
 
         resource.update()
         resource.save()
-
-        return resource
