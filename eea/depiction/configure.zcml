@@ -14,6 +14,7 @@
 
   <subscriber factory=".marshaller.Depiction2SurfModifier"
     for="Products.Archetypes.interfaces.IBaseObject"
-    provides="eea.rdfmarshaller.interfaces.ISurfResourceModifier" />
+    provides="eea.rdfmarshaller.interfaces.ISurfResourceModifier"
+    zcml:condition="installed eea.rdfmarshaller" />
 
 </configure>
