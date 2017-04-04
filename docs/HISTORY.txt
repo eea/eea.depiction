@@ -2,7 +2,9 @@ Changelog
 =========
 
 5.9.dev0 - (unreleased)
------------------------
+------------------
+* Change: Enabled compatibility with eea.rdfmarshaller
+  [zoleesan - refs #83153]
 
 5.8 - (2016-05-19)
 ------------------
