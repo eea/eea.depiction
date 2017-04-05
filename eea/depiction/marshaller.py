@@ -64,13 +64,12 @@ class Depiction2SurfModifier(object):
         fti = portal_types[self.context.portal_type]
 
         if fti.icon_expr:
-          iconexpr = fti.icon_expr_object
-          ec = getExprContext(self.context)
-          icon_url = iconexpr(ec)
-
-          icon = Image(icon_url)
-          icon.rdfs_label = 'type_icon'
-          icon.update()
+            iconexpr = fti.icon_expr_object
+            ec = getExprContext(self.context)
+            icon_url = iconexpr(ec)
+            icon = Image(icon_url)
+            icon.rdfs_label = 'type_icon'
+            icon.update()
 
         img.schema_thumbnail = []
 
@@ -88,9 +87,9 @@ class Depiction2SurfModifier(object):
         img.update()
 
         if icon is not None:
-          resource.foaf_depiction = [img, icon]
+            resource.foaf_depiction = [img, icon]
         else:
-          resource.foaf_depiction = [img]
+            resource.foaf_depiction = [img]
 
         resource.update()
         resource.save()
