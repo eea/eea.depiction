@@ -1,7 +1,7 @@
 Changelog
 =========
 
-5.9.dev0 - (unreleased)
+5.9 - (2017-04-14)
 ------------------
 * Change: Enabled compatibility with eea.rdfmarshaller
   [zoleesan - refs #83153]
