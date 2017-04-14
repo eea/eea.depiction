@@ -1,6 +1,9 @@
 Changelog
 =========
 
+6.0.dev0 - (unreleased)
+-----------------------
+
 5.9 - (2017-04-14)
 ------------------
 * Change: Enabled compatibility with eea.rdfmarshaller
