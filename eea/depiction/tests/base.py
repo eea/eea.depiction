@@ -2,8 +2,8 @@
 """
 from Products.PloneTestCase import PloneTestCase
 from Products.PloneTestCase.layer import onsetup
-from Zope2.App import zcml
 from Products.Five import fiveconfigure
+from Zope2.App import zcml
 import eea.depiction
 
 P_VIDEO = True

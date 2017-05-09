@@ -2,12 +2,11 @@
 """
 from Products.CMFCore import utils as cmfutils
 from Products.Archetypes.atapi import process_types, listTypes
+from Products.Archetypes.atapi import registerType
 from eea.depiction.config import (
     PROJECTNAME,
     ADD_CONTENT_PERMISSION
 )
-
-from Products.Archetypes.atapi import registerType
 from eea.depiction.content.tool import DepictionTool
 
 registerType(DepictionTool, PROJECTNAME)

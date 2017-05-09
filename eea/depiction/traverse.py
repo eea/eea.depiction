@@ -1,16 +1,16 @@
 """ Traverse
 """
 import logging
-from zope.publisher.interfaces import NotFound
 from Products.CMFCore.utils import getToolByName
+from Products.Five.browser import BrowserView
 from ZPublisher.BaseRequest import DefaultPublishTraverse
 from plone.app.imaging.interfaces import IBaseObject
+from plone.app.imaging.traverse import ImageTraverser
+from zope.publisher.interfaces import NotFound
 from zope.component import adapts, getAllUtilitiesRegisteredFor
 from zope.component import queryMultiAdapter, getMultiAdapter, queryUtility
 from zope.interface import providedBy
 from zope.publisher.interfaces import IRequest
-from plone.app.imaging.traverse import ImageTraverser
-from Products.Five.browser import BrowserView
 from eea.depiction.interfaces import IDepictionTool
 from eea.depiction.interfaces import IDepictionVocabulary
 

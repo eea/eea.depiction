@@ -1,9 +1,9 @@
 """ Multimedia
 """
 import os.path
+from StringIO import StringIO
 from Products.CMFCore.interfaces import IPropertiesTool
 from Products.Five.browser import BrowserView
-from StringIO import StringIO
 from p4a.video.interfaces import IVideo
 #from eea.mediacentre.interfaces import IVideoAdapter as IVideo
 from eea.depiction.browser.interfaces import IImageView
