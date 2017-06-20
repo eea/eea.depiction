@@ -62,7 +62,7 @@ class Depiction2SurfModifier(object):
         req = self.context.REQUEST
 
         base_url = self.context.absolute_url()
-        img_url = base_url + '/image_xlarge'
+        img_url = base_url + '/image_large'
 
         portal_types = getToolByName(self.context, 'portal_types')
         props = getToolByName(
@@ -77,7 +77,8 @@ class Depiction2SurfModifier(object):
         # img.eea_fileInfo = img_url + "#fileInfo"
 
         st = ScaleTraverser(self.context, req)
-        blob = st.fallback(req, 'image_xlarge')
+
+        blob = st.fallback(req, 'image_large')
         size = blob.get_size()
         img.schema_contentSize = size
 

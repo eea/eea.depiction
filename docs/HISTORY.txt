@@ -3,6 +3,8 @@ Changelog
 
 6.2.dev0 - (unreleased)
 -----------------------
+* Bug fix: fixed failing tests in other products
+  [zoltan_andras refs #81209]
 
 6.1 - (2017-05-15)
 ------------------
