@@ -6,7 +6,6 @@ from Products.CMFCore.utils import getToolByName
 from eea.depiction.traverse import ScaleTraverser
 from eea.rdfmarshaller.interfaces import ISurfResourceModifier
 from zope.interface import implements
-import rdflib
 import surf
 
 

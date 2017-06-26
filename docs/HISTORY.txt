@@ -3,7 +3,8 @@ Changelog
 
 6.2.dev0 - (unreleased)
 -----------------------
-* Bug fix: fixed failing tests in other products
+* Bug fix: tests fixes, failling tests in other products
+* Bug fix: fixed PyLint warnings and errors
   [zoltan_andras refs #81209]
 
 6.1 - (2017-05-15)
