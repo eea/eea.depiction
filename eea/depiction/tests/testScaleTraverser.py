@@ -78,7 +78,7 @@ def test_suite():
                                setUp=setUpImg,
                                test_class=DepictionTestCase,
                                optionflags=optionflags,
-                               package='eea.depiction.browser'), ))
+                               package='eea.depiction'), ))
 
     if P_VIDEO:
         suite.addTest(
