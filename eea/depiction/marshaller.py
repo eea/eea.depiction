@@ -80,9 +80,9 @@ class Depiction2SurfModifier(object):
         blob = st.fallback(req, 'image_large')
 
         if isinstance(blob, basestring):
-          size = len(blob)
+            size = len(blob)
         else:
-          size = blob.get_size()
+            size = blob.get_size()
 
         img.schema_contentSize = size
 
