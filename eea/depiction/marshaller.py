@@ -78,7 +78,12 @@ class Depiction2SurfModifier(object):
         st = ScaleTraverser(self.context, req)
 
         blob = st.fallback(req, 'image_large')
-        size = blob.get_size()
+
+        if isinstance(blob, basestring):
+          size = len(blob)
+        else:
+          size = blob.get_size()
+
         img.schema_contentSize = size
 
         icon = None
