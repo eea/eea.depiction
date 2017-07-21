@@ -73,7 +73,13 @@ def test_suite():
                                setUp=setUpImg,
                                test_class=DepictionTestCase,
                                optionflags=optionflags,
+                               package='eea.depiction.browser'),
+        FunctionalDocFileSuite('marshaller.txt',
+                               setUp=setUpImg,
+                               test_class=DepictionTestCase,
+                               optionflags=optionflags,
                                package='eea.depiction.browser'), ))
+
     if P_VIDEO:
         suite.addTest(
             FunctionalDocFileSuite('multimedia.txt',

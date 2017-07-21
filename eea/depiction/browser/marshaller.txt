@@ -1,0 +1,64 @@
+==========
+Marshaller
+==========
+
+First, let's setup the portal with a folder and a news item with an image.
+
+  >>> from StringIO import StringIO
+  >>> import surf
+  >>> from Products.Marshall.registry import getComponent
+  
+  >>> self.setRoles(['Manager'])
+  >>> folder = self.portal[self.portal.invokeFactory('Folder', id='testfolder')]
+  >>> news = folder[folder.invokeFactory('News Item', id='news1')]
+  >>> news.setTitle('my news item')
+  >>> news.setCreators(['ab','sasha','ture'])
+  >>> news.setDescription('my description')
+  >>> news.setText(u'my news rocks!')
+  >>> folder.portal_workflow.doActionFor(news, 'publish') 
+  >>> folder.portal_workflow.doActionFor(folder, 'publish') 
+  >>> imgFile = folder[folder.invokeFactory('Image', id='img1',
+  ...                                   title='Image title')]
+  >>> imgFile.setImage(img)
+  
+Now we can serialize content to rdf:
+
+  >>> marshaller = getComponent('surfrdf')
+  >>> data = marshaller.marshall(folder)[2]
+  >>> datanews = marshaller.marshall(news)[2]
+  >>> dataimg = marshaller.marshall(imgFile)[2]
+
+To test this output, we'll add it to a rdf memory store.
+
+  >>> store = surf.Store(reader='rdflib',  writer='rdflib', rdflib_store ='IOMemory')
+  >>> session = surf.Session(store)
+
+  >>> store.load_triples(source=StringIO(datanews))
+  True
+  >>> store.load_triples(source=StringIO(data))
+  True
+  >>> store.load_triples(source=StringIO(dataimg))
+  True  
+
+To be able to query the store, we need the surf classes, for ORM style querying:
+
+  >>> surf.ns.register(NEWSITEM='%s#' % self.portal.portal_types['News Item'].absolute_url())
+  >>> surf.ns.register(FOLDER='%s#' % self.portal.portal_types['Folder'].absolute_url())
+  >>> surf.ns.register(IMAGE='%s#' % self.portal.portal_types['Image'].absolute_url())
+  >>> Image = session.get_class(surf.ns.IMAGE['Image']) 
+  
+Now we can use the class to run a query on the surf rdf store and get the file:
+  
+  >>> f = [f for f in Image.all()][0]
+
+Depiction representation of image:
+  
+  >>> depiction = f.foaf_depiction[0]   # this is a SchemaImage
+  >>> depiction.schema_width
+  [rdflib.Literal(u'768px')]
+  >>> depiction.schema_height
+  [rdflib.Literal(u'768px')]
+  >>> depiction.rdfs_label
+  [rdflib.Literal(u'depiction')]
+  >>> depiction.schema_thumbnail.first.subject
+  rdflib.URIRef('http://nohost/plone/testfolder/img1/image_preview')

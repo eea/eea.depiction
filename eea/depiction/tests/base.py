@@ -5,6 +5,8 @@ from Products.PloneTestCase.layer import onsetup
 from Products.Five import fiveconfigure
 from Zope2.App import zcml
 import eea.depiction
+import eea.rdfmarshaller
+
 
 P_VIDEO = True
 try:
@@ -21,6 +23,8 @@ def setup_depiction():
         zcml.load_config('test.zcml', p4a.video)
     zcml.load_config('overrides.zcml', eea.depiction)
     zcml.load_config('configure.zcml', eea.depiction)
+    zcml.load_config('configure.zcml', eea.rdfmarshaller)
+
     fiveconfigure.debug_mode = False
 
     if P_VIDEO:
