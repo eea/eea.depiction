@@ -38,6 +38,7 @@ setup(name=NAME,
       install_requires=[
           'setuptools',
           'Pillow',
+          'eea.rdfmarshaller',
         ],
       extras_require={
           'full': [
