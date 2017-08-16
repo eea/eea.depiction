@@ -1,8 +1,8 @@
 Changelog
 =========
 
-6.3.dev0 - (unreleased)
------------------------
+6.3 - (2017-08-16)
+------------------
 * Change: Added some unit tests for rdf marshaller
   [zoltan_andras refs #86696]
 * Bug fix: Treated get_size error when the blob is represented as a string
