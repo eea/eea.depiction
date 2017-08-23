@@ -4,6 +4,7 @@ from zope.interface import implements
 from zope.publisher.interfaces import NotFound
 from Products.Five.browser import BrowserView
 from eea.depiction.browser.interfaces import IImageView
+from zope.component import queryMultiAdapter
 
 
 class DexterityImageView(BrowserView):
@@ -14,7 +15,7 @@ class DexterityImageView(BrowserView):
 
     def __init__(self, context, request):
         super(DexterityImageView, self).__init__(context, request)
-        self.field = context.getField('image')
+        self.field = getattr(context, 'image')
 
     def display(self, scalename='thumb'):
         """ Display
@@ -22,7 +23,10 @@ class DexterityImageView(BrowserView):
         if not bool(self.field):
             return False
 
-        scale = self.field.getScale(self.context, scale=scalename)
+        scaleview = queryMultiAdapter((self.context, self.request),
+            name='images')
+        scale = scaleview.scale('image', scale=scalename)
+
         if not scale:
             return False
 
@@ -32,8 +36,11 @@ class DexterityImageView(BrowserView):
         if not self.display(scalename):
             raise NotFound(self.request, scalename)
 
-        scale = self.field.getScale(self.context, scale=scalename)
+        scaleview = queryMultiAdapter((self.context, self.request),
+            name='images')
+        scale = scaleview.scale('image', scale=scalename)
+
         if scale:
             return scale
 
-        return self.field.get(self.context).__of__(self.context)
+        return self.context

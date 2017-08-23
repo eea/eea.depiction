@@ -3,6 +3,8 @@ Changelog
 
 6.4.dev0 - (unreleased)
 -----------------------
+* Bug Fix: Changed the way in which the DexterityImageView retrieves images
+  [iulianpetchesi #87511]
 
 6.3 - (2017-08-16)
 ------------------
