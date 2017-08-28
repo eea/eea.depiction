@@ -2,9 +2,9 @@
 """
 from zope.interface import implements
 from zope.publisher.interfaces import NotFound
+from zope.component import queryMultiAdapter
 from Products.Five.browser import BrowserView
 from eea.depiction.browser.interfaces import IImageView
-from zope.component import queryMultiAdapter
 
 
 class DexterityImageView(BrowserView):

@@ -30,7 +30,7 @@ class FolderImageView(BrowserView):
                 )
         self.field = None
         self.has_images = False
-        if len(results) > 0:
+        if results:
             self.has_images = True
             self.img = results[0].getObject()
             self.field = self.img.getField('image')
