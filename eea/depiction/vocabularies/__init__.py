@@ -11,9 +11,12 @@ INTERFACES = {
         'interactive-map',
     'Products.EEAContentTypes.content.interfaces.IInteractiveData':
         'interactive-data',
+    'Products.EEAContentTypes.content.interfaces.ICountryProfile':
+        'country-profile',
     'eea.app.visualization.subtypes.interfaces.IVisualizationEnabled':
         'daviz',
 }
+
 
 class DepictionVocabulary(object):
     """ Fallback images for eea context interfaces
