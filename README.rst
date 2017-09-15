@@ -1,10 +1,8 @@
 =============
 EEA Depiction
 =============
-.. image:: http://ci.eionet.europa.eu/job/eea.depiction-www/badge/icon
-  :target: http://ci.eionet.europa.eu/job/eea.depiction-www/lastBuild
-.. image:: http://ci.eionet.europa.eu/job/eea.depiction-plone4/badge/icon
-  :target: http://ci.eionet.europa.eu/job/eea.depiction-plone4/lastBuild
+.. image:: http://ci.eionet.europa.eu/job/eea/job/eea.depiction/job/master/badge/icon
+  :target: http://ci.eionet.europa.eu/job/eea/job/eea.depiction/job/master/display/redirect
 
 Introduction
 ============
