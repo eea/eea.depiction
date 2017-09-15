@@ -11,8 +11,10 @@ INTERFACES = {
         'interactive-map',
     'Products.EEAContentTypes.content.interfaces.IInteractiveData':
         'interactive-data',
+    'Products.EEAContentTypes.content.interfaces.ICountryProfile':
+        'country-profile',
     'eea.app.visualization.subtypes.interfaces.IVisualizationEnabled':
-        'daviz',
+        'daviz'
 }
 
 class DepictionVocabulary(object):
