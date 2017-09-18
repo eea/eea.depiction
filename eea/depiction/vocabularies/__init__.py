@@ -14,7 +14,7 @@ INTERFACES = {
     'Products.EEAContentTypes.content.interfaces.ICountryProfile':
         'country-profile',
     'eea.app.visualization.subtypes.interfaces.IVisualizationEnabled':
-        'daviz',
+        'daviz'
 }
 
 

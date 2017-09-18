@@ -1,8 +1,13 @@
 Changelog
 =========
 
-6.5.dev0 - (unreleased)
+6.6.dev0 - (unreleased)
 -----------------------
+
+6.5 - (2017-09-15)
+------------------
+* Change: added ICountryProfile to DepictionVocabulary interfaces
+  [ichim-david refs #88123]
 
 6.4 - (2017-08-29)
 ------------------
