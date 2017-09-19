@@ -3,6 +3,8 @@ Changelog
 
 6.6.dev0 - (unreleased)
 -----------------------
+* Bug fix: Fix eea.depiction for rdfmarshaller
+  [avoinea]
 
 6.5 - (2017-09-15)
 ------------------

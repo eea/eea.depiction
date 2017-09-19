@@ -1,12 +1,13 @@
 """ eea.rdfmarshaller extensions for eea.depiction
 """
-
+import surf
+import logging
 from Products.CMFCore.Expression import getExprContext
 from Products.CMFCore.utils import getToolByName
 from eea.depiction.traverse import ScaleTraverser
 from eea.rdfmarshaller.interfaces import ISurfResourceModifier
 from zope.interface import implements
-import surf
+logger = logging.getLogger("eea.depiction")
 
 
 class Depiction2SurfModifier(object):
@@ -77,12 +78,16 @@ class Depiction2SurfModifier(object):
 
         st = ScaleTraverser(self.context, req)
 
-        blob = st.fallback(req, 'image_large')
-
-        if isinstance(blob, basestring):
-            size = len(blob)
+        try:
+            blob = st.fallback(req, 'image_large')
+        except Exception as err:
+            logger.exception(err)
+            size = 0
         else:
-            size = blob.get_size()
+            if isinstance(blob, basestring):
+                size = len(blob)
+            else:
+                size = blob.get_size()
 
         img.schema_contentSize = size
 
