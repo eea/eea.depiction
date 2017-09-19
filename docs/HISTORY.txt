@@ -1,6 +1,9 @@
 Changelog
 =========
 
+6.7.dev0 - (unreleased)
+-----------------------
+
 6.6 - (2017-09-19)
 ------------------
 * Bug fix: Fix eea.depiction for rdfmarshaller
