@@ -1,6 +1,9 @@
 Changelog
 =========
 
+6.8.dev0 - (unreleased)
+-----------------------
+
 6.7 - (2017-09-22)
 ------------------
 * Bug fix: Fix eea.depiction tests
