@@ -3,6 +3,7 @@ Changelog
 
 6.7.dev0 - (unreleased)
 -----------------------
+* Bug fix: fix tests for compatibility with eea.rdfmarshaller
 
 6.6 - (2017-09-19)
 ------------------
