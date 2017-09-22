@@ -3,6 +3,8 @@ Changelog
 
 6.7.dev0 - (unreleased)
 -----------------------
+* Bug fix: Fix eea.depiction tests
+  [avoinea]
 
 6.6 - (2017-09-19)
 ------------------
