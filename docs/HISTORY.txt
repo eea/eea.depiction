@@ -4,6 +4,9 @@ Changelog
 6.8.dev0 - (unreleased)
 -----------------------
 * Bug fix: fix tests for compatibility with eea.rdfmarshaller
+  [tiberich]
+* Change: Remove Sphinx generated documentation
+  [petchesi-iulian refs #88212]
 
 6.7 - (2017-09-22)
 ------------------

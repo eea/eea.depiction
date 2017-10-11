@@ -4,7 +4,6 @@
   i18n_domain="eea">
 
   <include package="plone.app.imaging" />
-  <include file="documentation.zcml" />
   <include file="profiles.zcml" />
   <include file="skins.zcml" />
   <include package=".browser" />
