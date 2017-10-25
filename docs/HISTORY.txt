@@ -3,6 +3,8 @@ Changelog
 
 6.8.dev0 - (unreleased)
 -----------------------
+* Bug fix: don't fail if dexterity content has no image field
+  [tiberich #89405 CCA]
 * Change: Remove Sphinx generated documentation
   [petchesi-iulian refs #88212]
 
