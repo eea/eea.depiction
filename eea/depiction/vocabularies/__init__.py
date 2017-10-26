@@ -17,6 +17,7 @@ INTERFACES = {
         'daviz'
 }
 
+
 class DepictionVocabulary(object):
     """ Fallback images for eea context interfaces
     """
