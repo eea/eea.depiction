@@ -5,6 +5,8 @@ Changelog
 -----------------------
 * Bug fix: fix tests for compatibility with eea.rdfmarshaller
   [tiberich]
+* Bug fix: don't fail if dexterity content has no image field
+  [tiberich #89405 CCA]
 * Change: Remove Sphinx generated documentation
   [petchesi-iulian refs #88212]
 
