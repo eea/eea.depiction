@@ -9,6 +9,8 @@ Changelog
   should delete the "/portal_depiction/generic" image and reimport the EEA
   Depiction - Import Various generic setup step.
   [tiberich #92045]
+- Bug fix: fix Dexterity implementation for scales
+  [tiberich #92045]
 
 6.9 - (2017-12-12)
 ------------------

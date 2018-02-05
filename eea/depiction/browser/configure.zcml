@@ -48,13 +48,6 @@
     />
 
   <browser:page
-    for="plone.dexterity.interfaces.IDexterityItem"
-    name="image_thumb"
-    class=".default.ImageThumb"
-    permission="zope.Public"
-    />
-
-  <browser:page
     for="Products.Archetypes.interfaces.IBaseObject"
     name="image_thumb"
     class=".default.ImageThumb"

@@ -1,20 +1,20 @@
 """ Traverse
 """
 import logging
-from Products.CMFCore.utils import getToolByName
-from Products.Five.browser import BrowserView
-from ZPublisher.BaseRequest import DefaultPublishTraverse
+
+from eea.depiction.interfaces import IDepictionTool, IDepictionVocabulary
 from plone.app.imaging.interfaces import IBaseObject
 from plone.app.imaging.traverse import ImageTraverser
-from zope.publisher.interfaces import NotFound
-from zope.component import adapts, getAllUtilitiesRegisteredFor
-from zope.component import queryMultiAdapter, getMultiAdapter, queryUtility
+from Products.CMFCore.utils import getToolByName
+from Products.Five.browser import BrowserView
+from zope.component import (adapts, getAllUtilitiesRegisteredFor,
+                            getMultiAdapter, queryMultiAdapter, queryUtility)
 from zope.interface import providedBy
-from zope.publisher.interfaces import IRequest
-from eea.depiction.interfaces import IDepictionTool
-from eea.depiction.interfaces import IDepictionVocabulary
+from zope.publisher.interfaces import IRequest, NotFound
+from ZPublisher.BaseRequest import DefaultPublishTraverse
 
 logger = logging.getLogger("eea.depiction")
+
 
 class ScaleTraverser(ImageTraverser):
     """ Scale traverser for content types
@@ -52,6 +52,7 @@ class ScaleTraverser(ImageTraverser):
         # Because the following methods of getting a thumbnail are not
         # based on real image fields, we'll look for a fake thumbnail
         # only when the name looks like a thumbnail request
+
         if (not name.startswith('image_')) or (name.startswith('image_view')):
             return DefaultPublishTraverse.publishTraverse(self, request, name)
 
@@ -61,6 +62,7 @@ class ScaleTraverser(ImageTraverser):
         # interface. All you have to do is to register a named-utility for
         # IDepictionVocabulary
         overrides = {}
+
         for voc in getAllUtilitiesRegisteredFor(IDepictionVocabulary):
             overrides.update(
                 dict((term.value, term.title) for term in voc(self.context))
@@ -68,6 +70,7 @@ class ScaleTraverser(ImageTraverser):
 
         context = self.context
         _fieldname, scale = name.split('_', 1)
+
         if scale and (scale.lower().endswith('.jpg') or
                       scale.lower().endswith('.png')):
             scale = scale[:-4]
@@ -76,20 +79,24 @@ class ScaleTraverser(ImageTraverser):
         imgview = queryMultiAdapter((context, request), name='imgview')
 
         # Fallback imgview
+
         if (imgview is None) or (not imgview.display(scale)):
             portal = getToolByName(context, 'portal_url').getPortalObject()
             image_obj_id = None
             provided_interfaces = [i.__identifier__
                                    for i in providedBy(context).flattened()]
+
             for k, v in overrides.items():
                 if k in provided_interfaces:
                     image_obj_id = v
+
                     break
 
             if image_obj_id is None:
                 image_obj_id = context.portal_type.replace(' ', '-').lower()
 
             tool = queryUtility(IDepictionTool)
+
             if not tool:
                 raise NotFound(portal, 'portal_depiction', request)
 
@@ -98,7 +105,9 @@ class ScaleTraverser(ImageTraverser):
             else:
                 image_obj = tool['generic']
             imgview = getMultiAdapter((image_obj, request), name='imgview')
+
         return imgview(scale)
+
 
 class Tag(BrowserView):
     """ /@@tag

@@ -4,10 +4,12 @@ The problem is that there is some code that tries to do something like:
     obj.restrictedTraverse('image_preview')
 
 This will return None because the code in Traversable.py only tries to look
+
 for a view and doesn't try to use the DefaultPublishTraverse hook that
 v.i uses as traverser.
 """
 
+from eea.depiction.traverse import ScaleTraverser
 from zope.component import getMultiAdapter
 from zope.publisher.interfaces.browser import IBrowserPublisher
 
@@ -20,15 +22,28 @@ class Base(object):
     def __call__(self):
         adapter = getMultiAdapter((
             self.context, self.request), IBrowserPublisher)
+
+        # this code handles archetypes image fields
         scale = adapter.publishTraverse(self.request, self.name)
         index_html = getattr(scale, 'index_html', None)
+
         if index_html:
             return scale.index_html(self.request, self.request.response)
-        return ''
+
+        # this code is meant to handle plone.namedfile scales
+        traverser = ScaleTraverser(self.context, self.request)
+        scale = traverser.fallback(self.request, self.name)
+        index_html = getattr(scale, 'index_html', None)
+
+        if index_html:
+            return scale.index_html()
+        else:
+            return ""
 
     def absolute_url(self):
         """ URL
         """
+
         return self.context.absolute_url() + '/' + self.name
 
 
