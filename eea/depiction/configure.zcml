@@ -21,4 +21,6 @@
     provides="eea.rdfmarshaller.interfaces.ISurfResourceModifier"
     zcml:condition="installed eea.rdfmarshaller" />
 
+  <adapter factory=".adapters.BlobbableNamedBlobFile" />
+
 </configure>
