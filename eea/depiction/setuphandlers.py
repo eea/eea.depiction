@@ -29,8 +29,9 @@ def setupGenericImage(site):
         title="Generic",
         image=NamedBlobImage(data=data, contentType="image/jpeg",
                              filename=u"generic.jpg"),
-        container=tool)
-    # tool.invokeFactory('Image', id='generic', title='Generic', image=)
+        container=tool,
+        REQUEST=site.REQUEST,
+    )
 
 
 def setupDefaultImages(site):
