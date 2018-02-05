@@ -1,10 +1,12 @@
 """ eea.rdfmarshaller extensions for eea.depiction
 """
+
 import logging
 
 import surf
 from eea.depiction.traverse import ScaleTraverser
 from eea.rdfmarshaller.interfaces import ISurfResourceModifier
+from plone.namedfile.scaling import ImageScale
 from Products.CMFCore.Expression import getExprContext
 from Products.CMFCore.utils import getToolByName
 from zope.interface import implements
@@ -89,6 +91,8 @@ class Depiction2SurfModifier(object):
         else:
             if isinstance(blob, basestring):
                 size = len(blob)
+            elif isinstance(blob, ImageScale):
+                size = blob.data.getSize()
             else:
                 size = blob.get_size()
 
