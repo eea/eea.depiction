@@ -4,11 +4,11 @@
 import logging
 
 from eea.depiction.interfaces import IDepictionTool
-from plone.api import content
 from plone.app.redirector.interfaces import IRedirectionStorage
 from plone.namedfile.file import NamedBlobImage
+from plone.namedfile.interfaces import IStorage
 from Products.CMFCore.utils import getToolByName
-from zope.component import queryUtility
+from zope.component import provideUtility, queryUtility
 
 logger = logging.getLogger('eea.depiction')
 
@@ -16,7 +16,8 @@ logger = logging.getLogger('eea.depiction')
 def setupGenericImage(site):
     """ Add generic image within portal_depiction if it doesn't exists
     """
-    tool = queryUtility(IDepictionTool)
+    tool = queryUtility(IDepictionTool, context=site)
+    tool = tool.__of__(site)
 
     if 'generic' in tool.objectIds():
         return
@@ -24,14 +25,20 @@ def setupGenericImage(site):
     img = site.restrictedTraverse(
         '++resource++eea.depiction.images/generic.jpg')
     data = img.GET()
-    content.create(
-        type="Image",
-        title="Generic",
-        image=NamedBlobImage(data=data, contentType="image/jpeg",
-                             filename=u"generic.jpg"),
-        container=tool,
-        REQUEST=site.REQUEST or True,       # workaround for tests
-    )
+
+    # needed for tests
+    storage = queryUtility(IStorage, name="__builtin__.str")
+
+    if storage is None:
+        from plone.namedfile.storages import StringStorable
+        provideUtility(StringStorable(), IStorage, name="__builtin__.str")
+
+    image = NamedBlobImage(data=data, contentType="image/jpeg",
+                           filename=u"generic.jpg")
+
+    id = tool.invokeFactory('Image', id='generic', title='Generic')
+    obj = tool._getOb(id)
+    obj.edit(image=image)
 
 
 def setupDefaultImages(site):
