@@ -30,7 +30,7 @@ def setupGenericImage(site):
         image=NamedBlobImage(data=data, contentType="image/jpeg",
                              filename=u"generic.jpg"),
         container=tool,
-        REQUEST=site.REQUEST,
+        REQUEST=True,       # workaround for tests
     )
 
 
