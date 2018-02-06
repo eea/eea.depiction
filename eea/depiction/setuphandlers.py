@@ -7,6 +7,7 @@ from eea.depiction.interfaces import IDepictionTool
 from plone.app.redirector.interfaces import IRedirectionStorage
 from plone.namedfile.file import NamedBlobImage
 from plone.namedfile.interfaces import IStorage
+from Products.Archetypes.interfaces import IBaseObject
 from Products.CMFCore.utils import getToolByName
 from zope.component import provideUtility, queryUtility
 
@@ -38,7 +39,11 @@ def setupGenericImage(site):
 
     id = tool.invokeFactory('Image', id='generic', title='Generic')
     obj = tool._getOb(id)
-    obj.edit(image=image)
+
+    if IBaseObject.providedBy(obj):
+        obj.edit(image=image)
+    else:
+        obj.image = image
 
 
 def setupDefaultImages(site):
