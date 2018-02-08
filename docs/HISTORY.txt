@@ -1,7 +1,7 @@
 Changelog
 =========
 
-7.0.dev0 - (unreleased)
+7.0 - (2018-02-08)
 -----------------------
 - Bug fix: allow Dexterity containers to show contained image as thumb
   [tiberich #92045]
