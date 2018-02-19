@@ -1,8 +1,23 @@
 Changelog
 =========
 
-6.9.dev0 - (unreleased)
+7.0 - (2018-02-08)
 -----------------------
+- Bug fix: allow Dexterity containers to show contained image as thumb
+  [tiberich #92045]
+- Bug fix: handle more cases of images in eea.rdfmarshaller depiction modifier
+  [tiberich #92045]
+- Bug fix: use a NamedBlobImage when adding initial image. This fixes issues
+  with Plone websites that have replaced the default Archetypes-based content
+  types with those derived from Dexterity. In case you have such a website, you
+  should delete the "/portal_depiction/generic" image and reimport the EEA
+  Depiction - Import Various generic setup step.
+  [tiberich #92045]
+- Bug fix: fix Dexterity implementation for scales
+  [tiberich #92045]
+
+6.9 - (2017-12-12)
+------------------
 * Change: Replace eeacms/zptlint with eeacms/plone-test:4 zptlint
   [avoinea refs #90415]
 

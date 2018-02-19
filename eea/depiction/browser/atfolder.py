@@ -1,9 +1,10 @@
 """ ATFolder
 """
+from eea.depiction.browser.interfaces import IImageView
+from Products.Five.browser import BrowserView
 from zope.interface import implements
 from zope.publisher.interfaces import NotFound
-from Products.Five.browser import BrowserView
-from eea.depiction.browser.interfaces import IImageView
+
 
 class FolderImageView(BrowserView):
     """ This view takes the first published/visible image found in a folder
@@ -20,16 +21,17 @@ class FolderImageView(BrowserView):
         here = '/'.join(self.context.getPhysicalPath())
         results = self.context.portal_catalog.queryCatalog(
                 {
-                    'portal_type':'Image',
+                    'portal_type': 'Image',
                     'path': {
-                        'query':here,
-                        'depth':1,
+                        'query': here,
+                        'depth': 1,
                         },
                     'sort_on': 'getObjPositionInParent'
-                    }, #show_all=1, show_inactive=1,
+                    },  # show_all=1, show_inactive=1,
                 )
         self.field = None
         self.has_images = False
+
         if results:
             self.has_images = True
             self.img = results[0].getObject()
@@ -38,11 +40,12 @@ class FolderImageView(BrowserView):
     def display(self, scalename='thumb'):
         """ Return a bool if the scale should be displayed
         """
+
         if not self.has_images:
             return False
 
-        #in some cases the scale cannot be correctly retrieved.
-        #We return the whole image then
+        # in some cases the scale cannot be correctly retrieved.
+        # We return the whole image then
 
         if self.field is None:
             return False
@@ -54,8 +57,10 @@ class FolderImageView(BrowserView):
             raise NotFound(self.request, self.name)
 
         scale = self.field.getScale(self.img, scalename)
+
         if scale:
             return scale
 
-        #returning the entire image
+        # returning the entire image
+
         return self.field.get(self.img).__of__(self.img)

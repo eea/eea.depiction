@@ -3,12 +3,71 @@
   xmlns:zcml="http://namespaces.zope.org/zcml"
   i18n_domain="eea">
 
-  <browser:page
-    zcml:condition="installed plone.dexterity"
-    for="plone.dexterity.interfaces.IDexterityContent"
-    name="imgview"
-    class=".dexterity.DexterityImageView"
-    permission="zope.Public"
-    allowed_interface="eea.depiction.browser.interfaces.IImageView" />
+  <configure zcml:condition="installed plone.dexterity">
+
+    <browser:page
+      for="plone.dexterity.interfaces.IDexterityContent"
+      name="imgview"
+      class=".dexterity.DexterityImageView"
+      permission="zope.Public"
+      allowed_interface="eea.depiction.browser.interfaces.IImageView" />
+
+    <browser:page
+      for="plone.dexterity.interfaces.IDexterityContainer"
+      name="imgview"
+      class=".dexterity.DexterityContainerImageView"
+      permission="zope.Public"
+      allowed_interface="eea.depiction.browser.interfaces.IImageView" />
+
+    <browser:page
+      for="plone.dexterity.interfaces.IDexterityContent"
+      name="image_large"
+      class=".default.ImageLarge"
+      permission="zope.Public"
+      />
+
+    <browser:page
+      for="plone.dexterity.interfaces.IDexterityContent"
+      name="image_thumb"
+      class=".default.ImageThumb"
+      permission="zope.Public"
+      />
+
+    <browser:page
+      for="plone.dexterity.interfaces.IDexterityContent"
+      name="image_preview"
+      class=".default.ImagePreview"
+      permission="zope.Public"
+      />
+
+    <browser:page
+      for="plone.dexterity.interfaces.IDexterityContent"
+      name="image_mini"
+      class=".default.ImageMini"
+      permission="zope.Public"
+      />
+
+    <browser:page
+      for="plone.dexterity.interfaces.IDexterityContent"
+      name="image_tile"
+      class=".default.ImageTile"
+      permission="zope.Public"
+      />
+
+    <browser:page
+      for="plone.dexterity.interfaces.IDexterityContent"
+      name="image_icon"
+      class=".default.ImageIcon"
+      permission="zope.Public"
+      />
+
+    <browser:page
+      for="plone.dexterity.interfaces.IDexterityContent"
+      name="image_listing"
+      class=".default.ImageListing"
+      permission="zope.Public"
+      />
+
+  </configure>
 
 </configure>

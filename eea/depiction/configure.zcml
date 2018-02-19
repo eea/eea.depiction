@@ -16,4 +16,11 @@
     provides="eea.rdfmarshaller.interfaces.ISurfResourceModifier"
     zcml:condition="installed eea.rdfmarshaller" />
 
+  <subscriber factory=".marshaller.Depiction2SurfModifier"
+    for="Products.CMFCore.interfaces.IContentish"
+    provides="eea.rdfmarshaller.interfaces.ISurfResourceModifier"
+    zcml:condition="installed eea.rdfmarshaller" />
+
+  <adapter factory=".adapters.BlobbableNamedBlobFile" />
+
 </configure>
