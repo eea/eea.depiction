@@ -1,8 +1,12 @@
 =============
 EEA Depiction
 =============
-.. image:: http://ci.eionet.europa.eu/job/eea/job/eea.depiction/job/master/badge/icon
-  :target: http://ci.eionet.europa.eu/job/eea/job/eea.depiction/job/master/display/redirect
+.. image:: https://ci.eionet.europa.eu/buildStatus/icon?job=eea/eea.depiction/develop
+  :target: https://ci.eionet.europa.eu/job/eea/job/eea.depiction/job/develop/display/redirect
+  :alt: Develop
+.. image:: https://ci.eionet.europa.eu/buildStatus/icon?job=eea/eea.depiction/master
+  :target: https://ci.eionet.europa.eu/job/eea/job/eea.depiction/job/master/display/redirect
+  :alt: Master
 
 Introduction
 ============
