@@ -20,7 +20,7 @@ class ScaleTraverser(ImageTraverser):
     """ Scale traverser for content types
 
     Taken from
-    http://taskman.eionet.europa.eu/projects/zope/wiki/HowToSpecifyFallbackImages
+    https://taskman.eionet.europa.eu/projects/zope/wiki/HowToSpecifyFallbackImages
 
     eea.depiction v0.3 introduces the concept of fallback images when
     the regular image traversal fails. The logic works like this:
