@@ -1,7 +1,7 @@
 Changelog
 =========
 
-7.1-dev0 - (unreleased)
+7.1 - (2018-06-20)
 ---------------------
 * Change: updated URLs pointing to eea.europa.eu with https://
   [alecghica refs #95849]
