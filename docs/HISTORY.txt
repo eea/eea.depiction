@@ -1,6 +1,11 @@
 Changelog
 =========
 
+7.1 - (2018-06-20)
+---------------------
+* Change: updated URLs pointing to eea.europa.eu with https://
+  [alecghica refs #95849]
+
 7.0 - (2018-02-08)
 -----------------------
 - Bug fix: allow Dexterity containers to show contained image as thumb
