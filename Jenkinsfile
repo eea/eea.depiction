@@ -211,7 +211,7 @@ pipeline {
         } else if (status == 'FAILURE') {
           color = '#FF0000'
         }
-        slackSend (color: color, message: summary)
+
         emailext (subject: '$DEFAULT_SUBJECT', to: '$DEFAULT_RECIPIENTS', body: details)
       }
     }
