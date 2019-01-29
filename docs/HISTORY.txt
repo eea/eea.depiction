@@ -1,6 +1,11 @@
 Changelog
 =========
 
+7.2 - (2019-01-28)
+---------------------
+* Jenkins: Add sonarqube step
+  [avoinea refs #101552]
+
 7.1 - (2018-06-20)
 ---------------------
 * Change: updated URLs pointing to eea.europa.eu with https://
@@ -256,4 +261,3 @@ Changelog
 0.1 - Unreleased
 ----------------
 * Initial release
-
