@@ -36,7 +36,7 @@
                 <a tal:attributes="href item_view;
                                    title item_description">
                     <span class="photoAlbumEntryWrapper">
-                        <span class="photoAlbumEntryWrapperImg" tal:attributes="style string:background-image:url('${item_url}/image_mini')"><!--?--></span>
+                            <span class="photoAlbumEntryWrapperImg lazy" tal:attributes="data-src string:${obj/absolute_url}/image_mini"><!--?--></span>
                     </span>
                     <span class="photoAlbumEntryTitle">
                        <tal:title content="item_title">Title</tal:title>
