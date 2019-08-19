@@ -1,6 +1,9 @@
 Changelog
 =========
 
+7.4-dev0 - (unreleased)
+---------------------------
+
 7.3 - (2019-08-16)
 --------------------------
 * Change: thumbnail_view now uses image_mini size as a background image instead
