@@ -19,7 +19,7 @@
     directory="images"
     permission="zope.Public" />
 
-  <!-- EEA Custom Image sizes -->
+  <!-- EEA Custom Image scales -->
   <browser:page
     for="Products.Archetypes.interfaces.IBaseObject"
     name="image_print"

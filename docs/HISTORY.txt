@@ -3,7 +3,11 @@ Changelog
 
 8.0 - (2019-09-30)
 ---------------------------
-* Change: Added more custom image scales: panoramic, print, landscape, portrait, wide, xlarge
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on upgrade
+  button available for eea.depiction
+  [avoinea refs #109515]
+* Change: Added more custom image scales:
+  panoramic, print, landscape, portrait, wide, xlarge
   [avoinea refs #109515]
 
 7.3 - (2019-08-16)
