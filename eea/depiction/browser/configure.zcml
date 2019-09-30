@@ -19,6 +19,51 @@
     directory="images"
     permission="zope.Public" />
 
+  <!-- EEA Custom Image sizes -->
+  <browser:page
+    for="Products.Archetypes.interfaces.IBaseObject"
+    name="image_print"
+    class=".default.ImagePrint"
+    permission="zope.Public"
+    />
+
+  <browser:page
+    for="Products.Archetypes.interfaces.IBaseObject"
+    name="image_panoramic"
+    class=".default.ImagePanoramic"
+    permission="zope.Public"
+    />
+
+  <browser:page
+    for="Products.Archetypes.interfaces.IBaseObject"
+    name="image_landscape"
+    class=".default.ImageLandscape"
+    permission="zope.Public"
+    />
+
+  <browser:page
+    for="Products.Archetypes.interfaces.IBaseObject"
+    name="image_portrait"
+    class=".default.ImagePortrait"
+    permission="zope.Public"
+    />
+
+  <browser:page
+    for="Products.Archetypes.interfaces.IBaseObject"
+    name="image_xlarge"
+    class=".default.ImageXlarge"
+    permission="zope.Public"
+    />
+
+  <browser:page
+    for="Products.Archetypes.interfaces.IBaseObject"
+    name="image_wide"
+    class=".default.ImageWide"
+    permission="zope.Public"
+    />
+
+
+  <!-- Plone Default Image scales -->
   <browser:page
     for="Products.Archetypes.interfaces.IBaseObject"
     name="image_large"

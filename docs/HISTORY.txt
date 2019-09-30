@@ -1,8 +1,10 @@
 Changelog
 =========
 
-7.4-dev0 - (unreleased)
+8.0 - (2019-09-30)
 ---------------------------
+* Change: Added more custom image scales: panoramic, print, landscape, portrait, wide, xlarge
+  [avoinea refs #109515]
 
 7.3 - (2019-08-16)
 --------------------------

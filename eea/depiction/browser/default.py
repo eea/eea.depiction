@@ -47,6 +47,48 @@ class Base(object):
         return self.context.absolute_url() + '/' + self.name
 
 
+#
+# EEA Custom Image scales
+#
+class ImagePrint(Base):
+    """ Print
+    """
+    name = "image_print"
+
+
+class ImagePanoramic(Base):
+    """ Panoramic
+    """
+    name = "image_panoramic"
+
+
+class ImageLandscape(Base):
+    """ Landscape
+    """
+    name = "image_landscape"
+
+
+class ImagePortrait(Base):
+    """ Portrait
+    """
+    name = "image_portrait"
+
+
+class ImageXlarge(Base):
+    """ XLarge
+    """
+    name = "image_xlarge"
+
+
+class ImageWide(Base):
+    """ Wide
+    """
+    name = "image_wide"
+
+
+#
+# Plone default image scales
+#
 class ImageLarge(Base):
     """ Large
     """
