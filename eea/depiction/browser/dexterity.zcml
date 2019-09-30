@@ -62,7 +62,7 @@
       permission="zope.Public"
       />
 
-    <1-- Plone Default Image scales -->
+    <!-- Plone Default Image scales -->
     <browser:page
       for="plone.dexterity.interfaces.IDexterityContent"
       name="image_large"
