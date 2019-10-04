@@ -9,6 +9,8 @@ Changelog
 * Change: Added more custom image scales:
   panoramic, print, landscape, portrait, wide, xlarge
   [avoinea refs #109515]
+* Bug fix: Fixed ATFolder imgview adapter for multi-lingual cover images
+  [avoinea refs #109515]
 
 7.3 - (2019-08-16)
 --------------------------
