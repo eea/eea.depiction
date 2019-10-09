@@ -76,10 +76,10 @@ class RecreateDepictionScales(BrowserView):
             return self._redirect(msg)
 
         ctool = getToolByName(self.context, 'portal_catalog')
-        brains = ctool(portal_type=[portal_type], Language='all')
+        brains = ctool.unrestrictedSearchResults(portal_type=portal_type)
 
         length = len(brains)
-        logger.info("Recreating scales for %s documents."
+        logger.info("Recreating scales for %s items."
                     "Selected Types: %s - %s", length, portal_type, fieldname)
 
         count = 0
