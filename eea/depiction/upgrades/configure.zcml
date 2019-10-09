@@ -10,8 +10,8 @@
     profile="eea.depiction:default">
 
     <genericsetup:upgradeDepends
-      title="Import profile steps with changes: properties"
-      import_steps="propertiestool"
+      title="Import profile steps with changes: properties typeinfo"
+      import_steps="propertiestool typeinfo"
       />
 
   </genericsetup:upgradeSteps>
