@@ -111,7 +111,7 @@ class RecreateDepictionScales(BrowserView):
         """ Return Content-Types to rescale
         """
         vocab = queryUtility(IVocabularyFactory,
-            'plone.app.vocabularies.UserFriendlyTypes')
+            'plone.app.vocabularies.ReallyUserFriendlyTypes')
         for term in vocab(self.context):
             yield term
 
