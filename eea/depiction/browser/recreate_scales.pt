@@ -1,27 +1,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
   lang="en-US"
-  metal:use-macro="here/prefs_main_template/macros/master"
+  metal:use-macro="here/main_template/macros/master"
   i18n:domain="eea">
 
 <body>
-<div metal:fill-slot="prefs_configlet_main">
 
-  <h1 i18n:translate="">
-    Rescreate scales for Content-Types:
-  </h1>
+<metal:header metal:fill-slot="content-title">
+  <h1 class="documentFirstHeading" i18n:translate="">Regenerate image scales</h1>
+</metal:header>
 
-<form action="@@migrate-eea2blobs" method="post">
-  <fieldset>
-    <legend i18n:translate="">Portal types</legend>
-    <ul>
-      <li tal:repeat="ptype python:view.content_types">
-        <input type="checkbox" name="types:list"
-          tal:attributes="value ptype/value; id string:type-${ptype/value}" />
-        <label tal:attributes="for string:type-${ptype/value}"
-          tal:content="ptype/title" />
-      </li>
-    </ul>
-  </fieldset>
+<div metal:fill-slot="content-core">
+
+<form action="recreate-scales" method="post" name="edit_form">
+  <div class="field">
+    <label for="portal_type" i18n:translate="">Portal type</label>
+    <div class="formHelp" i18n:translate="">Select Portal Type for which to regenerate the image scales</div>
+    <select id="portal_type" name="portal_type">
+    <tal:option tal:repeat="ptype python:view.content_types">
+      <option tal:attributes="value ptype/value" tal:content="ptype/title" />
+    </tal:option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="fieldname" i18n:translate="">Image field</label>
+    <div class="formHelp" i18n:translate="">Schema image field. Leave 'image' if not sure.</div>
+    <input type="text" id="fieldname" name="fieldname" value="image" />
+  </div>
   <div class="field" style="clear: both; text-align: right">
     <input class="context" type="submit" value="Recreate scales" i18n:attributes="value" name="action.submit" />
   </div>

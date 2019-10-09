@@ -65,25 +65,29 @@ class RecreateDepictionScales(BrowserView):
     def _rescale(self, form):
         """ Run rescale
         """
-        types = form.get('types', ())
-        if not types:
-            msg = 'You have to select at least one Portal type to rescale'
+        portal_type = form.get('portal_type')
+        if not portal_type:
+            msg = 'You have to select one Portal Type to rescale'
             return self._redirect(msg)
-        fieldname = form.get('fieldname', 'image')
+
+        fieldname = form.get('fieldname')
+        if not fieldname:
+            msg = 'Image field name is required'
+            return self._redirect(msg)
 
         ctool = getToolByName(self.context, 'portal_catalog')
-        brains = ctool(portal_type=types, Language='all')
+        brains = ctool(portal_type=[portal_type], Language='all')
 
         length = len(brains)
         logger.info("Recreating scales for %s documents."
-                    "Selected Types: %s", length, ', '.join(types))
+                    "Selected Types: %s - %s", length, portal_type, fieldname)
 
         count = 0
+        async_service = queryUtility(IAsyncService)
         for brain in brains:
             doc = brain.getObject()
 
             # Recreate scales asynchronously via zc.async
-            async_service = queryUtility(IAsyncService)
             if async_service:
                 async_queue = async_service.getQueues()['']
                 async_service.queueJobInQueue(
@@ -93,6 +97,7 @@ class RecreateDepictionScales(BrowserView):
                     fieldname
                 )
                 continue
+            break
 
             rescale = queryMultiAdapter((doc, self.request),
                 name=u'recreate-scales')
@@ -103,7 +108,10 @@ class RecreateDepictionScales(BrowserView):
                 logger.info('Transaction commit: %s', count)
                 transaction.commit()
 
-        msg = 'Rescale complete. Check the Zope log for more details.'
+        if async_service:
+            msg = 'Rescale scheduled. See Async logs'
+        else:
+            msg = 'Rescale complete. Check the Zope log for more details.'
         return self._redirect(msg)
 
     @property
@@ -111,7 +119,7 @@ class RecreateDepictionScales(BrowserView):
         """ Return Content-Types to rescale
         """
         vocab = queryUtility(IVocabularyFactory,
-            'plone.app.vocabularies.ReallyUserFriendlyTypes')
+            'plone.app.vocabularies.UserFriendlyTypes')
         for term in vocab(self.context):
             yield term
 

@@ -6,6 +6,9 @@ Changelog
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on upgrade
   button available for eea.depiction
   [avoinea refs #109515]
+* Upgrade step: Within "Plone > Site setup > Depiction Library > Scales Tab"
+  regenerate image scales for your portal types
+  [avoinea refs #109515]
 * Change: Added @@recreate-scales browser-view utility
   [avoinea refs #109515]
 * Change: Added more custom image scales:
