@@ -79,12 +79,11 @@ class RecreateDepictionScales(BrowserView):
         brains = ctool.unrestrictedSearchResults(portal_type=portal_type)
 
         length = len(brains)
-        logger.info("Recreating scales for %s items."
+        logger.info("Regenerating image scales for %s items."
                     "Selected Types: %s - %s", length, portal_type, fieldname)
 
-        count = 0
         async_service = queryUtility(IAsyncService)
-        for brain in brains:
+        for idx, brain in enumerate(brains):
             doc = brain.getObject()
 
             # Recreate scales asynchronously via zc.async
@@ -96,16 +95,14 @@ class RecreateDepictionScales(BrowserView):
                     doc,
                     fieldname
                 )
-                continue
+            else:
+                rescale = queryMultiAdapter((doc, self.request),
+                    name=u'recreate-scales')
+                rescale()
 
-            rescale = queryMultiAdapter((doc, self.request),
-                name=u'recreate-scales')
-            rescale()
-
-            count += 1
-            if count % 25 == 0:
-                logger.info('Transaction commit: %s', count)
-                transaction.commit()
+            if idx % 100 == 0:
+                logger.info('Regenerating scales: %s/%s', idx, length)
+                transaction.savepoint(optimistic=True)
 
         if async_service:
             msg = 'Rescale scheduled. See Async logs'
