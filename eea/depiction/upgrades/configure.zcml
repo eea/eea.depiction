@@ -10,7 +10,7 @@
     profile="eea.depiction:default">
 
     <genericsetup:upgradeDepends
-      title="Import profile steps with changes: properties typeinfo"
+      title="Import profile steps with changes: controlpanel properties typeinfo"
       import_steps="controlpanel propertiestool typeinfo"
       />
 
