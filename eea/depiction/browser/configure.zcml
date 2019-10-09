@@ -30,7 +30,7 @@
     name="recreate-scales"
     class=".scales.RecreateDepictionScales"
     template="recreate_scales.pt"
-    permission="cmf.ModifyPortalContent" />
+    permission="cmf.ManagePortal" />
 
   <!-- EEA Custom Image scales -->
   <browser:page
