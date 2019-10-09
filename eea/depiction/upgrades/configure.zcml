@@ -11,7 +11,7 @@
 
     <genericsetup:upgradeDepends
       title="Import profile steps with changes: properties typeinfo"
-      import_steps="propertiestool typeinfo"
+      import_steps="controlpanel propertiestool typeinfo"
       />
 
   </genericsetup:upgradeSteps>
