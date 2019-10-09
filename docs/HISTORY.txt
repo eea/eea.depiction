@@ -6,6 +6,8 @@ Changelog
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on upgrade
   button available for eea.depiction
   [avoinea refs #109515]
+* Change: Added @@recreate-scales browser-view utility
+  [avoinea refs #109515]
 * Change: Added more custom image scales:
   panoramic, print, landscape, portrait, wide, xlarge
   [avoinea refs #109515]

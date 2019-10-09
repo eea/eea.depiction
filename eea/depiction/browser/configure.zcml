@@ -19,6 +19,12 @@
     directory="images"
     permission="zope.Public" />
 
+  <browser:page
+    for="zope.interface.Interface"
+    name="recreate-scales"
+    class=".scales.RecreateImageScales"
+    permission="cmf.ModifyPortalContent" />
+
   <!-- EEA Custom Image scales -->
   <browser:page
     for="Products.Archetypes.interfaces.IBaseObject"
