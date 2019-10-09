@@ -97,7 +97,6 @@ class RecreateDepictionScales(BrowserView):
                     fieldname
                 )
                 continue
-            break
 
             rescale = queryMultiAdapter((doc, self.request),
                 name=u'recreate-scales')
