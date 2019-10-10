@@ -1,17 +1,18 @@
 """ Multimedia
 """
 import os.path
+import OFS.Image
+import PIL.Image
 from StringIO import StringIO
-from Products.CMFCore.interfaces import IPropertiesTool
-from Products.Five.browser import BrowserView
-from p4a.video.interfaces import IVideo
-#from eea.mediacentre.interfaces import IVideoAdapter as IVideo
-from eea.depiction.browser.interfaces import IImageView
 from zope.component import getUtility
 from zope.interface import implements
 from zope.publisher.interfaces import NotFound
-import OFS.Image
-import PIL.Image
+from Products.CMFCore.interfaces import IPropertiesTool
+from Products.Five.browser import BrowserView
+from p4a.video.interfaces import IVideo
+from eea.depiction.browser.interfaces import IImageView
+from eea.depiction.cache import ramcache
+
 
 class MultimediaImageView(BrowserView):
     """ Adapts a p4a video object and returns its album art image.
@@ -20,38 +21,53 @@ class MultimediaImageView(BrowserView):
          weird looking video art URLs.
     """
     implements(IImageView)
-    size = None
+    _img = False
 
-    def __init__(self, context, request):
-        self.context = context
-        self.request = request
+    @property
+    def img(self):
+        """ img
+        """
+        if self._img is False:
+            self._img = IVideo(self.context).video_image
+        return self._img
+
+    @ramcache(lambda *args: "button", lifetime=31536000)
+    def button(self):
+        """ Media play button
+        """
         path = os.path.dirname(__file__)
         path = os.path.join(path, 'images', 'play-button.png')
-        self.button = open(path).read()
-        self.img = IVideo(self.context).video_image
+        with open(path) as ofile:
+            return ofile.read()
 
+    @ramcache(lambda *args: "sizes", lifetime=86400)
+    def sizes(self):
+        """ Sizes
+        """
+        _sizes = {}
         props = getUtility(IPropertiesTool).imaging_properties
         sizes = props.getProperty('allowed_sizes')
-        self.sizes = {}
         for size in sizes:
             name, info = size.split(' ')
             w, h = info.split(':')
-            self.sizes[name] = (int(w), int(h))
+            _sizes[name] = (int(w), int(h))
+        return _sizes
 
     def display(self, scalename='thumb'):
         """ Display
         """
-        return (self.img != None) and (scalename in self.sizes)
+        if not self.img:
+            return False
+        return scalename in self.sizes()
 
     def __call__(self, scalename='thumb', fieldname='image'):
         #This scaling should be done once and then cached
-        # import pdb; pdb.set_trace()
         if not self.display(scalename):
             raise NotFound(self.request, scalename)
-        #import pdb; pdb.set_trace()
+
         orig = PIL.Image.open(StringIO(self.img.data))
-        button = PIL.Image.open(StringIO(self.button))
-        thumb = thumbnail(orig, button, self.sizes[scalename])
+        button = PIL.Image.open(StringIO(self.button()))
+        thumb = thumbnail(orig, button, self.sizes()[scalename])
 
         destfile = StringIO()
         thumb.save(destfile, 'PNG')
@@ -62,6 +78,7 @@ class MultimediaImageView(BrowserView):
         dest.height = thumb.size[1]
 
         return dest.__of__(self.context)
+
 
 def thumbnail(orig, button, size):
     """ Thumbnails

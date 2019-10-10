@@ -13,10 +13,9 @@ class FolderImageView(BrowserView):
     """
     implements(IImageView)
 
-    _has_images = None
     _img = False
     _field = False
-    
+
     @property
     def img(self):
         """ img
@@ -46,17 +45,6 @@ class FolderImageView(BrowserView):
         return self._img
 
     @property
-    def has_images(self):
-        """ Has images
-        """
-        if self._has_images is None:
-            if self.img:
-                self._has_images = True
-            else:
-                self._has_images = False
-        return self._has_images
-
-    @property
     def field(self):
         """ Field
         """
@@ -71,13 +59,10 @@ class FolderImageView(BrowserView):
         """ Return a bool if the scale should be displayed
         """
 
-        if not self.has_images:
+        if not self.img:
             return False
 
-        # in some cases the scale cannot be correctly retrieved.
-        # We return the whole image then
-
-        if self.field is None:
+        if not self.field:
             return False
 
         return True

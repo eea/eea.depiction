@@ -10,11 +10,15 @@ class ATFieldImageView(BrowserView):
     """ Image View
     """
     implements(IImageView)
-    field = None
+    _field = False
 
-    def __init__(self, context, request):
-        super(ATFieldImageView, self).__init__(context, request)
-        self.field = context.getField('image')
+    @property
+    def field(self):
+        """ self.field
+        """
+        if self._field is False:
+            self._field = self.context.getField('image')
+        return self._field
 
     def display(self, scalename='thumb'):
         """ Display
@@ -25,7 +29,6 @@ class ATFieldImageView(BrowserView):
         scale = self.field.getScale(self.context, scale=scalename)
         if not scale:
             return False
-
         return True
 
     def __call__(self, scalename='thumb'):
