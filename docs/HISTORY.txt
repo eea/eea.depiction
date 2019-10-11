@@ -1,6 +1,9 @@
 Changelog
 =========
 
+8.1-dev0 - (unreleased)
+---------------------------
+
 8.0 - (2019-09-30)
 ---------------------------
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on upgrade
