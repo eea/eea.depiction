@@ -20,6 +20,64 @@
     permission="zope.Public" />
 
   <browser:page
+    for="zope.interface.Interface"
+    name="recreate-scales"
+    class=".scales.RecreateImageScales"
+    permission="cmf.ModifyPortalContent" />
+
+  <browser:page
+    for="eea.depiction.content.interfaces.IDepictionTool"
+    name="recreate-scales"
+    class=".scales.RecreateDepictionScales"
+    template="recreate_scales.pt"
+    permission="cmf.ManagePortal" />
+
+  <!-- EEA Custom Image scales -->
+  <browser:page
+    for="Products.Archetypes.interfaces.IBaseObject"
+    name="image_print"
+    class=".default.ImagePrint"
+    permission="zope.Public"
+    />
+
+  <browser:page
+    for="Products.Archetypes.interfaces.IBaseObject"
+    name="image_panoramic"
+    class=".default.ImagePanoramic"
+    permission="zope.Public"
+    />
+
+  <browser:page
+    for="Products.Archetypes.interfaces.IBaseObject"
+    name="image_landscape"
+    class=".default.ImageLandscape"
+    permission="zope.Public"
+    />
+
+  <browser:page
+    for="Products.Archetypes.interfaces.IBaseObject"
+    name="image_portrait"
+    class=".default.ImagePortrait"
+    permission="zope.Public"
+    />
+
+  <browser:page
+    for="Products.Archetypes.interfaces.IBaseObject"
+    name="image_xlarge"
+    class=".default.ImageXlarge"
+    permission="zope.Public"
+    />
+
+  <browser:page
+    for="Products.Archetypes.interfaces.IBaseObject"
+    name="image_wide"
+    class=".default.ImageWide"
+    permission="zope.Public"
+    />
+
+
+  <!-- Plone Default Image scales -->
+  <browser:page
     for="Products.Archetypes.interfaces.IBaseObject"
     name="image_large"
     class=".default.ImageLarge"

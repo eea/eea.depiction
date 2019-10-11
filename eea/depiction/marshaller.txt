@@ -61,4 +61,4 @@ Depiction representation of image:
   >>> depiction.rdfs_label
   [rdflib.term.Literal(u'depiction')]
   >>> depiction.schema_thumbnail.first.subject
-  rdflib.term.URIRef(u'http://nohost/plone/testfolder/img1/image_preview')
+  rdflib.term.URIRef(u'http://nohost/plone/testfolder/img1/image_...')

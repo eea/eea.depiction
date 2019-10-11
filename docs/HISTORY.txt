@@ -1,6 +1,22 @@
 Changelog
 =========
 
+8.0 - (2019-09-30)
+---------------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on upgrade
+  button available for eea.depiction
+  [avoinea refs #109515]
+* Upgrade step: Within "Plone > Site setup > Image scales"
+  regenerate image scales for your portal-types
+  [avoinea refs #109515]
+* Change: Added @@recreate-scales browser-view utility
+  [avoinea refs #109515]
+* Change: Added more custom image scales:
+  panoramic, print, landscape, portrait, wide, xlarge
+  [avoinea refs #109515]
+* Bug fix: Fixed ATFolder imgview adapter for multi-lingual cover images
+  [avoinea refs #109515]
+
 7.3 - (2019-08-16)
 --------------------------
 * Change: thumbnail_view now uses image_mini size as a background image instead
