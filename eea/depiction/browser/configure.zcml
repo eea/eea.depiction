@@ -21,7 +21,7 @@
 
   <adapter
     for="zope.interface.Interface"
-    class=".scales.RecreateScales" />
+    factory=".scales.RecreateScales" />
 
   <browser:page
     for="zope.interface.Interface"
