@@ -1,7 +1,7 @@
 Changelog
 =========
 
-8.1-dev0 - (unreleased)
+8.1 - (2019-10-19)
 ---------------------------
 * Feature: Added possibility to provide custom IRecreateScales adapter for  custom content-type.
   [avoinea refs #109515]
