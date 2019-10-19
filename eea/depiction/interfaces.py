@@ -2,7 +2,7 @@
 """
 from eea.depiction.content.interfaces import IDepictionTool
 from eea.depiction.vocabularies.interfaces import IDepictionVocabulary
-from eea.Depiction.browser.interfaces import IRecreateScales
+from eea.depiction.browser.interfaces import IRecreateScales
 
 __all__ = (
     IDepictionTool.__name__,
