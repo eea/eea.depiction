@@ -2,27 +2,41 @@
 """
 import logging
 import transaction
-from zope.component import queryMultiAdapter, queryUtility
+from zope.interface import implementer
+from zope.component import queryMultiAdapter, queryAdapter, queryUtility
 from zope.schema.interfaces import IVocabularyFactory
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from Products.statusmessages.interfaces import IStatusMessage
 from eea.depiction.async import IAsyncService
+from eea.depiction.interfaces import IRecreateScales
 logger = logging.getLogger('eea.depiction')
 
 
 def recreate_scales(obj, fieldname='image'):
     """ recreate_scales
     """
-    field = obj.getField(fieldname)
-    if not field:
-        raise AttributeError(fieldname)
-    field.removeScales(obj)
-    field.createScales(obj)
+    rescale = queryAdapter(obj, IRecreateScales)
+    return rescale(fieldname)
+
+
+@implementer(IRecreateScales)
+class RecreateScales(object):
+    """ Recreate image scales adapter
+    """
+    def __init__(self, context):
+        self.context = context
+
+    def __call__(self, fieldname='image'):
+        field = self.context.getField(fieldname)
+        if not field:
+            raise AttributeError(fieldname)
+        field.removeScales(self.context)
+        field.createScales(self.context)
 
 
 class RecreateImageScales(BrowserView):
-    """ Recreate image scales """
+    """ Recreate image scales browser view """
 
     def __call__(self, **kwargs):
         form = getattr(self.request, 'form', None) or {}
