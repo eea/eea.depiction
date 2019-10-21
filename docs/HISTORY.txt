@@ -1,6 +1,11 @@
 Changelog
 =========
 
+8.1 - (2019-10-19)
+---------------------------
+* Feature: Added possibility to provide custom IRecreateScales adapter for  custom content-type.
+  [avoinea refs #109515]
+
 8.0 - (2019-09-30)
 ---------------------------
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on upgrade

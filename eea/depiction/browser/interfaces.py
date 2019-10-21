@@ -9,3 +9,8 @@ class IImageView(Interface):
     def display(scalename):
         """ Says if it's OK to display an image of requested size
         """
+
+
+class IRecreateScales(Interface):
+    """ Recreate image scales
+    """
