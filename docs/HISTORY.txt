@@ -1,7 +1,7 @@
 Changelog
 =========
 
-8.2-dev0 - (unreleased)
+8.2 - (2020-01-15)
 ---------------------------
 * Feature: added ability to provide a fallback image for a specific scale name
   for example if we want to have a different fallback image for the large scale
