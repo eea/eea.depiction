@@ -40,6 +40,9 @@ class ScaleTraverser(ImageTraverser):
     * In that folder there should be an image called 'generic'.
     * To map a fallback image to a portal type, place it in this folder and
       name it after the portal type.
+    * To map a fallback image to a specific scale for a portal type, place it
+      in this folder and name it after the portal type plus scale name
+      ex: document-large
     * To map a fallback image to an interface, edit the dictionary found in
       eea.depiction.traversal.py
     """

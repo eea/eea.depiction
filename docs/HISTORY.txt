@@ -3,6 +3,13 @@ Changelog
 
 8.2-dev0 - (unreleased)
 ---------------------------
+* Feature: added ability to provide a fallback image for a specific scale name
+  for example if we want to have a different fallback image for the large scale
+  of a Document we can add an image with the id *document-large* and for
+  image_large this image will be used instead of the Document fallback image
+  or any given generic image if no image is added for Document in general
+  [ichim-david refs #111968]
+
 
 8.1 - (2019-10-19)
 ---------------------------
