@@ -100,10 +100,15 @@ class ScaleTraverser(ImageTraverser):
             if not tool:
                 raise NotFound(portal, 'portal_depiction', request)
 
-            if image_obj_id in tool.objectIds():
+            fallback_images = tool.objectIds()
+            scale_fallback = image_obj_id + '-' + scale
+            if scale_fallback in fallback_images:
+                image_obj = tool[scale_fallback]
+            elif image_obj_id in fallback_images:
                 image_obj = tool[image_obj_id]
             else:
                 image_obj = tool['generic']
+
             imgview = getMultiAdapter((image_obj, request), name='imgview')
 
         return imgview(scale)
