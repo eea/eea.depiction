@@ -14,13 +14,6 @@
     />
 
   <browser:page
-          for="plone.dexterity.interfaces.IDexterityContent"
-          name="tag"
-          class=".traverse.Tag"
-          permission="zope.Public"
-  />
-
-  <browser:page
       zcml:condition="installed plone.app.collection"
       name="thumbnail_view"
       permission="zope2.View"
