@@ -1,8 +1,84 @@
 Changelog
 =========
 
-6.5.dev0 - (unreleased)
+8.1 - (2019-10-19)
+---------------------------
+* Feature: Added possibility to provide custom IRecreateScales adapter for  custom content-type.
+  [avoinea refs #109515]
+
+8.0 - (2019-09-30)
+---------------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on upgrade
+  button available for eea.depiction
+  [avoinea refs #109515]
+* Upgrade step: Within "Plone > Site setup > Image scales"
+  regenerate image scales for your portal-types
+  [avoinea refs #109515]
+* Change: Added @@recreate-scales browser-view utility
+  [avoinea refs #109515]
+* Change: Added more custom image scales:
+  panoramic, print, landscape, portrait, wide, xlarge
+  [avoinea refs #109515]
+* Bug fix: Fixed ATFolder imgview adapter for multi-lingual cover images
+  [avoinea refs #109515]
+
+7.3 - (2019-08-16)
+--------------------------
+* Change: thumbnail_view now uses image_mini size as a background image instead
+  of an image tag
+  [ichim-david refs #106884]
+
+7.2 - (2019-01-28)
+--------------------------
+* Jenkins: Add sonarqube step
+  [avoinea refs #101552]
+
+7.1 - (2018-06-20)
+--------------------------
+* Change: updated URLs pointing to eea.europa.eu with https://
+  [alecghica refs #95849]
+
+7.0 - (2018-02-08)
 -----------------------
+- Bug fix: allow Dexterity containers to show contained image as thumb
+  [tiberich #92045]
+- Bug fix: handle more cases of images in eea.rdfmarshaller depiction modifier
+  [tiberich #92045]
+- Bug fix: use a NamedBlobImage when adding initial image. This fixes issues
+  with Plone websites that have replaced the default Archetypes-based content
+  types with those derived from Dexterity. In case you have such a website, you
+  should delete the "/portal_depiction/generic" image and reimport the EEA
+  Depiction - Import Various generic setup step.
+  [tiberich #92045]
+- Bug fix: fix Dexterity implementation for scales
+  [tiberich #92045]
+
+6.9 - (2017-12-12)
+------------------
+* Change: Replace eeacms/zptlint with eeacms/plone-test:4 zptlint
+  [avoinea refs #90415]
+
+6.8 - (2017-10-30)
+------------------
+* Bug fix: fix tests for compatibility with eea.rdfmarshaller
+  [tiberich]
+* Bug fix: don't fail if dexterity content has no image field
+  [tiberich #89405 CCA]
+* Change: Remove Sphinx generated documentation
+  [petchesi-iulian refs #88212]
+
+6.7 - (2017-09-22)
+------------------
+* Bug fix: Fix eea.depiction tests
+  [avoinea]
+
+6.6 - (2017-09-19)
+------------------
+* Bug fix: Fix eea.depiction for rdfmarshaller
+  [avoinea]
+
+6.5 - (2017-09-15)
+------------------
 * Change: added ICountryProfile to DepictionVocabulary interfaces
   [ichim-david refs #88123]
 
@@ -212,4 +288,3 @@ Changelog
 0.1 - Unreleased
 ----------------
 * Initial release
-

@@ -10,9 +10,10 @@ VERSION = open(os.path.join(*PATH)).read().strip()
 setup(name=NAME,
       version=VERSION,
       description="EEA Depiction (formerly valentine.imagescales)",
+      long_description_content_type="text/x-rst",
       long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
-      # http://pypi.python.org/pypi?%3Aaction=list_classifiers
+      # https://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
           "Framework :: Zope2",
           "Framework :: Plone",

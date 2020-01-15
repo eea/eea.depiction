@@ -3,10 +3,15 @@
  <object name="imaging_properties">
   <property name="allowed_sizes" type="lines">
 
-   <!--Added wide size -->
+   <!-- EEA Custom Image scales -->
+   <element value="print 2000:2000"/>
+   <element value="panoramic 1920:1080"/>
+   <element value="landscape 1370:771"/>
+   <element value="portrait 771:1370"/>
+   <element value="xlarge 950:950"/>
    <element value="wide 325:183"/>
 
-   <!--These are default plone-->
+   <!--Plone default Image scales -->
    <element value="large 768:768"/>
    <element value="preview 400:400"/>
    <element value="mini 200:200"/>

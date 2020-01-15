@@ -1,8 +1,12 @@
 =============
 EEA Depiction
 =============
-.. image:: http://ci.eionet.europa.eu/job/eea/job/eea.depiction/job/master/badge/icon
-  :target: http://ci.eionet.europa.eu/job/eea/job/eea.depiction/job/master/display/redirect
+.. image:: https://ci.eionet.europa.eu/buildStatus/icon?job=eea/eea.depiction/develop
+  :target: https://ci.eionet.europa.eu/job/eea/job/eea.depiction/job/develop/display/redirect
+  :alt: Develop
+.. image:: https://ci.eionet.europa.eu/buildStatus/icon?job=eea/eea.depiction/master
+  :target: https://ci.eionet.europa.eu/job/eea/job/eea.depiction/job/master/display/redirect
+  :alt: Master
 
 Introduction
 ============
@@ -113,8 +117,8 @@ Source code
 ===========
 
 Latest source code (Plone 4 compatible):
-  - http://github.com/eea/eea.depiction
-  - http://github.com/collective/eea.depiction
+  - https://github.com/eea/eea.depiction
+  - https://github.com/collective/eea.depiction
 
 
 Copyright and license
@@ -136,7 +140,7 @@ Funding and project management
 
 EEA_ - European Environment Agency (EU)
 
-.. _EEA: http://www.eea.europa.eu/
-.. _`EEA Depiction`: http://eea.github.com/docs/eea.depiction
-.. _`plone.recipe.zope2instance`: http://pypi.python.org/pypi/plone.recipe.zope2instance
-.. _`zc.buildout`: http://pypi.python.org/pypi/zc.buildout
+.. _EEA: https://www.eea.europa.eu/
+.. _`EEA Depiction`: https://eea.github.com/docs/eea.depiction
+.. _`plone.recipe.zope2instance`: https://pypi.python.org/pypi/plone.recipe.zope2instance
+.. _`zc.buildout`: https://pypi.python.org/pypi/zc.buildout

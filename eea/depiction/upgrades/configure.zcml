@@ -3,6 +3,32 @@
   xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
   i18n_domain="eea">
 
+  <!-- 5.2 => 8.0 -->
+  <genericsetup:upgradeSteps
+    source="5.2"
+    destination="8.0"
+    profile="eea.depiction:default">
+
+    <genericsetup:upgradeDepends
+      title="Import profile steps with changes: controlpanel properties typeinfo"
+      import_steps="controlpanel propertiestool typeinfo"
+      />
+
+  </genericsetup:upgradeSteps>
+
+  <!-- 5.1 => 5.2 -->
+  <genericsetup:upgradeSteps
+    source="5.1"
+    destination="5.2"
+    profile="eea.depiction:default">
+
+    <genericsetup:upgradeDepends
+      title="Import profile steps with changes: skins"
+      import_steps="skins"
+      />
+
+  </genericsetup:upgradeSteps>
+
   <!-- 5.0 => 5.1 -->
   <genericsetup:upgradeSteps
     source="5.0"
@@ -48,15 +74,4 @@
 
   </genericsetup:upgradeSteps>
 
-  <genericsetup:upgradeSteps
-    source="5.1"
-    destination="5.2"
-    profile="eea.depiction:default">
-
-    <genericsetup:upgradeDepends
-      title="Import profile steps with changes: skins"
-      import_steps="skins"
-      />
-
-  </genericsetup:upgradeSteps>
 </configure>
