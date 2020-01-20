@@ -106,7 +106,8 @@ class ScaleTraverser(ImageTraverser):
             fallback_images = tool.objectIds()
             scale_fallback = image_obj_id + '-' + scale
             if scale_fallback in fallback_images:
-                image_obj = tool[scale_fallback]
+                image_obj = context.restrictedTraverse(scale_fallback,
+                                                       tool[scale_fallback])
             elif image_obj_id in fallback_images:
                 image_obj = tool[image_obj_id]
             else:
