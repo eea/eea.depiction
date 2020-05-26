@@ -55,11 +55,9 @@ class ScaleTraverser(ImageTraverser):
         # Because the following methods of getting a thumbnail are not
         # based on real image fields, we'll look for a fake thumbnail
         # only when the name looks like a thumbnail request
-        try:
-            if (not name.startswith('image_')) or (name.startswith('image_view')):
-                return DefaultPublishTraverse.publishTraverse(self, request, name)
-        except TypeError:
-            import pdb; pdb.set_trace()
+
+        if (not name.startswith('image_')) or (name.startswith('image_view')):
+            return DefaultPublishTraverse.publishTraverse(self, request, name)
 
         # In some cases we want to fallback on a different image
         # than the one used for the portal type. In this dictionary we can
