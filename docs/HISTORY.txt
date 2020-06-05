@@ -1,6 +1,18 @@
 Changelog
 =========
 
+8.2 - (2020-01-15)
+---------------------------
+* Feature: added ability to provide a fallback image for a specific scale name
+  for example if we want to have a different fallback image for the large scale
+  of a Document we can add an image with the id *document-large* and for
+  image_large this image will be used instead of the Document fallback image
+  or any given generic image if no image is added for Document in general.
+  Through acquisition you can also override the served image if you add an
+  image with id *document-large* within a parent container.
+  [ichim-david refs #111968]
+
+
 8.1 - (2019-10-19)
 ---------------------------
 * Feature: Added possibility to provide custom IRecreateScales adapter for  custom content-type.

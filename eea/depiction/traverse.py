@@ -40,6 +40,9 @@ class ScaleTraverser(ImageTraverser):
     * In that folder there should be an image called 'generic'.
     * To map a fallback image to a portal type, place it in this folder and
       name it after the portal type.
+    * To map a fallback image to a specific scale for a portal type, place it
+      in this folder and name it after the portal type plus scale name
+      ex: document-large
     * To map a fallback image to an interface, edit the dictionary found in
       eea.depiction.traversal.py
     """
@@ -100,10 +103,16 @@ class ScaleTraverser(ImageTraverser):
             if not tool:
                 raise NotFound(portal, 'portal_depiction', request)
 
-            if image_obj_id in tool.objectIds():
+            fallback_images = tool.objectIds()
+            scale_fallback = image_obj_id + '-' + scale
+            if scale_fallback in fallback_images:
+                image_obj = context.restrictedTraverse(scale_fallback,
+                                                       tool[scale_fallback])
+            elif image_obj_id in fallback_images:
                 image_obj = tool[image_obj_id]
             else:
                 image_obj = tool['generic']
+
             imgview = getMultiAdapter((image_obj, request), name='imgview')
 
         return imgview(scale)
