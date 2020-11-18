@@ -1,6 +1,11 @@
 Changelog
 =========
 
+8.3 - (unreleased)
+------------------
+
+* Bugfix: don't hardcode image field for dexterity adaptor [tiberiuichim]
+
 8.2 - (2020-01-15)
 ---------------------------
 * Feature: added ability to provide a fallback image for a specific scale name

@@ -1,12 +1,13 @@
 """ Dexterity
 """
 
-from eea.depiction.browser.interfaces import IImageView
-from Products.CMFCore.utils import getToolByName
-from Products.Five.browser import BrowserView
 from zope.component import queryMultiAdapter
 from zope.interface import implements
 from zope.publisher.interfaces import NotFound
+
+from eea.depiction.browser.interfaces import IImageView
+from Products.CMFCore.utils import getToolByName
+from Products.Five.browser import BrowserView
 
 
 class DexterityImageView(BrowserView):
@@ -39,7 +40,7 @@ class DexterityImageView(BrowserView):
 
         scaleview = queryMultiAdapter((self.context, self.request),
                                       name='images')
-        scale = scaleview.scale('image', scale=scalename)
+        scale = scaleview.scale(self.field, scale=scalename)
 
         if not scale:
             return False
@@ -50,7 +51,7 @@ class DexterityImageView(BrowserView):
             raise NotFound(self.request, scalename)
 
         scaleview = queryMultiAdapter((self.img, self.request), name='images')
-        scale = scaleview.scale('image', scale=scalename)
+        scale = scaleview.scale(self.field, scale=scalename)
 
         return scale or ""
 
