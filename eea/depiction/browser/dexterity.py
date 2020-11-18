@@ -16,13 +16,14 @@ class DexterityImageView(BrowserView):
     implements(IImageView)
     _field = False
     _img = False
+    fieldname = 'image'
 
     @property
     def field(self):
         """ Image field
         """
         if self._field is False:
-            self._field = getattr(self.img, 'image', None)
+            self._field = getattr(self.img, self.fieldname, None)
         return self._field
 
     @property
@@ -40,7 +41,8 @@ class DexterityImageView(BrowserView):
 
         scaleview = queryMultiAdapter((self.context, self.request),
                                       name='images')
-        scale = scaleview.scale(self.field, scale=scalename)
+
+        scale = scaleview.scale(str(self.fieldname), scale=scalename)
 
         if not scale:
             return False
@@ -51,7 +53,7 @@ class DexterityImageView(BrowserView):
             raise NotFound(self.request, scalename)
 
         scaleview = queryMultiAdapter((self.img, self.request), name='images')
-        scale = scaleview.scale(self.field, scale=scalename)
+        scale = scaleview.scale(str(self.fieldname), scale=scalename)
 
         return scale or ""
 
