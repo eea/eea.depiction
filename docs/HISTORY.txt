@@ -1,6 +1,10 @@
 Changelog
 =========
 
+8.3 - (2020-12-02)
+---------------------------
+* Bugfix: don't hardcode image field for dexterity adaptor [tiberiuichim]
+
 8.2 - (2020-01-15)
 ---------------------------
 * Feature: added ability to provide a fallback image for a specific scale name
@@ -11,7 +15,6 @@ Changelog
   Through acquisition you can also override the served image if you add an
   image with id *document-large* within a parent container.
   [ichim-david refs #111968]
-
 
 8.1 - (2019-10-19)
 ---------------------------
