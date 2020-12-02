@@ -1,7 +1,7 @@
 Changelog
 =========
 
-8.3-dev0 - (unreleased)
+8.3 - (2020-12-02)
 ---------------------------
 * Bugfix: don't hardcode image field for dexterity adaptor [tiberiuichim]
 
