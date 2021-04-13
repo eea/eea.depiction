@@ -1,7 +1,7 @@
 Changelog
 =========
 
-8.4-dev0 - (unreleased)
+8.4 - (2021-04-13)
 ---------------------------
 * Change: Display image from fiche for reports
   [iulianpetchesi refs #128043]
