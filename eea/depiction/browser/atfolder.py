@@ -42,6 +42,11 @@ class FolderImageView(BrowserView):
                 if 'cover' in brain.getId:
                     self._img = brain.getObject()
                     break
+
+        # refs #128043
+        if self._img is None and self.context.portal_type == 'Fiche' and \
+                 self.request.form.get('display_fiche_img', False):
+            self._img = self.context
         return self._img
 
     @property
