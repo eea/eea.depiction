@@ -3,6 +3,8 @@ Changelog
 
 8.4-dev0 - (unreleased)
 ---------------------------
+* Change: Display image from fiche for reports
+  [iulianpetchesi refs #128043]
 
 8.3 - (2020-12-02)
 ---------------------------
