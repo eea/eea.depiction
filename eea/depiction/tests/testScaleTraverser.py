@@ -8,6 +8,10 @@ from eea.depiction.tests.base import DepictionTestCase
 from eea.depiction.tests.base import P_VIDEO
 from Testing.ZopeTestCase import FunctionalDocFileSuite
 
+TEST_PNG_PATH = join(package_home(globals()), 'data', 'test.png')
+TEST_TIF_PATH = join(package_home(globals()), 'data', 'test.tif')
+DATA_TMP_DIR = join(package_home(globals()), 'data', 'tmp')
+
 optionflags = (doctest.ELLIPSIS |
                 doctest.NORMALIZE_WHITESPACE |
                 doctest.REPORT_ONLY_FIRST_FAILURE)
@@ -15,16 +19,14 @@ optionflags = (doctest.ELLIPSIS |
 def setUpImg(self):
     """ Setup an image
     """
-    img_file = join(package_home(globals()), 'data', 'test.png')
-    img = open(img_file, 'rb').read()
+    img = open(TEST_PNG_PATH, 'rb').read()
     globs = {}
     globs['img'] = img
-    globs['imgfile'] = img_file
+    globs['imgfile'] = TEST_PNG_PATH
 
-    img_file = join(package_home(globals()), 'data', 'test.tif')
-    img = open(img_file, 'rb').read()
+    img = open(TEST_TIF_PATH, 'rb').read()
     globs['tiff'] = img
-    globs['tiff_file'] = img_file
+    globs['tiff_file'] = TEST_TIF_PATH
 
     self.globs.update(globs)
 

@@ -2,16 +2,20 @@
 """
 import logging
 
-from eea.depiction.interfaces import IDepictionTool, IDepictionVocabulary
-from plone.app.imaging.interfaces import IBaseObject
-from plone.app.imaging.traverse import ImageTraverser
-from Products.CMFCore.utils import getToolByName
-from Products.Five.browser import BrowserView
 from zope.component import (adapts, getAllUtilitiesRegisteredFor,
                             getMultiAdapter, queryMultiAdapter, queryUtility)
 from zope.interface import providedBy
 from zope.publisher.interfaces import IRequest, NotFound
+
+from Products.Five.browser import BrowserView
 from ZPublisher.BaseRequest import DefaultPublishTraverse
+from OFS import interfaces as ofs_ifaces
+from Products.CMFCore.utils import getToolByName
+
+from plone.app.imaging.interfaces import IBaseObject
+from plone.app.imaging.traverse import ImageTraverser
+
+from eea.depiction.interfaces import IDepictionTool, IDepictionVocabulary
 
 logger = logging.getLogger("eea.depiction")
 
@@ -56,7 +60,13 @@ class ScaleTraverser(ImageTraverser):
         # based on real image fields, we'll look for a fake thumbnail
         # only when the name looks like a thumbnail request
 
-        if (not name.startswith('image_')) or (name.startswith('image_view')):
+        if (
+                (not name.startswith('image_')) or (name.startswith('image_view'))
+                or (
+                    ofs_ifaces.IObjectManager.providedBy(self.context)
+                    and name in self.context.objectIds()
+                )
+        ):
             return DefaultPublishTraverse.publishTraverse(self, request, name)
 
         # In some cases we want to fallback on a different image
