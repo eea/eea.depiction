@@ -1,0 +1,4 @@
+# A space where test data files can be duplicated for tests without including them in
+# VCS
+/*
+!/.gitignore

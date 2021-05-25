@@ -1,6 +1,11 @@
 Changelog
 =========
 
+8.5 - (2021-05-25)
+---------------------------
+* Bug fix: Avoid subobject name clash with scale traverser.
+  [rpatterson refs #131101]
+
 8.4 - (2021-04-13)
 ---------------------------
 * Change: Display image from fiche for reports
