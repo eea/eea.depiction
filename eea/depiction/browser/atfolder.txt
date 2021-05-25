@@ -2,8 +2,8 @@
 ATFolder integration
 ====================
 
-    >>> from Testing.testbrowser import Browser
-    >>> browser = Browser()
+    >>> from plone.testing.z2 import Browser
+    >>> browser = Browser(app)
 
     >>> self.setRoles(['Manager'])
     >>> id = portal.invokeFactory('Folder', id='testfolder', title='Title')
@@ -13,7 +13,40 @@ ATFolder integration
 ATFolders should have a working ImageView adapter that takes the first image inside it:
 
     >>> foo = folder.invokeFactory('Image', id='image1', image=img)
+
+    >>> import transaction
+    >>> transaction.commit()
     >>> browser.open('http://localhost/plone/testfolder/image_thumb')
     >>> "PNG" in browser.contents
     True
 
+Images with filenames that are the same as certain scales can be uploaded as content
+without clashing with the traverser:
+
+    >>> import os
+    >>> import shutil
+    >>> from eea.depiction.tests import testScaleTraverser
+    >>> test_png_scale_name = os.path.join(
+    ...     testScaleTraverser.DATA_TMP_DIR,
+    ...     "image_original.png",
+    ... )
+    >>> shutil.copyfile(testScaleTraverser.TEST_PNG_PATH, test_png_scale_name)
+
+    >>> from Products.PloneTestCase import PloneTestCase
+    >>> browser.addHeader("Authorization",
+    ...                   "Basic %s:%s" % (PloneTestCase.portal_owner,
+    ...                                    PloneTestCase.default_password))
+
+    >>> browser.open("http://localhost/plone/testfolder/")
+    >>> browser.getLink(url="createObject?type_name=Image").click()
+    >>> with open(test_png_scale_name) as test_png_scale_name_opened:
+    ...     browser.getControl(name="image_file").add_file(
+    ...         test_png_scale_name_opened, "image/png", "image_original.png")
+    ...     browser.getControl("Save").click()
+    >>> browser.url
+    'http://localhost/plone/testfolder/image_original.png/view'
+    >>> "<html" in browser.contents
+    True
+    >>> browser.open("http://localhost/plone/testfolder/image_original.png")
+    >>> browser.contents
+    '\x89PNG\r\n...'
