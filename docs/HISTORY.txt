@@ -1,8 +1,10 @@
 Changelog
 =========
 
-8.6-dev0 - (unreleased)
+8.6 - (2021-06-17)
 ---------------------------
+* Feature: Add support for DexterityContainer depiction with AT images inside
+  [avoinea refs #132124]
 
 8.5 - (2021-05-25)
 ---------------------------
