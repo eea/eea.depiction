@@ -9,6 +9,13 @@ from eea.depiction.browser.interfaces import IImageView
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 
+try:
+    from Products.ATContentTypes.interface.image import IATImage
+except ImportError:
+    from zope.interface import Interface
+    class IATImage(Interface):
+        """ Fall-back IATImage
+        """
 
 class DexterityImageView(BrowserView):
     """ Image View
@@ -99,6 +106,9 @@ class DexterityContainerImageView(DexterityImageView):
 
         if not self.img:
             return False
+
+        if IATImage.providedBy(self.img):
+            return True
 
         if not self.field:
             return False
